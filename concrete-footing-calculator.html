@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FenceFlow | Concrete Footing Calculator</title>
+  <meta name="description" content="Calculate chain link fence post footing concrete by post size, hole diameter, depth, and overage with grouped totals." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="theme-color" content="#07101d" />
+  <link rel="canonical" href="https://fence-flow.com/concrete-footing-calculator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FenceFlow" />
+  <meta property="og:title" content="FenceFlow | Concrete Footing Calculator" />
+  <meta property="og:description" content="Estimate chain link fence footing concrete in cubic yards with grouped post sizes and bag count totals." />
+  <meta property="og:url" content="https://fence-flow.com/concrete-footing-calculator.html" />
+  <meta property="og:image" content="https://fence-flow.com/LOGO%20PACK/fenceflow-logo-transparent.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FenceFlow | Concrete Footing Calculator" />
+  <meta name="twitter:description" content="Concrete footing calculator for chain link fence posts with grouped sizing and live totals." />
+  <meta name="twitter:image" content="https://fence-flow.com/LOGO%20PACK/fenceflow-logo-transparent.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"FenceFlow Concrete Footing Calculator","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://fence-flow.com/concrete-footing-calculator.html","description":"Concrete footing estimator for chain link fence posts.","creator":{"@type":"Organization","name":"Pro Fence","url":"https://caprofence.com"}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#060b16;--border:rgba(125,156,204,.26);--text:#e8f1ff;--muted:#9fb3d3;--accent:#4f86e8;--accentStrong:#214b95;--accentText:#f7fbff;--warnBg:rgba(245,158,11,.16);--warnBorder:rgba(245,158,11,.34);--warnText:#ffd68a;--panelGlow:rgba(9,18,35,.34)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:
+      radial-gradient(circle at 12% 12%, rgba(132,170,235,.18) 0%, rgba(132,170,235,0) 22%),
+      radial-gradient(circle at 82% 18%, rgba(74,118,201,.16) 0%, rgba(74,118,201,0) 24%),
+      radial-gradient(circle at 72% 78%, rgba(37,79,156,.18) 0%, rgba(37,79,156,0) 28%),
+      linear-gradient(145deg,#010308 0%,#07101d 34%,#10213c 68%,#1c3761 100%);
+      color:var(--text)}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;background:
+      linear-gradient(120deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,0) 22%,rgba(255,255,255,.03) 52%,rgba(255,255,255,0) 78%),
+      radial-gradient(circle at 20% 0%, rgba(124,170,255,.08) 0%, rgba(124,170,255,0) 26%);
+      opacity:.9}
+    .wrap{max-width:1500px;margin:0 auto;padding:14px 20px 28px;position:relative}
+    .topRight{position:absolute;top:118px;right:24px;display:flex;align-items:center;gap:12px;z-index:5}
+    .hero{display:flex;align-items:center;margin-bottom:-34px;position:relative;z-index:1}
+    .logoBox{width:680px;display:flex;align-items:center;position:relative;transform-origin:left center;transition:width .28s ease,transform .28s ease}
+    .logoBox img{width:100%;height:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 14px 30px rgba(111,154,225,.14))}
+    .logoHotspot{position:absolute;left:21%;top:59%;width:26%;height:16%;border-radius:999px}
+    body.logo-shrink .logoBox{width:540px;transform:translateY(-2px)}
+    .siteNav{display:flex;gap:22px;flex-wrap:wrap;margin:8px 0 18px 0;position:relative;z-index:4;padding-bottom:6px}
+    .siteNav a{position:relative;display:inline-flex;align-items:center;padding:6px 0;text-decoration:none;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#9fb3d3;transition:color .18s ease}
+    .siteNav a::after{content:'';position:absolute;left:0;right:0;bottom:-7px;height:3px;border-radius:999px;background:linear-gradient(90deg,var(--accent) 0%,#8fb7ff 100%);transform:scaleX(0);transform-origin:left center;transition:transform .22s ease}
+    .siteNav a:hover{color:#e8f1ff}
+    .siteNav a.active{color:#fff}
+    .siteNav a.active::after{transform:scaleX(1)}
+    .betaBadge{display:inline-flex;align-items:center;padding:6px 14px;border-radius:999px;background:linear-gradient(180deg,rgba(127,29,29,.34) 0%,rgba(91,16,16,.2) 100%);border:1px solid rgba(248,113,113,.34);color:#fda4af;font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-left:6px;vertical-align:middle;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 10px 18px rgba(0,0,0,.16);backdrop-filter:blur(10px)}
+    .heroPanel{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:18px;align-items:end;padding:28px 30px 26px;border-radius:30px;background:linear-gradient(145deg,rgba(8,15,29,.96) 0%,rgba(12,25,49,.96) 48%,rgba(25,52,98,.86) 100%);border:1px solid rgba(126,159,212,.18);box-shadow:0 30px 56px rgba(0,0,0,.34);overflow:hidden;margin-bottom:18px}
+    .heroPanel::before{content:'';position:absolute;inset:auto auto -110px -80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(109,150,224,.18) 0%,rgba(109,150,224,0) 68%)}
+    .heroPanel::after{content:'';position:absolute;top:-90px;right:-70px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(126,167,222,.16) 0%,rgba(126,167,222,0) 70%)}
+    .heroCopy,.heroStats{position:relative;z-index:1}
+    .heroKicker{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:#dce9fb;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+    .heroTitle{margin:0 0 10px;font-size:42px;line-height:1.02;letter-spacing:-.04em;color:#fff}
+    .heroText{margin:0;max-width:640px;font-size:15px;line-height:1.65;color:rgba(226,237,255,.8)}
+    .heroStats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .heroStat{padding:16px 18px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.04) 100%);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px)}
+    .heroStat strong{display:block;font-size:24px;color:#fff;margin-bottom:6px}
+    .heroStat span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#d7e6fb}
+    .proposalBar{display:grid;grid-template-columns:1.25fr repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}
+    .proposalMain,.proposalMetric{position:relative;overflow:hidden;border-radius:24px;border:1px solid rgba(126,159,212,.18);box-shadow:0 18px 34px rgba(0,0,0,.26)}
+    .proposalMain{padding:18px 20px;background:linear-gradient(145deg,rgba(16,35,66,.96) 0%,rgba(29,69,129,.92) 100%)}
+    .proposalMain::after,.proposalMetric::after{content:'';position:absolute;inset:auto -18px -28px auto;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.14) 0%,rgba(255,255,255,0) 72%)}
+    .proposalMetric{padding:16px 18px;background:linear-gradient(180deg,rgba(10,20,37,.94) 0%,rgba(14,28,50,.96) 100%)}
+    .proposalKicker{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#bdd2f4;margin-bottom:8px}
+    .proposalSentence{font-size:22px;line-height:1.18;font-weight:900;color:#fff;letter-spacing:-.03em}
+    .proposalMetric strong{display:block;font-size:24px;color:#fff;margin-bottom:6px;position:relative;z-index:1}
+    .proposalMetric span{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#b7cae8;position:relative;z-index:1}
+    .layout{display:grid;grid-template-columns:minmax(640px,1.15fr) minmax(360px,.85fr);gap:18px;align-items:start}
+    .card{position:relative;background:linear-gradient(180deg,rgba(10,18,33,.9) 0%,rgba(14,27,49,.92) 100%);border:1px solid rgba(126,159,212,.18);border-radius:28px;overflow:hidden;box-shadow:0 24px 44px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.04);transition:transform .26s ease,box-shadow .26s ease}
+    .card:hover{transform:translateY(-2px);box-shadow:0 30px 54px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.04)}
+    .card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,rgba(79,134,232,.95) 0%,rgba(33,75,149,.88) 55%,rgba(126,167,222,.28) 100%)}
+    .cardHead{padding:26px 24px 12px;font-size:23px;font-weight:900;color:#eef4ff;letter-spacing:-.03em}
+    .cardBody{padding:20px 24px 24px}
+    .eyebrow{display:flex;align-items:center;gap:8px;color:#8fa8d0;text-transform:uppercase;font-size:11px;letter-spacing:.14em;font-weight:900;margin:0 0 12px}
+    .eyebrow::before{content:'';width:22px;height:2px;border-radius:999px;background:linear-gradient(90deg,#5f87c2 0%,#9dc1ff 100%)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .field{display:flex;flex-direction:column;gap:8px}
+    .field label{color:var(--muted);font-size:14px;font-weight:700}
+    .labelRow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .helpTip{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:999px;background:linear-gradient(135deg,#295aa7 0%,#183865 100%);color:#fff;font-size:11px;font-weight:900;cursor:help;position:relative}
+    .helpTip::after{content:attr(data-tip);position:absolute;left:50%;bottom:125%;transform:translateX(-50%);min-width:220px;max-width:260px;padding:10px 12px;border-radius:12px;background:#16315d;color:#f7fbff;font-size:12px;line-height:1.45;font-weight:600;box-shadow:0 12px 28px rgba(18,34,61,.26);opacity:0;visibility:hidden;transition:opacity .18s ease;pointer-events:none}
+    .helpTip:hover::after{opacity:1;visibility:visible}
+    input,select{width:100%;border-radius:16px;border:1px solid rgba(129,161,208,.34);background:linear-gradient(180deg,rgba(10,19,36,.98) 0%,rgba(8,15,29,1) 100%);color:#ffffff;padding:13px 14px;font-size:15px;font-weight:700;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+    select{color-scheme:dark}
+    select option{background:#0b1730;color:#ffffff}
+    .groupList{display:grid;gap:14px}
+    .groupCard{position:relative;border:1px solid rgba(126,159,212,.18);border-radius:24px;padding:16px;background:linear-gradient(180deg,rgba(14,27,49,.92) 0%,rgba(16,31,56,.94) 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 14px 28px rgba(0,0,0,.18);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+    .groupCard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,#78a8ff 0%,#2d5fb5 100%)}
+    .groupCard:hover{transform:translateY(-3px);border-color:rgba(136,174,233,.34);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 18px 34px rgba(0,0,0,.24)}
+    .groupHead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+    .groupTitle{font-size:15px;font-weight:900;color:#eef4ff;letter-spacing:.01em}
+    .groupMeta{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#8fa8d0;margin-top:4px}
+    .groupActions{display:flex;gap:8px;flex-wrap:wrap}
+    .miniBtn,.addBtn{display:inline-flex;align-items:center;justify-content:center;border:none;border-radius:16px;padding:10px 14px;cursor:pointer;font-weight:800;font-size:13px;letter-spacing:.02em}
+    .miniBtn{background:rgba(255,255,255,.06);color:#dce9fd;border:1px solid rgba(151,179,225,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+    .addBtn{background:linear-gradient(135deg,#4f86e8 0%,#214b95 100%);color:#fff;box-shadow:0 16px 30px rgba(33,75,149,.28)}
+    .summaryGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .summaryChip{position:relative;background:linear-gradient(180deg,rgba(79,134,232,.18) 0%,rgba(19,42,82,.96) 100%);border:1px solid rgba(130,160,203,.24);border-radius:22px;padding:16px;box-shadow:0 20px 30px rgba(0,0,0,.22)}
+    .summaryChip::after{content:'';position:absolute;inset:auto -20px -30px auto;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18) 0%,rgba(255,255,255,0) 72%)}
+    .summaryChip strong{display:block;font-size:28px;color:#fff;margin-bottom:6px;position:relative;z-index:1}
+    .summaryChip{color:#dce9fb;font-weight:700}
+    .row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:13px 14px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,.03) 100%);border:1px solid rgba(151,179,225,.14);margin-bottom:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+    .row strong{color:#eef4ff}
+    .row div{color:#c4d4ee}
+    .note{font-size:13px;color:#98add0;line-height:1.6}
+    .warning{padding:14px 16px;border-radius:18px;background:var(--warnBg);border:1px solid var(--warnBorder);color:var(--warnText);margin-bottom:16px;font-size:14px;font-weight:600}
+    .sectionStack{display:grid;gap:18px}
+    .breakdownRows{display:grid;gap:10px}
+    .metricBar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}
+    .metricPill{padding:14px 16px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,.03) 100%);border:1px solid rgba(151,179,225,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);color:#9fb3d3}
+    .metricPill strong{display:block;font-size:20px;color:#eef4ff;margin-bottom:5px}
+    .reveal{opacity:0;transform:translateY(18px);animation:riseIn .7s cubic-bezier(.2,.8,.2,1) forwards}
+    .delay-1{animation-delay:.08s}
+    .delay-2{animation-delay:.16s}
+    .delay-3{animation-delay:.24s}
+    .delay-4{animation-delay:.32s}
+    .socialRow{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}.socialBtn{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:999px;text-decoration:none;color:#dce9fd;background:rgba(255,255,255,.06);border:1px solid rgba(151,179,225,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 18px rgba(0,0,0,.18);transition:transform .18s ease,background .18s ease,border-color .18s ease}.socialBtn:hover{transform:translateY(-1px);background:rgba(255,255,255,.1);border-color:rgba(151,179,225,.26)}.socialBtn svg{width:22px;height:22px;fill:currentColor;display:block}.siteFooter{margin-top:22px;padding:18px 4px 4px;color:#89a2c8;font-size:13px;text-align:center}
+    @keyframes riseIn{to{opacity:1;transform:none}}
+    @media (max-width:1180px){.layout{grid-template-columns:1fr}}
+    @media (max-width:900px){.heroPanel{grid-template-columns:1fr}.heroTitle{font-size:34px}.heroStats,.metricBar,.proposalBar{grid-template-columns:1fr 1fr}.proposalMain{grid-column:1/-1}}
+    @media (max-width:720px){.wrap{padding:10px 14px 20px}.logoBox{width:min(100%,500px)}body.logo-shrink .logoBox{width:min(100%,420px)}.hero{margin-bottom:-14px}.topRight{top:94px;right:14px;gap:8px}.topRight .socialBtn{width:40px;height:40px}.topRight .socialBtn svg{width:18px;height:18px}.grid,.summaryGrid,.metricBar,.heroStats,.proposalBar{grid-template-columns:1fr}.siteNav{margin-bottom:14px}}
+
+    /* FenceFlow unified light theme */
+    :root{--bg:#f3f1ea;--bgSoft:#faf9f5;--panel:#ffffff;--panelSoft:#f6f4ed;--panelMute:#eef3ee;--border:#d8ddd8;--borderStrong:#c4ccc4;--text:#1f2822;--muted:#5d675f;--brand:#5e7862;--brandDeep:#1d2a21;--brandSoft:#e6eee6;--accent:#b78a47;--accentStrong:#8d6936;--accentText:#1d2a21;--warnBg:rgba(183,138,71,.16);--warnBorder:rgba(183,138,71,.32);--warnText:#7a5823;--shadow:0 22px 48px rgba(24,31,26,.08);--shadowSoft:0 12px 28px rgba(24,31,26,.06)}
+    body{font-family:"Outfit",Arial,Helvetica,sans-serif;background:
+      radial-gradient(circle at top left, rgba(183,138,71,.14) 0%, rgba(183,138,71,0) 24%),
+      radial-gradient(circle at 82% 10%, rgba(94,120,98,.12) 0%, rgba(94,120,98,0) 28%),
+      linear-gradient(180deg,#f8f6f1 0%,#f1eee7 100%);
+      color:var(--text)}
+    body::before{background:
+      linear-gradient(120deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 28%,rgba(255,255,255,.22) 58%,rgba(255,255,255,0) 80%),
+      radial-gradient(circle at 18% 0%, rgba(94,120,98,.06) 0%, rgba(94,120,98,0) 24%);
+      opacity:.85}
+    .wrap{padding:20px 20px 28px}
+    .topRight{display:flex;align-items:center;gap:10px;z-index:5;flex:0 0 auto;position:static;top:auto;right:auto}
+    .hero{display:grid;grid-template-columns:210px minmax(0,1fr) auto;align-items:center;gap:18px;margin-bottom:16px;position:relative;z-index:1;padding:20px 24px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.96);box-shadow:var(--shadowSoft);transition:padding .22s ease,border-radius .22s ease,box-shadow .22s ease,background-color .22s ease,border-color .22s ease}
+    .logoBox{width:192px;display:flex;align-items:center;position:relative;transform-origin:left center;transition:width .22s ease,transform .22s ease}
+    .logoBox img{filter:none}
+    .logoHotspot{position:absolute;inset:0;border-radius:14px}
+    body.logo-shrink .hero{padding:12px 18px;border-radius:999px;border-color:rgba(196,204,196,.78);background:rgba(255,255,255,.98);box-shadow:0 14px 34px rgba(24,31,26,.1)}
+    body.logo-shrink .logoBox{width:158px;transform:translateY(-1px)}
+    .siteNav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:0;position:relative;z-index:4;padding-bottom:0}
+    .siteNav a{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;min-height:42px;text-decoration:none;border-radius:999px;font-weight:700;font-size:.88rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color .18s ease,background .18s ease,transform .18s ease,box-shadow .18s ease,padding .22s ease,min-height .22s ease,font-size .22s ease}
+    .siteNav a::after{left:14px;right:14px;bottom:8px;height:2px;background:linear-gradient(90deg,var(--accent) 0%,#c79b57 100%);transform-origin:left center}
+    .siteNav a:hover{color:var(--brandDeep);background:#f1f4ee;transform:translateY(-1px)}
+    .siteNav a.active{color:var(--brandDeep);background:linear-gradient(180deg,#e8eee7 0%,#dde6dd 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+    .siteNav a.active::after{transform:scaleX(1)}
+    .betaBadge{display:inline-flex;align-items:center;justify-content:center;padding:0 16px;min-height:42px;border-radius:999px;background:linear-gradient(135deg,rgba(92,7,18,.9) 0%,rgba(145,15,31,.8) 48%,rgba(186,28,47,.66) 100%);border:1px solid rgba(255,255,255,.24);color:#fff7f7;font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;text-shadow:0 1px 0 rgba(53,4,10,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 12px 22px rgba(98,10,22,.24);backdrop-filter:blur(12px) saturate(145%);-webkit-backdrop-filter:blur(12px) saturate(145%);margin-left:0}
+    body.logo-shrink .siteNav a{padding:8px 12px;min-height:36px;font-size:.8rem}
+    body.logo-shrink .betaBadge{min-height:36px;padding:0 14px;font-size:9px}
+    .socialBtn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;text-decoration:none;color:var(--brandDeep);background:rgba(244,240,230,.72);border:1px solid var(--border);box-shadow:var(--shadowSoft);transition:transform .18s ease,background .18s ease,border-color .18s ease,width .22s ease,height .22s ease}
+    .socialBtn:hover{transform:translateY(-1px);background:var(--brandSoft);border-color:rgba(34,49,39,.16)}
+    .socialBtn svg{width:18px;height:18px;fill:currentColor}
+    body.logo-shrink .socialBtn{width:38px;height:38px}
+    .heroPanel{background:linear-gradient(145deg,#ffffff 0%,#f4f7f2 52%,#edf1ea 100%);border:1px solid var(--border);box-shadow:var(--shadow)}
+    .heroPanel::before{background:radial-gradient(circle,rgba(183,138,71,.16) 0%,rgba(183,138,71,0) 68%)}
+    .heroPanel::after{background:radial-gradient(circle,rgba(94,120,98,.14) 0%,rgba(94,120,98,0) 70%)}
+    .proposalMain{background:linear-gradient(145deg,#eef2ea 0%,#e2e9df 100%);border:1px solid var(--borderStrong);box-shadow:var(--shadow)}
+    .proposalMetric,.card,.summaryChip,.groupCard,.metricPill,.row{background:linear-gradient(180deg,#ffffff 0%,#f6f4ed 100%);border:1px solid var(--border);box-shadow:var(--shadowSoft)}
+    .proposalMain::after,.proposalMetric::after,.summaryChip::after{background:radial-gradient(circle,rgba(183,138,71,.14) 0%,rgba(183,138,71,0) 72%)}
+    .card::before{background:linear-gradient(90deg,var(--brand) 0%,var(--accent) 60%,rgba(183,138,71,.24) 100%)}
+    .groupCard::before{background:linear-gradient(180deg,var(--accent) 0%,var(--brand) 100%)}
+    .heroTitle,.cardHead{font-family:"Cormorant Garamond",serif;color:var(--brandDeep)}
+    .heroTitle{font-size:50px}
+    .heroText,.note,.row div,.proposalMetric span,.groupMeta,.metricPill,.summaryChip,.field label{color:var(--muted)}
+    .heroKicker,.proposalKicker,.eyebrow{color:var(--brand)}
+    .heroKicker{background:var(--brandSoft);border:1px solid rgba(94,120,98,.18)}
+    .eyebrow::before{background:linear-gradient(90deg,var(--brand) 0%,var(--accent) 100%)}
+    .heroStat,.summaryChip,.metricPill{background:linear-gradient(180deg,#f7f4ec 0%,#eef3ee 100%);border:1px solid var(--border);box-shadow:var(--shadowSoft)}
+    .heroStat strong,.proposalSentence,.proposalMetric strong,.summaryChip strong,.metricPill strong,.groupTitle,.row strong{color:var(--brandDeep)}
+    .heroStat span{color:var(--brand)}
+    input,select{background:var(--panel);color:var(--text);border:1px solid var(--borderStrong);box-shadow:inset 0 1px 0 rgba(255,255,255,.65)}
+    select{color-scheme:light}
+    select option{background:#ffffff;color:var(--text)}
+    .helpTip{background:linear-gradient(135deg,var(--brand) 0%,#425646 100%)}
+    .helpTip::after{background:#243529;color:#f6f2ea}
+    .miniBtn{background:var(--panel);color:var(--brandDeep);border:1px solid var(--borderStrong);box-shadow:var(--shadowSoft)}
+    .addBtn{background:linear-gradient(135deg,var(--accent) 0%,#c79b57 100%);color:var(--accentText);box-shadow:0 16px 30px rgba(183,138,71,.22)}
+    .siteFooter{color:var(--muted)}
+    @media (max-width:1100px){.hero{grid-template-columns:210px minmax(0,1fr);gap:16px}.topRight{justify-content:flex-end}.siteNav{justify-content:flex-start}}
+    @media (max-width:720px){.wrap{padding:14px 14px 20px}.hero{grid-template-columns:1fr;gap:12px;margin-bottom:14px;padding:14px 16px;border-radius:28px}.logoBox{width:min(100%,192px)}body.logo-shrink .logoBox{width:min(100%,158px)}.topRight{justify-content:flex-start}.topRight .socialBtn{width:40px;height:40px}.topRight .socialBtn svg{width:18px;height:18px}.siteNav{justify-content:flex-start;width:100%}.siteNav a{padding:8px 12px;min-height:36px;font-size:.78rem}.betaBadge{padding:0 12px;font-size:9px;min-height:36px}body.logo-shrink .hero{padding:10px 14px;border-radius:24px}.heroTitle{font-size:40px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="logoBox">
+      <img src="LOGO PACK/fenceflow-logo-tight.png" alt="FenceFlow logo" />
+      <a class="logoHotspot" href="https://caprofence.com" target="_blank" rel="noopener noreferrer" aria-label="Visit CA Pro Fence"></a>
+    </div>
+    <div class="siteNav">
+      <a href="./index.html">Home</a>
+      <a href="./layout-calculator.html">Layout Calculator</a>
+      <a class="active" href="./concrete-footing-calculator.html">Concrete Footings</a>
+      <a href="./shop-drawings.html">Shop Drawings</a>
+      <span class="betaBadge">Beta</span>
+    </div>
+    <div class="topRight">
+      <a class="socialBtn" href="https://www.tiktok.com/@profence?lang=en" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.3 2.1 1.5 3.7 3.4 4.2v2.9c-1.2 0-2.4-.4-3.4-1.1v6.1c0 3.6-2.8 6.1-6.2 6.1-3.2 0-5.8-2.3-5.8-5.5 0-3.4 2.6-5.8 6.4-5.8.3 0 .6 0 .9.1v3c-.3-.1-.6-.2-.9-.2-1.8 0-3.2 1.1-3.2 2.8 0 1.5 1.2 2.6 2.7 2.6 1.6 0 3-1 3-3.2V3h3.1z"/></svg></a>
+      <a class="socialBtn" href="https://www.instagram.com/profenceca" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm9.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></a>
+      <a class="socialBtn" href="https://www.facebook.com/ProFenceCA/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.7-1.6h1.6V4.8c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.6v8h2.9z"/></svg></a>
+    </div>
+  </div>
+  <div class="heroPanel reveal">
+    <div class="heroCopy">
+      <div class="heroKicker">Field Ready Calculator</div>
+      <h1 class="heroTitle">Concrete takeoffs that look client-ready.</h1>
+      <p class="heroText">Build up to five footing groups, mix post sizes in one job, and present clean totals for cubic feet, cubic yards, and bag counts in a screen that feels polished enough for demos and proposals.</p>
+    </div>
+    <div class="heroStats">
+      <div class="heroStat"><strong>5</strong><span>Footing groups max</span></div>
+      <div class="heroStat"><strong>3</strong><span>Total output formats</span></div>
+      <div class="heroStat"><strong>Live</strong><span>Combined takeoff totals</span></div>
+      <div class="heroStat"><strong>Preset</strong><span>Size-based footing defaults</span></div>
+    </div>
+  </div>
+  <div class="proposalBar reveal delay-1">
+    <div class="proposalMain">
+      <div class="proposalKicker">Live Proposal Summary</div>
+      <div class="proposalSentence" id="proposalSentence">1 footing group • 10 posts • 3.33 cu yd • 150 bags</div>
+    </div>
+    <div class="proposalMetric"><strong id="proposalGroups">1</strong><span>Footing Groups</span></div>
+    <div class="proposalMetric"><strong id="proposalYards">0.00</strong><span>Cubic Yards</span></div>
+    <div class="proposalMetric"><strong id="proposalBags">0</strong><span>Estimated Bags</span></div>
+  </div>
+  <div class="layout">
+    <div>
+      <div class="card reveal delay-2">
+        <div class="cardHead">Concrete Footing Calculator</div>
+        <div class="cardBody">
+          <div class="eyebrow">Footing Sizes</div>
+          <div id="footingGroups" class="groupList"></div>
+          <div style="margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+            <div class="note">Add up to 5 footing groups for different post sizes or footing dimensions.</div>
+            <button id="addGroupBtn" class="addBtn" type="button">Add Footing Size</button>
+          </div>
+          <div style="margin-top:18px" class="eyebrow">Global Settings</div>
+          <div class="grid">
+            <div class="field">
+              <label class="labelRow" for="wastePercent"><span>Waste / Overage</span><span class="helpTip" data-tip="Extra concrete added above the exact calculation to cover spillage, oversized holes, uneven digging, and normal field variation.">?</span></label>
+              <input id="wastePercent" type="number" min="0" step="1" value="10" />
+            </div>
+            <div class="field">
+              <label for="bagWeight">Bag Size</label>
+              <select id="bagWeight">
+                <option value="50">50 lb bags</option>
+                <option value="60">60 lb bags</option>
+                <option value="80" selected>80 lb bags</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card reveal delay-3" style="margin-top:18px">
+        <div class="cardHead">Calculation Notes</div>
+        <div class="cardBody">
+          <div id="warnings"></div>
+          <div id="groupNotes"></div>
+          <div class="metricBar">
+            <div class="metricPill"><strong id="notesFt3">0.00</strong>Raw cubic feet before overage</div>
+<div class="metricPill"><strong id="notesAvg">0.00</strong>Average cubic yards per post</div>
+            <div class="metricPill"><strong id="notesGroups">1</strong>Active footing groups</div>
+          </div>
+          <div class="note">This calculator uses straight cylindrical hole volume for each footing group. Bag counts are estimated from typical mixed-yield values and rounded up.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="sectionStack">
+      <div class="card reveal delay-4">
+        <div class="cardHead">Concrete Summary</div>
+        <div class="cardBody">
+          <div class="summaryGrid">
+            <div class="summaryChip"><strong id="totalFt3">0.00</strong>Total Cubic Feet</div>
+            <div class="summaryChip"><strong id="totalYd3">0.00</strong>Total Cubic Yards</div>
+            <div class="summaryChip"><strong id="totalBags">0</strong>Estimated Bags</div>
+            <div class="summaryChip"><strong id="totalPosts">0</strong>Total Posts</div>
+          </div>
+          <div class="metricBar">
+            <div class="metricPill"><strong id="summaryWaste">10%</strong>Waste / overage</div>
+            <div class="metricPill"><strong id="summaryBag">80 lb</strong>Selected bag size</div>
+            <div class="metricPill"><strong id="summaryMix">Ready</strong>Proposal-ready output</div>
+          </div>
+          <div style="margin-top:16px" class="eyebrow">Material Breakdown</div>
+          <div id="breakdown" class="breakdownRows"></div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <footer class="siteFooter">© 2026 FenceFlow by Pro Fence. All rights reserved.</footer>
+</div>
+<script>
+const diameterOptions=[6,8,10,12,14,16,18,20,22,24,30,36];
+const depthOptions=[1.5,2,2.5,3,3.5,4,4.5,5,6,7,8,9,10];
+const postSizes=['1-7/8"','2-3/8"','2-7/8"','3-1/2"','4"','6-5/8"'];
+const defaultPresets={'1-7/8"':{diameter:8,depth:2.5},'2-3/8"':{diameter:10,depth:3},'2-7/8"':{diameter:12,depth:3},'3-1/2"':{diameter:16,depth:3.5},'4"':{diameter:18,depth:4},'6-5/8"':{diameter:24,depth:4.5}};
+const bagYieldFt3={50:0.375,60:0.45,80:0.6};
+function createId(){return window.crypto&&typeof window.crypto.randomUUID==='function'?window.crypto.randomUUID():`group-${Date.now()}-${Math.random().toString(36).slice(2,8)}`}
+let footingGroups=[{id:createId(),postSize:'2-3/8"',postCount:10,holeDiameter:10,holeDepth:3}];
+
+function fmtFeet(v){const whole=Math.floor(v),inches=Math.round((v-whole)*12);return inches===0?`${whole}'`:`${whole}' ${inches}"`}
+function fmtInches(v){return `${v}"`}
+function cylVolumeFt3(diameterIn,depthFt){const radiusFt=(diameterIn/12)/2;return Math.PI*radiusFt*radiusFt*depthFt}
+function renderGroups(){
+  const wrap=document.getElementById('footingGroups');
+  wrap.innerHTML=footingGroups.map((group,index)=>`<div class="groupCard" data-group-id="${group.id}"><div class="groupHead"><div><div class="groupTitle">Footing Size ${index+1}</div><div class="groupMeta">${group.postSize} default footing preset</div></div><div class="groupActions">${footingGroups.length>1?`<button class="miniBtn" type="button" data-remove-group="${group.id}">Remove</button>`:''}</div></div><div class="grid"><div class="field"><label>Post Size</label><select data-field="postSize" data-group="${group.id}">${postSizes.map(size=>`<option value='${size}' ${group.postSize===size?'selected':''}>${size}</option>`).join('')}</select></div><div class="field"><label>Number of Posts</label><input data-field="postCount" data-group="${group.id}" type="number" min="0" step="1" value="${group.postCount}" /></div><div class="field"><label>Hole Diameter</label><select data-field="holeDiameter" data-group="${group.id}">${diameterOptions.map(v=>`<option value="${v}" ${group.holeDiameter===v?'selected':''}>${fmtInches(v)}</option>`).join('')}</select></div><div class="field"><label>Hole Depth</label><select data-field="holeDepth" data-group="${group.id}">${depthOptions.map(v=>`<option value="${v}" ${group.holeDepth===v?'selected':''}>${fmtFeet(v)}</option>`).join('')}</select></div></div></div>`).join('');
+  wrap.querySelectorAll('select[data-field]').forEach(el=>el.addEventListener('change',event=>updateGroup(event.target)));
+  wrap.querySelectorAll('input[data-field]').forEach(el=>{
+    el.addEventListener('change',event=>updateGroup(event.target));
+    el.addEventListener('blur',event=>updateGroup(event.target));
+  });
+  wrap.querySelectorAll('[data-remove-group]').forEach(el=>el.addEventListener('click',()=>removeGroup(el.getAttribute('data-remove-group'))));
+  document.getElementById('addGroupBtn').disabled=footingGroups.length>=5;
+  document.getElementById('addGroupBtn').textContent=footingGroups.length>=5?'Max 5 Footing Sizes':'Add Footing Size';
+}
+
+function updateGroup(input){
+  const group=footingGroups.find(item=>item.id===input.getAttribute('data-group'));
+  if(!group)return;
+  const field=input.getAttribute('data-field');
+  if(field==='postSize'){
+    group.postSize=input.value;
+    const preset=defaultPresets[group.postSize]||defaultPresets['2-3/8"'];
+    group.holeDiameter=preset.diameter;
+    group.holeDepth=preset.depth;
+    render();
+    return;
+  }
+  group[field]=field==='postCount'||field==='holeDiameter'||field==='holeDepth'?Number(input.value)||0:input.value;
+  render();
+}
+
+function addGroup(){
+  if(footingGroups.length>=5)return;
+  const preset=defaultPresets['2-3/8"'];
+  footingGroups.push({id:createId(),postSize:'2-3/8"',postCount:0,holeDiameter:preset.diameter,holeDepth:preset.depth});
+  render();
+}
+
+function removeGroup(id){
+  footingGroups=footingGroups.filter(group=>group.id!==id);
+  render();
+}
+
+function render(){
+  renderGroups();
+  const wastePercent=Math.max(0,Number(document.getElementById('wastePercent').value)||0);
+  const bagWeight=Number(document.getElementById('bagWeight').value)||80;
+  const warnings=[];
+  const groupStats=footingGroups.map(group=>{
+    const count=Math.max(0,Number(group.postCount)||0);
+    const holeDiameter=Number(group.holeDiameter)||0;
+    const holeDepth=Number(group.holeDepth)||0;
+    const eachTotal=cylVolumeFt3(holeDiameter,holeDepth);
+    const rawTotal=eachTotal*count;
+    if(count===0)warnings.push(`${group.postSize} footing group has 0 posts.`);
+    return{...group,count,holeDiameter,holeDepth,eachTotal,rawTotal};
+  });
+  const totalPosts=groupStats.reduce((sum,group)=>sum+group.count,0);
+  const rawTotalFt3=groupStats.reduce((sum,group)=>sum+group.rawTotal,0);
+  const totalFt3=rawTotalFt3*(1+wastePercent/100);
+  const totalYd3=totalFt3/27;
+  const bags=Math.ceil(totalFt3/(bagYieldFt3[bagWeight]||0.6));
+  const avgPerPost=totalPosts?rawTotalFt3/totalPosts:0;
+  document.getElementById('warnings').innerHTML=warnings.map(text=>`<div class="warning">${text}</div>`).join('');
+  document.getElementById('groupNotes').innerHTML=groupStats.map(group=>`<div class="row"><div>${group.postSize} footing volume</div><strong>${group.eachTotal.toFixed(2)} cu ft each x ${group.count}</strong></div>`).join('');
+  document.getElementById('totalFt3').textContent=totalFt3.toFixed(2);
+  document.getElementById('totalYd3').textContent=totalYd3.toFixed(2);
+  document.getElementById('totalBags').textContent=String(bags);
+  document.getElementById('totalPosts').textContent=String(totalPosts);
+  document.getElementById('notesFt3').textContent=rawTotalFt3.toFixed(2);
+document.getElementById('notesAvg').textContent=(avgPerPost/27).toFixed(2);
+  document.getElementById('notesGroups').textContent=String(groupStats.length);
+  document.getElementById('summaryWaste').textContent=`${wastePercent}%`;
+  document.getElementById('summaryBag').textContent=`${bagWeight} lb`;
+  document.getElementById('proposalGroups').textContent=String(groupStats.length);
+  document.getElementById('proposalYards').textContent=totalYd3.toFixed(2);
+  document.getElementById('proposalBags').textContent=String(bags);
+  document.getElementById('proposalSentence').textContent=`${groupStats.length} footing ${groupStats.length===1?'group':'groups'} • ${totalPosts} posts • ${totalYd3.toFixed(2)} cu yd • ${bags} bags`;
+document.getElementById('breakdown').innerHTML=groupStats.map(group=>`<div class="row"><div><strong>${group.postSize}</strong><br>${group.count} posts at ${fmtInches(group.holeDiameter)} x ${fmtFeet(group.holeDepth)}</div><strong>${(group.rawTotal/27).toFixed(2)} cu yd</strong></div>`).join('')+`<div class="row"><div>Waste / Overage</div><strong>${wastePercent}%</strong></div><div class="row"><div>Selected Bag Size</div><strong>${bagWeight} lb</strong></div><div class="row"><div>Average Per Post</div><strong>${(avgPerPost/27).toFixed(2)} cu yd</strong></div>`;
+}
+
+document.getElementById('addGroupBtn').addEventListener('click',addGroup);
+document.getElementById('wastePercent').addEventListener('change',render);
+document.getElementById('wastePercent').addEventListener('blur',render);
+document.getElementById('bagWeight').addEventListener('change',render);
+window.addEventListener('scroll',()=>document.body.classList.toggle('logo-shrink',window.scrollY>28),{passive:true});
+document.body.classList.toggle('logo-shrink',window.scrollY>28);
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FenceFlow | Shop Drawings</title>
+  <meta name="description" content="Generate chain link fence shop drawing previews from selected layout and material options for clearer client communication." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="theme-color" content="#07101d" />
+  <link rel="canonical" href="https://fence-flow.com/shop-drawings.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FenceFlow" />
+  <meta property="og:title" content="FenceFlow | Shop Drawings" />
+  <meta property="og:description" content="Create cleaner chain link fence shop drawing previews from real project options." />
+  <meta property="og:url" content="https://fence-flow.com/shop-drawings.html" />
+  <meta property="og:image" content="https://fence-flow.com/LOGO%20PACK/fenceflow-logo-transparent.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FenceFlow | Shop Drawings" />
+  <meta name="twitter:description" content="Shop drawing preview tool for chain link fence projects." />
+  <meta name="twitter:image" content="https://fence-flow.com/LOGO%20PACK/fenceflow-logo-transparent.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"FenceFlow Shop Drawings","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://fence-flow.com/shop-drawings.html","description":"Shop drawing preview generator for chain link fence jobs.","creator":{"@type":"Organization","name":"Pro Fence","url":"https://caprofence.com"}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#060b16;--border:rgba(125,156,204,.26);--text:#e8f1ff;--muted:#9fb3d3;--accent:#4f86e8;--accentStrong:#214b95}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:
+      radial-gradient(circle at 12% 12%, rgba(132,170,235,.18) 0%, rgba(132,170,235,0) 22%),
+      radial-gradient(circle at 82% 18%, rgba(74,118,201,.16) 0%, rgba(74,118,201,0) 24%),
+      radial-gradient(circle at 72% 78%, rgba(37,79,156,.18) 0%, rgba(37,79,156,0) 28%),
+      linear-gradient(145deg,#010308 0%,#07101d 34%,#10213c 68%,#1c3761 100%);color:var(--text)}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;background:
+      linear-gradient(120deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,0) 22%,rgba(255,255,255,.03) 52%,rgba(255,255,255,0) 78%),
+      radial-gradient(circle at 20% 0%, rgba(124,170,255,.08) 0%, rgba(124,170,255,0) 26%);opacity:.9}
+    .wrap{max-width:1500px;margin:0 auto;padding:14px 20px 28px;position:relative}
+    .topRight{position:absolute;top:118px;right:24px;display:flex;align-items:center;gap:12px;z-index:5}
+    .hero{display:flex;align-items:center;margin-bottom:-34px;position:relative;z-index:1}
+    .logoBox{width:680px;display:flex;align-items:center;position:relative;transform-origin:left center;transition:width .28s ease,transform .28s ease}
+    .logoBox img{width:100%;height:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 14px 30px rgba(111,154,225,.14))}
+    .logoHotspot{position:absolute;left:21%;top:59%;width:26%;height:16%;border-radius:999px}
+    body.logo-shrink .logoBox{width:540px;transform:translateY(-2px)}
+    .siteNav{display:flex;gap:22px;flex-wrap:wrap;margin:8px 0 18px 0;position:relative;z-index:4;padding-bottom:6px}
+    .siteNav a{position:relative;display:inline-flex;align-items:center;padding:6px 0;text-decoration:none;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#9fb3d3;transition:color .18s ease}
+    .siteNav a::after{content:'';position:absolute;left:0;right:0;bottom:-7px;height:3px;border-radius:999px;background:linear-gradient(90deg,var(--accent) 0%,#8fb7ff 100%);transform:scaleX(0);transform-origin:left center;transition:transform .22s ease}
+    .siteNav a:hover{color:#e8f1ff}
+    .siteNav a.active{color:#fff}
+    .siteNav a.active::after{transform:scaleX(1)}
+    .betaBadge{display:inline-flex;align-items:center;padding:6px 14px;border-radius:999px;background:linear-gradient(180deg,rgba(127,29,29,.34) 0%,rgba(91,16,16,.2) 100%);border:1px solid rgba(248,113,113,.34);color:#fda4af;font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-left:6px;vertical-align:middle;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 10px 18px rgba(0,0,0,.16);backdrop-filter:blur(10px)}
+    .layout{display:grid;grid-template-columns:minmax(420px,.78fr) minmax(620px,1.22fr);gap:18px;align-items:start}
+    .card{position:relative;background:linear-gradient(180deg,rgba(10,18,33,.9) 0%,rgba(14,27,49,.92) 100%);border:1px solid rgba(126,159,212,.18);border-radius:28px;overflow:hidden;box-shadow:0 24px 44px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.04)}
+    .card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,rgba(79,134,232,.95) 0%,rgba(33,75,149,.88) 55%,rgba(126,167,222,.28) 100%)}
+    .cardHead{padding:24px 22px 12px;font-size:22px;font-weight:900;color:#eef4ff;letter-spacing:-.02em}
+    .cardBody{padding:18px 22px 22px}
+    .eyebrow{display:flex;align-items:center;gap:8px;color:#8fa8d0;text-transform:uppercase;font-size:11px;letter-spacing:.14em;font-weight:900;margin:0 0 12px}
+    .eyebrow::before{content:'';width:22px;height:2px;border-radius:999px;background:linear-gradient(90deg,#5f87c2 0%,#9dc1ff 100%)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .field{display:flex;flex-direction:column;gap:8px}
+    .field label{color:var(--muted);font-size:14px;font-weight:700}
+    input,select,textarea{width:100%;border-radius:14px;border:1px solid rgba(129,161,208,.34);background:linear-gradient(180deg,rgba(10,19,36,.98) 0%,rgba(8,15,29,1) 100%);color:#ffffff;padding:12px 14px;font-size:15px;font-weight:700;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+    select{color-scheme:dark}
+    select option{background:#0b1730;color:#ffffff}
+    textarea{min-height:120px;resize:vertical}
+    .summary{display:grid;gap:8px}
+    .row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:12px 14px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,.03) 100%);border:1px solid rgba(151,179,225,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+    .row div{color:#c4d4ee}
+    .row strong{color:#eef4ff}
+    .miniGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:14px}
+    .miniStat{padding:12px 14px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,.03) 100%);border:1px solid rgba(151,179,225,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+    .miniStat strong{display:block;color:#eef4ff;font-size:18px;letter-spacing:-.03em}
+    .miniStat span{display:block;margin-top:4px;color:#9fb3d3;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+    .actionRow{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 16px}
+    .statusBox{display:none;margin:0 0 14px;padding:14px 16px;border-radius:18px;border:1px solid rgba(151,179,225,.18);background:linear-gradient(180deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,.03) 100%)}
+    .statusBox.show{display:block}
+    .statusBox.success{border-color:rgba(110,231,183,.28);background:linear-gradient(180deg,rgba(16,90,61,.24) 0%,rgba(11,55,40,.18) 100%)}
+    .statusBox.error{border-color:rgba(248,113,113,.28);background:linear-gradient(180deg,rgba(103,20,20,.24) 0%,rgba(59,14,14,.18) 100%)}
+    .statusBox strong{display:block;color:#eef4ff;font-size:14px}
+    .statusBox span{display:block;margin-top:6px;color:#c6d6ef;font-size:13px;line-height:1.55}
+    .drawingStage{background:linear-gradient(180deg,rgba(7,13,25,.98) 0%,rgba(9,18,33,.98) 100%);border:1px solid rgba(126,159,212,.18);border-radius:24px;padding:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+    .payloadBox{margin:0;padding:16px 18px;border-radius:20px;background:linear-gradient(180deg,rgba(6,12,23,.96) 0%,rgba(8,16,29,1) 100%);border:1px solid rgba(126,159,212,.16);color:#dce8fb;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word;max-height:360px;overflow:auto}
+    .payloadTitle{margin:0 0 10px;color:#c9daf6;font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+    .note{font-size:13px;color:var(--muted);line-height:1.5;margin-top:12px}
+    .printBtn{display:inline-flex;align-items:center;border:none;border-radius:18px;padding:12px 18px;cursor:pointer;font-weight:800;font-size:14px;color:#fff;background:linear-gradient(135deg,var(--accent) 0%,var(--accentStrong) 100%);box-shadow:0 14px 28px rgba(33,75,149,.28)}
+    .ghostBtn{display:inline-flex;align-items:center;justify-content:center;border:none;border-radius:16px;padding:11px 16px;cursor:pointer;font-weight:800;font-size:13px;color:#e6f0ff;background:rgba(255,255,255,.06);border:1px solid rgba(151,179,225,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+    .helper{font-size:12px;color:#8fa8d0;line-height:1.55;margin-top:10px}
+    .socialBtn{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:999px;text-decoration:none;color:#dce9fd;background:rgba(255,255,255,.06);border:1px solid rgba(151,179,225,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 18px rgba(0,0,0,.18);transition:transform .18s ease,background .18s ease,border-color .18s ease}
+    .socialBtn:hover{transform:translateY(-1px);background:rgba(255,255,255,.1);border-color:rgba(151,179,225,.26)}
+    .socialBtn svg{width:22px;height:22px;fill:currentColor;display:block}
+    .siteFooter{margin-top:22px;padding:18px 4px 4px;color:#89a2c8;font-size:13px;text-align:center}
+    @media (max-width:1180px){.layout{grid-template-columns:1fr}}
+    @media (max-width:720px){
+      .wrap{padding:10px 14px 20px}
+      .logoBox{width:min(100%,500px)}
+      body.logo-shrink .logoBox{width:min(100%,420px)}
+      .hero{margin-bottom:-14px}
+      .topRight{top:94px;right:14px;gap:8px}
+      .topRight .socialBtn{width:40px;height:40px}
+      .topRight .socialBtn svg{width:18px;height:18px}
+      .grid{grid-template-columns:1fr}
+    }
+
+    /* FenceFlow unified light theme */
+    :root{--bg:#f3f1ea;--bgSoft:#faf9f5;--panel:#ffffff;--panelSoft:#f6f4ed;--panelMute:#eef3ee;--border:#d8ddd8;--borderStrong:#c4ccc4;--text:#1f2822;--muted:#5d675f;--brand:#5e7862;--brandDeep:#1d2a21;--brandSoft:#e6eee6;--accent:#b78a47;--accentStrong:#8d6936;--accentText:#1d2a21;--shadow:0 22px 48px rgba(24,31,26,.08);--shadowSoft:0 12px 28px rgba(24,31,26,.06)}
+    body{font-family:"Outfit",Arial,Helvetica,sans-serif;background:
+      radial-gradient(circle at top left, rgba(183,138,71,.14) 0%, rgba(183,138,71,0) 24%),
+      radial-gradient(circle at 82% 10%, rgba(94,120,98,.12) 0%, rgba(94,120,98,0) 28%),
+      linear-gradient(180deg,#f8f6f1 0%,#f1eee7 100%);color:var(--text)}
+    body::before{background:
+      linear-gradient(120deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 28%,rgba(255,255,255,.22) 58%,rgba(255,255,255,0) 80%),
+      radial-gradient(circle at 18% 0%, rgba(94,120,98,.06) 0%, rgba(94,120,98,0) 24%);
+      opacity:.85}
+    .wrap{padding:20px 20px 28px}
+    .topRight{display:flex;align-items:center;gap:10px;z-index:5;flex:0 0 auto;position:static;top:auto;right:auto}
+    .hero{display:grid;grid-template-columns:210px minmax(0,1fr) auto;align-items:center;gap:18px;margin-bottom:16px;position:relative;z-index:1;padding:20px 24px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.96);box-shadow:var(--shadowSoft);transition:padding .22s ease,border-radius .22s ease,box-shadow .22s ease,background-color .22s ease,border-color .22s ease}
+    .logoBox{width:192px;display:flex;align-items:center;position:relative;transform-origin:left center;transition:width .22s ease,transform .22s ease}
+    .logoBox img{filter:none}
+    .logoHotspot{position:absolute;inset:0;border-radius:14px}
+    body.logo-shrink .hero{padding:12px 18px;border-radius:999px;border-color:rgba(196,204,196,.78);background:rgba(255,255,255,.98);box-shadow:0 14px 34px rgba(24,31,26,.1)}
+    body.logo-shrink .logoBox{width:158px;transform:translateY(-1px)}
+    .siteNav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:0;position:relative;z-index:4;padding-bottom:0}
+    .siteNav a{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;min-height:42px;text-decoration:none;border-radius:999px;font-weight:700;font-size:.88rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color .18s ease,background .18s ease,transform .18s ease,box-shadow .18s ease,padding .22s ease,min-height .22s ease,font-size .22s ease}
+    .siteNav a::after{left:14px;right:14px;bottom:8px;height:2px;background:linear-gradient(90deg,var(--accent) 0%,#c79b57 100%);transform-origin:left center}
+    .siteNav a:hover{color:var(--brandDeep);background:#f1f4ee;transform:translateY(-1px)}
+    .siteNav a.active{color:var(--brandDeep);background:linear-gradient(180deg,#e8eee7 0%,#dde6dd 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+    .siteNav a.active::after{transform:scaleX(1)}
+    .betaBadge{display:inline-flex;align-items:center;justify-content:center;padding:0 16px;min-height:42px;border-radius:999px;background:linear-gradient(135deg,rgba(92,7,18,.9) 0%,rgba(145,15,31,.8) 48%,rgba(186,28,47,.66) 100%);border:1px solid rgba(255,255,255,.24);color:#fff7f7;font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;text-shadow:0 1px 0 rgba(53,4,10,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 12px 22px rgba(98,10,22,.24);backdrop-filter:blur(12px) saturate(145%);-webkit-backdrop-filter:blur(12px) saturate(145%);margin-left:0}
+    body.logo-shrink .siteNav a{padding:8px 12px;min-height:36px;font-size:.8rem}
+    body.logo-shrink .betaBadge{min-height:36px;padding:0 14px;font-size:9px}
+    .socialBtn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;text-decoration:none;color:var(--brandDeep);background:rgba(244,240,230,.72);border:1px solid var(--border);box-shadow:var(--shadowSoft);transition:transform .18s ease,background .18s ease,border-color .18s ease,width .22s ease,height .22s ease}
+    .socialBtn:hover{transform:translateY(-1px);background:var(--brandSoft);border-color:rgba(34,49,39,.16)}
+    .socialBtn svg{width:18px;height:18px;fill:currentColor}
+    body.logo-shrink .socialBtn{width:38px;height:38px}
+    .card,.row,.miniStat,.statusBox,.drawingStage,.payloadBox{background:linear-gradient(180deg,#ffffff 0%,#f6f4ed 100%);border:1px solid var(--border);box-shadow:var(--shadowSoft)}
+    .card::before{background:linear-gradient(90deg,var(--brand) 0%,var(--accent) 60%,rgba(183,138,71,.24) 100%)}
+    .cardHead{font-family:"Cormorant Garamond",serif;font-size:30px;color:var(--brandDeep)}
+    .eyebrow,.payloadTitle{color:var(--brand)}
+    .eyebrow::before{background:linear-gradient(90deg,var(--brand) 0%,var(--accent) 100%)}
+    .field label,.note,.helper,.row div,.statusBox span{color:var(--muted)}
+    .row strong,.miniStat strong,.statusBox strong{color:var(--brandDeep)}
+    .miniStat span{color:var(--brand)}
+    input,select,textarea{background:var(--panel);color:var(--text);border:1px solid var(--borderStrong);box-shadow:inset 0 1px 0 rgba(255,255,255,.65)}
+    select{color-scheme:light}
+    select option{background:#ffffff;color:var(--text)}
+    .drawingStage{background:linear-gradient(180deg,#faf8f2 0%,#eff3ed 100%)}
+    .payloadBox{background:linear-gradient(180deg,#fbfaf6 0%,#eff3ed 100%);color:#304034}
+    .statusBox.success{border-color:rgba(94,120,98,.34);background:linear-gradient(180deg,rgba(94,120,98,.16) 0%,rgba(230,238,230,.92) 100%)}
+    .statusBox.error{border-color:rgba(145,15,31,.26);background:linear-gradient(180deg,rgba(186,28,47,.12) 0%,rgba(255,244,245,.95) 100%)}
+    .printBtn{display:inline-flex;align-items:center;border:none;border-radius:999px;padding:12px 18px;cursor:pointer;font-family:"Outfit",Arial,Helvetica,sans-serif;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accentText);background:linear-gradient(135deg,var(--accent) 0%,#c79b57 100%);box-shadow:0 16px 30px rgba(183,138,71,.22)}
+    .ghostBtn{display:inline-flex;align-items:center;justify-content:center;border:none;border-radius:999px;padding:11px 16px;cursor:pointer;font-family:"Outfit",Arial,Helvetica,sans-serif;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--brandDeep);background:var(--panel);border:1px solid var(--borderStrong);box-shadow:var(--shadowSoft)}
+    .siteFooter{color:var(--muted)}
+    @media (max-width:1100px){.hero{grid-template-columns:210px minmax(0,1fr);gap:16px}.topRight{justify-content:flex-end}.siteNav{justify-content:flex-start}}
+    @media (max-width:720px){.wrap{padding:14px 14px 20px}.hero{grid-template-columns:1fr;gap:12px;margin-bottom:14px;padding:14px 16px;border-radius:28px}.logoBox{width:min(100%,192px)}body.logo-shrink .logoBox{width:min(100%,158px)}.topRight{justify-content:flex-start}.topRight .socialBtn{width:40px;height:40px}.topRight .socialBtn svg{width:18px;height:18px}.siteNav{justify-content:flex-start;width:100%}.siteNav a{padding:8px 12px;min-height:36px;font-size:.78rem}.betaBadge{padding:0 12px;font-size:9px;min-height:36px}body.logo-shrink .hero{padding:10px 14px;border-radius:24px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="logoBox">
+      <img src="LOGO PACK/fenceflow-logo-tight.png" alt="FenceFlow logo" />
+      <a class="logoHotspot" href="https://caprofence.com" target="_blank" rel="noopener noreferrer" aria-label="Visit CA Pro Fence"></a>
+    </div>
+    <div class="siteNav">
+      <a href="./index.html">Home</a>
+      <a href="./layout-calculator.html">Layout Calculator</a>
+      <a href="./concrete-footing-calculator.html">Concrete Footings</a>
+      <a class="active" href="./shop-drawings.html">Shop Drawings</a>
+      <span class="betaBadge">Beta</span>
+    </div>
+    <div class="topRight">
+      <a class="socialBtn" href="https://www.tiktok.com/@profence?lang=en" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.3 2.1 1.5 3.7 3.4 4.2v2.9c-1.2 0-2.4-.4-3.4-1.1v6.1c0 3.6-2.8 6.1-6.2 6.1-3.2 0-5.8-2.3-5.8-5.5 0-3.4 2.6-5.8 6.4-5.8.3 0 .6 0 .9.1v3c-.3-.1-.6-.2-.9-.2-1.8 0-3.2 1.1-3.2 2.8 0 1.5 1.2 2.6 2.7 2.6 1.6 0 3-1 3-3.2V3h3.1z"/></svg></a>
+      <a class="socialBtn" href="https://www.instagram.com/profenceca" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm9.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></a>
+      <a class="socialBtn" href="https://www.facebook.com/ProFenceCA/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.7-1.6h1.6V4.8c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.6v8h2.9z"/></svg></a>
+    </div>
+  </div>
+  <div class="layout">
+    <div>
+      <div class="card">
+        <div class="cardHead">Shop Drawing Builder</div>
+        <div class="cardBody">
+          <div class="eyebrow">Project Inputs</div>
+          <div class="grid">
+            <div class="field">
+              <label for="jobName">Project Name</label>
+              <input id="jobName" value="Sample Perimeter Fence" />
+            </div>
+            <div class="field">
+              <label for="clientName">Client</label>
+              <input id="clientName" value="Demo Client" />
+            </div>
+            <div class="field">
+              <label for="siteLocation">Site Location</label>
+              <input id="siteLocation" value="Hayward, CA" />
+            </div>
+            <div class="field">
+              <label for="drawingType">Drawing Type</label>
+              <select id="drawingType">
+                <option selected>Fence Detail</option>
+                <option>Gate Detail</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="height">Fence Height</label>
+              <select id="height"></select>
+            </div>
+            <div class="field">
+              <label for="span">Typical Panel / Bay Width</label>
+              <input id="span" type="number" min="1" value="10" />
+            </div>
+            <div class="field">
+              <label for="linePostSize">Line Post Size</label>
+              <select id="linePostSize"></select>
+            </div>
+            <div class="field">
+              <label for="terminalPostSize">End / Corner Post Size</label>
+              <select id="terminalPostSize"></select>
+            </div>
+            <div class="field">
+              <label for="topTreatment">Top Treatment</label>
+              <select id="topTreatment"></select>
+            </div>
+            <div class="field">
+              <label for="middleRail">Middle Rail</label>
+              <select id="middleRail"></select>
+            </div>
+            <div class="field">
+              <label for="bottomEdge">Bottom Edge</label>
+              <select id="bottomEdge"></select>
+            </div>
+            <div class="field">
+              <label for="barbedWire">Security Add-On</label>
+              <select id="barbedWire"></select>
+            </div>
+            <div class="field">
+              <label for="sheetSize">Sheet Size</label>
+              <select id="sheetSize"></select>
+            </div>
+            <div class="field">
+              <label for="outputPackage">Output Package</label>
+              <select id="outputPackage"></select>
+            </div>
+            <div class="field">
+              <label for="cadTemplate">CAD Template</label>
+              <select id="cadTemplate"></select>
+            </div>
+            <div class="field">
+              <label for="revision">Revision</label>
+              <input id="revision" value="R0" />
+            </div>
+          </div>
+          <div style="margin-top:14px" class="field">
+            <label for="notes">Drawing Notes</label>
+            <textarea id="notes">Verify all field dimensions prior to fabrication. Contractor to confirm terminal sizing, fittings, and footing schedule before install.</textarea>
+          </div>
+          <div class="helper">This page can now act like the front end of a real CAD pipeline: we keep your fence options here, then package them into a backend-ready drawing request for AutoCAD/ODA generation.</div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:18px">
+        <div class="cardHead">Generated CAD Packet</div>
+        <div class="cardBody">
+          <div class="miniGrid" id="packetStats"></div>
+          <div class="summary" id="summary"></div>
+          <div class="statusBox" id="cadStatus"></div>
+          <div class="actionRow">
+            <button class="printBtn" type="button" id="sendCadRequestBtn">Send CAD Request</button>
+            <button class="ghostBtn" type="button" id="copyPayloadBtn">Copy Request JSON</button>
+            <button class="ghostBtn" type="button" id="downloadPayloadBtn">Download Request JSON</button>
+            <button class="ghostBtn" type="button" id="copyApsPayloadBtn">Copy APS Payload</button>
+          </div>
+          <div class="payloadTitle">FenceFlow Request JSON</div>
+          <pre class="payloadBox" id="payloadPreview"></pre>
+          <div class="payloadTitle" style="margin-top:16px">APS WorkItem Preview</div>
+          <pre class="payloadBox" id="apsPayloadPreview">Send CAD Request to generate the Autodesk Automation payload preview.</pre>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="cardHead">CAD Template Preview</div>
+        <div class="cardBody">
+          <button class="printBtn" type="button" onclick="window.print()">Print / Save PDF</button>
+          <div style="margin-top:16px" class="drawingStage" id="drawingStage"></div>
+          <div class="note">This preview is now the template side of the workflow. The next real step is hooking this request packet into an AutoCAD or ODA backend so the website generates true CAD-based PDFs/DWGs instead of only drawing them in-browser.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="siteFooter">&copy; 2026 FenceFlow by Pro Fence. All rights reserved.</footer>
+</div>
+<script>
+const fabricHeights=[3,4,5,6,7,8,10,12];
+const terminalPostSizes=['2-3/8"','2-7/8"','3-1/2"','4"','6-5/8"'];
+const linePostSizes=['1-7/8"','2-3/8"','2-7/8"','3-1/2"'];
+const railSizes=['1-3/8"','1-5/8"','1-7/8"','2-3/8"'];
+const sheetSizes=['11" x 17"','18" x 24"','24" x 36"'];
+const outputPackages=['PDF only','PDF + DWG','DWG + PDF + Preview PNG'];
+const cadTemplates=['FenceFlow Chain Link Detail v1','Pro Fence Chain Link Sheet','Client CAD Standard Template'];
+const barbedOptions=[
+  {value:'none',label:'No barbed wire'},
+  {value:'3',label:'3 strands'},
+  {value:'4',label:'4 strands'},
+  {value:'6',label:'6 strands'},
+  {value:'razor',label:'Razor ribbon'}
+];
+const ids=['jobName','clientName','siteLocation','drawingType','height','span','linePostSize','terminalPostSize','topTreatment','middleRail','bottomEdge','barbedWire','sheetSize','outputPackage','cadTemplate','revision','notes'];
+let currentPayload=null;
+let currentApsPayload=null;
+const cadEndpoint='/api/cad-request';
+function value(id){return document.getElementById(id).value}
+function esc(text){return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function tensionBandsEach(height){return height<=4?height:height-1}
+function sizeToInches(size){
+  const raw=String(size||'').replace(/"/g,'').trim();
+  if(!raw)return 0;
+  if(raw.includes('-')){
+    const [whole,fraction]=raw.split('-');
+    const [num,den]=fraction.split('/');
+    return Number(whole)+(Number(num)/Number(den));
+  }
+  if(raw.includes('/')){
+    const [num,den]=raw.split('/');
+    return Number(num)/Number(den);
+  }
+  return Number(raw)||0;
+}
+function postRadius(size){
+  return Math.max(6,Math.round(sizeToInches(size)*3.2));
+}
+function railStroke(size){
+  return Math.max(2.2,sizeToInches(size)*2.1);
+}
+function hexPoints(cx,cy,r){
+  return Array.from({length:6},(_,i)=>{
+    const angle=((Math.PI/3)*i)-(Math.PI/6);
+    const x=(cx+(Math.cos(angle)*r)).toFixed(2);
+    const y=(cy+(Math.sin(angle)*r)).toFixed(2);
+    return `${x},${y}`;
+  }).join(' ');
+}
+function hexNutMarkup(cx,cy,r){
+  return `<polygon points="${hexPoints(cx,cy,r)}" fill="#ffffff" stroke="#575757" stroke-width=".9"></polygon>
+    <circle cx="${cx}" cy="${cy}" r="${Math.max(1.2,r*.38).toFixed(2)}" fill="none" stroke="#575757" stroke-width=".8"></circle>`;
+}
+function pipeRunMarkup(x1,x2,centerY,pipeStroke){
+  if(!(pipeStroke>0) || x2<=x1)return '';
+  const highlightStroke=Math.max(1.05,pipeStroke*.24);
+  const shadowStroke=Math.max(.75,pipeStroke*.12);
+  return `<line x1="${x1}" y1="${centerY}" x2="${x2}" y2="${centerY}" stroke="#6a6a6a" stroke-width="${pipeStroke}" stroke-linecap="round"></line>
+    <line x1="${x1}" y1="${(centerY-(pipeStroke*.18)).toFixed(2)}" x2="${x2}" y2="${(centerY-(pipeStroke*.18)).toFixed(2)}" stroke="#d9d9d9" stroke-width="${highlightStroke}" stroke-linecap="round"></line>
+    <line x1="${x1}" y1="${(centerY+(pipeStroke*.16)).toFixed(2)}" x2="${x2}" y2="${(centerY+(pipeStroke*.16)).toFixed(2)}" stroke="#4f4f4f" stroke-width="${shadowStroke}" stroke-linecap="round"></line>`;
+}
+function postMarkup(x,width,top,bottom,gradientId){
+  const highlightX=(x+Math.max(1.8,width*.22)).toFixed(2);
+  const shadowX=(x+width-Math.max(1.4,width*.16)).toFixed(2);
+  return `<rect x="${x}" y="${top}" width="${width}" height="${bottom-top}" fill="url(#${gradientId})" stroke="#565656" stroke-width="1"></rect>
+    <line x1="${highlightX}" y1="${top+1}" x2="${highlightX}" y2="${bottom-1}" stroke="rgba(255,255,255,.55)" stroke-width="1"></line>
+    <line x1="${shadowX}" y1="${top+1}" x2="${shadowX}" y2="${bottom-1}" stroke="rgba(70,70,70,.7)" stroke-width="1"></line>`;
+}
+function concreteMarkup(x,width,top,bottom){
+  return `<rect x="${x-1}" y="${top}" width="${width+2}" height="${bottom-top}" fill="url(#concretePattern)" stroke="#979797" stroke-width="1"></rect>
+    <line x1="${x+1.8}" y1="${top+1}" x2="${x+1.8}" y2="${bottom-1}" stroke="rgba(255,255,255,.38)" stroke-width=".8"></line>
+    <line x1="${x+width-.8}" y1="${top+1}" x2="${x+width-.8}" y2="${bottom-1}" stroke="rgba(100,100,100,.45)" stroke-width=".8"></line>`;
+}
+function selvageMarkup(startX,endX,y,direction='up'){
+  const step=14;
+  const amp=direction==='up' ? -6.8 : 6.8;
+  const count=Math.max(1,Math.floor((endX-startX)/step));
+  return Array.from({length:count},(_,i)=>{
+    const x=startX+(i*step);
+    const xMid=x+(step/2);
+    const xEnd=x+step;
+    return `<path d="M${x.toFixed(2)} ${y.toFixed(2)} L${xMid.toFixed(2)} ${(y+amp).toFixed(2)} L${xEnd.toFixed(2)} ${y.toFixed(2)}" fill="none" stroke="#2a2a2a" stroke-width="1.05" stroke-linejoin="round"></path>`;
+  }).join('');
+}
+function topTieWireMarkup(startX,endX,railY,fabricY){
+  const count=Math.max(3,Math.floor((endX-startX)/96));
+  return Array.from({length:count},(_,i)=>{
+    const x=startX+(((i+1)*(endX-startX))/(count+1));
+    return `<path d="M${(x-1.6).toFixed(2)} ${(railY-2).toFixed(2)} C${(x-1).toFixed(2)} ${(railY+2).toFixed(2)}, ${(x+.8).toFixed(2)} ${(fabricY+9).toFixed(2)}, ${(x+1.7).toFixed(2)} ${(fabricY+14).toFixed(2)}" fill="none" stroke="#505050" stroke-width="1.05" stroke-linecap="round"></path>`;
+  }).join('');
+}
+function wireClipMarkup(startX,endX,wireY,fabricY,dir='down',spacing=42){
+  const count=Math.max(4,Math.floor((endX-startX)/spacing));
+  const bend=dir==='down' ? 1 : -1;
+  return Array.from({length:count},(_,i)=>{
+    const x=startX+(((i+1)*(endX-startX))/(count+1));
+    const midY=wireY+(5.2*bend);
+    const endY=fabricY+(10.6*bend);
+    return `<path d="M${(x-1.9).toFixed(2)} ${(wireY-1.2).toFixed(2)} C${(x-1).toFixed(2)} ${(wireY+2.4*bend).toFixed(2)}, ${(x-.3).toFixed(2)} ${(midY-.8*bend).toFixed(2)}, ${x.toFixed(2)} ${midY.toFixed(2)} C${(x+.4).toFixed(2)} ${(midY+.8*bend).toFixed(2)}, ${(x+1.1).toFixed(2)} ${(endY-1.4*bend).toFixed(2)}, ${(x+1.9).toFixed(2)} ${endY.toFixed(2)}" fill="none" stroke="#4c4c4c" stroke-width=".95" stroke-linecap="round"></path>`;
+  }).join('');
+}
+function chainLinkFabricMarkup(startX,endX,topY,bottomY){
+  const spacing=18;
+  const height=bottomY-topY;
+  const width=endX-startX;
+  const diagMarkup=[];
+  const twistMarkup=[];
+  for(let offset=-height;offset<=width+height;offset+=spacing){
+    diagMarkup.push(`<line x1="${(startX+offset).toFixed(2)}" y1="${bottomY.toFixed(2)}" x2="${(startX+offset+height).toFixed(2)}" y2="${topY.toFixed(2)}" stroke="#222222" stroke-width="1.02" stroke-linecap="round"></line>`);
+    diagMarkup.push(`<line x1="${(startX+offset+.36).toFixed(2)}" y1="${(bottomY-.18).toFixed(2)}" x2="${(startX+offset+height+.36).toFixed(2)}" y2="${(topY-.18).toFixed(2)}" stroke="rgba(255,255,255,.22)" stroke-width=".28" stroke-linecap="round"></line>`);
+  }
+  for(let offset=0;offset<=width+height;offset+=spacing){
+    diagMarkup.push(`<line x1="${(startX+offset).toFixed(2)}" y1="${topY.toFixed(2)}" x2="${(startX+offset-height).toFixed(2)}" y2="${bottomY.toFixed(2)}" stroke="#222222" stroke-width="1.02" stroke-linecap="round"></line>`);
+    diagMarkup.push(`<line x1="${(startX+offset-.36).toFixed(2)}" y1="${(topY+.18).toFixed(2)}" x2="${(startX+offset-height-.36).toFixed(2)}" y2="${(bottomY+.18).toFixed(2)}" stroke="rgba(255,255,255,.22)" stroke-width=".28" stroke-linecap="round"></line>`);
+  }
+  const twistStep=spacing;
+  const startTwistX=startX+9;
+  const startTwistY=topY+9;
+  const cols=Math.ceil(width/twistStep)+2;
+  const rows=Math.ceil(height/twistStep)+2;
+  for(let row=-1;row<rows;row++){
+    for(let col=-1;col<cols;col++){
+      const cx=startTwistX+(col*twistStep);
+      const cy=startTwistY+(row*twistStep);
+      twistMarkup.push(`<ellipse cx="${cx.toFixed(2)}" cy="${cy.toFixed(2)}" rx=".78" ry="1.55" fill="#3a3a3a"></ellipse>`);
+    }
+  }
+  return `<defs><clipPath id="fabricClip"><rect x="${startX}" y="${topY}" width="${width}" height="${height}"></rect></clipPath></defs>
+    <g clip-path="url(#fabricClip)">
+      ${diagMarkup.join('')}
+      ${twistMarkup.join('')}
+    </g>
+    <rect x="${startX}" y="${topY}" width="${width}" height="${height}" fill="none" stroke="#7e7e7e" stroke-width=".95"></rect>`;
+}
+function fabricWrapEdgeMarkup(barCenterX,topY,bottomY,side='left'){
+  const stepY=26;
+  const halfY=stepY/2;
+  const xOffset=side==='left' ? 7.5 : -7.5;
+  const rows=Math.ceil((bottomY-topY)/stepY)+2;
+  return Array.from({length:rows},(_,i)=>{
+    const y=topY+(i*stepY)-stepY;
+    return `<path d="M${barCenterX.toFixed(2)} ${(y+1).toFixed(2)} Q${(barCenterX+(xOffset*.55)).toFixed(2)} ${(y+(halfY*.25)).toFixed(2)} ${(barCenterX+xOffset).toFixed(2)} ${(y+halfY).toFixed(2)} Q${(barCenterX+(xOffset*.55)).toFixed(2)} ${(y+(halfY*1.72)).toFixed(2)} ${barCenterX.toFixed(2)} ${(y+stepY-1).toFixed(2)}" fill="none" stroke="#1f1f1f" stroke-width="1.02" stroke-linecap="round"></path>
+      <path d="M${(barCenterX+.26).toFixed(2)} ${(y+1.2).toFixed(2)} Q${(barCenterX+(xOffset*.52)+.18).toFixed(2)} ${(y+(halfY*.3)).toFixed(2)} ${(barCenterX+xOffset+.1).toFixed(2)} ${(y+halfY).toFixed(2)} Q${(barCenterX+(xOffset*.52)+.18).toFixed(2)} ${(y+(halfY*1.66)).toFixed(2)} ${(barCenterX+.26).toFixed(2)} ${(y+stepY-1.2).toFixed(2)}" fill="none" stroke="rgba(255,255,255,.28)" stroke-width=".3" stroke-linecap="round"></path>`;
+  }).join('');
+}
+function lineRailClampMarkup(postX,postWidth,centerY,pipeStroke){
+  if(!(pipeStroke>0))return '';
+  const clampHeight=Math.max(5.8,pipeStroke+2.1);
+  const clampY=centerY-(clampHeight/2);
+  const bandX=postX-1.5;
+  const bandWidth=postWidth+3;
+  const lugWidth=Math.max(7.5,pipeStroke+3.2);
+  const lugHeight=Math.max(4.2,clampHeight-1.6);
+  const lugX=bandX-(lugWidth*0.52);
+  const lugY=centerY-(lugHeight/2);
+  return `<rect x="${bandX.toFixed(2)}" y="${clampY.toFixed(2)}" width="${bandWidth.toFixed(2)}" height="${clampHeight.toFixed(2)}" rx="1.4" fill="url(#bandGrad)" stroke="#575757" stroke-width=".9"></rect>
+    <line x1="${(bandX+1.2).toFixed(2)}" y1="${(clampY+1.05).toFixed(2)}" x2="${(bandX+bandWidth-1.2).toFixed(2)}" y2="${(clampY+1.05).toFixed(2)}" stroke="#ffffff" stroke-width=".7"></line>
+    <line x1="${(bandX+1.2).toFixed(2)}" y1="${(clampY+clampHeight-1.05).toFixed(2)}" x2="${(bandX+bandWidth-1.2).toFixed(2)}" y2="${(clampY+clampHeight-1.05).toFixed(2)}" stroke="rgba(90,90,90,.52)" stroke-width=".6"></line>
+    <rect x="${lugX.toFixed(2)}" y="${lugY.toFixed(2)}" width="${lugWidth.toFixed(2)}" height="${lugHeight.toFixed(2)}" rx="1.1" fill="url(#bandGrad)" stroke="#575757" stroke-width=".85"></rect>
+    ${hexNutMarkup(lugX+lugWidth-3.1,centerY,2.35)}`;
+}
+function fillSelect(id, options, mapper){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.innerHTML=options.map(option=>{
+    const item=mapper(option);
+    return `<option value="${esc(item.value)}">${esc(item.label)}</option>`;
+  }).join('');
+}
+function showCadStatus(kind,title,message){
+  const box=document.getElementById('cadStatus');
+  box.className=`statusBox show ${kind}`;
+  box.innerHTML=`<strong>${esc(title)}</strong><span>${esc(message)}</span>`;
+}
+function render(){
+  const jobName=value('jobName');
+  const clientName=value('clientName');
+  const siteLocation=value('siteLocation');
+  const drawingType=value('drawingType');
+  const height=value('height');
+  const span=value('span');
+  const linePostSize=value('linePostSize');
+  const terminalPostSize=value('terminalPostSize');
+  const topTreatment=value('topTreatment');
+  const middleRail=value('middleRail');
+  const bottomEdge=value('bottomEdge');
+  const barbedWire=value('barbedWire');
+  const sheetSize=value('sheetSize');
+  const outputPackage=value('outputPackage');
+  const cadTemplate=value('cadTemplate');
+  const revision=value('revision');
+  const notes=value('notes');
+  const issueDate=new Date().toLocaleDateString('en-US',{month:'2-digit',day:'2-digit',year:'numeric'});
+  const drawingNumber=`FF-CL-${height.replace(/[^0-9]/g,'') || '6'}${String(Math.max(1,Math.round(Number(span)||10))).padStart(2,'0')}`;
+  const fabricHeight=Number(height.replace(/[^0-9.]/g,''))||6;
+  const topTreatmentText=topTreatment==='None'?'No top treatment':topTreatment==='Top Tension Wire'?'Top tension wire':`${topTreatment} top rail`;
+  const middleRailText=middleRail==='None'?'No middle rail':`${middleRail} middle rail`;
+  const bottomText=bottomEdge==='None'?'No bottom restraint':bottomEdge;
+  const hasBottomRail=bottomEdge.endsWith('Bottom Rail');
+  const bottomRailSize=hasBottomRail?bottomEdge.replace(' Bottom Rail',''):'';
+  const barbedLabel=(barbedOptions.find(option=>option.value===barbedWire)||barbedOptions[0]).label;
+  const securityText=barbedWire==='none'?'No security add-on':barbedLabel;
+  const barbedExtraHeight=barbedWire==='none'?0:18;
+  const subtitleParts=[
+    topTreatment==='None'?null:topTreatment==='Top Tension Wire'?'Top tension wire':`${topTreatment} top rail`,
+    middleRail==='None'?null:`${middleRail} middle rail`,
+    bottomEdge==='None'?null:bottomEdge
+  ];
+  const sheetSubtitle=subtitleParts.filter(Boolean).join(' - ');
+  const sheetTitle=barbedWire==='none'?'CHAIN LINK FENCE DETAIL':'CHAIN LINK SECURITY FENCE DETAIL';
+
+  const payload={
+    request_type:drawingType==='Gate Detail'?'chain_link_gate_detail':'chain_link_fence_detail',
+    backend_target:'aps-autocad-template',
+    template:cadTemplate,
+    revision,
+    issue_date:issueDate,
+    sheet:{
+      size:sheetSize,
+      output_package:outputPackage,
+      drawing_number:drawingNumber
+    },
+    project:{
+      name:jobName,
+      client:clientName,
+      site_location:siteLocation
+    },
+    fence:{
+      height,
+      typical_bay_width_ft:Number(span)||0,
+      drawing_type:drawingType,
+      line_post_size:linePostSize,
+      terminal_post_size:terminalPostSize,
+      top_treatment:topTreatmentText,
+      middle_rail:middleRailText,
+      bottom_edge:bottomText,
+      security:securityText
+    },
+    notes:notes.split('\n').map(line=>line.trim()).filter(Boolean)
+  };
+  currentPayload=payload;
+
+  document.getElementById('packetStats').innerHTML=[
+    ['APS AutoCAD','Backend Target'],
+    [sheetSize,'Sheet'],
+    [outputPackage,'Output Package'],
+    [revision || 'R0','Revision']
+  ].map(([valueText,label])=>`<div class="miniStat"><strong>${esc(valueText)}</strong><span>${esc(label)}</span></div>`).join('');
+
+  document.getElementById('summary').innerHTML=[
+    ['Project',jobName],
+    ['Client',clientName],
+    ['Site',siteLocation],
+    ['Drawing Type',drawingType],
+    ['Fence Height',height],
+    ['Bay Width',`${span} ft typical`],
+    ['Line Post',linePostSize],
+    ['End / Corner Post',terminalPostSize],
+    ['Top Treatment',topTreatmentText],
+    ['Middle Rail',middleRailText],
+    ['Bottom Edge',bottomText],
+    ['Security',securityText],
+    ['Sheet Size',sheetSize],
+    ['Template',cadTemplate],
+    ['Outputs',outputPackage]
+  ].map(([label,text])=>`<div class="row"><div>${label}</div><strong>${text}</strong></div>`).join('');
+  document.getElementById('payloadPreview').textContent=JSON.stringify(payload,null,2);
+  const hasTopRail=topTreatment!=='None'&&topTreatment!=='Top Tension Wire';
+  const hasTopTensionWire=topTreatment==='Top Tension Wire';
+  const hasMiddleRail=middleRail!=='None';
+  const topY=148-barbedExtraHeight;
+  const fabricTopY=topY+18;
+  const fabricHeightPx=100+fabricHeight*13;
+  const fabricBottomY=fabricTopY+fabricHeightPx;
+  const gradeY=fabricBottomY+5;
+  const footingBottomY=gradeY+78+Math.max(0,(fabricHeight-6)*6);
+  const leftTerminalX=136;
+  const linePostX=420;
+  const rightTerminalX=704;
+  const fenceLeftX=142;
+  const fenceRightX=700;
+  const linePostCenterX=linePostX+4;
+  const leftPostWidth=Math.max(12,Math.round(postRadius(terminalPostSize)*1.7));
+  const linePostWidth=Math.max(8,Math.round(postRadius(linePostSize)*1.35));
+  const rightPostWidth=Math.max(12,Math.round(postRadius(terminalPostSize)*1.7));
+  const leftPostX=leftTerminalX-(leftPostWidth/2);
+  const linePostLeftX=linePostCenterX-(linePostWidth/2);
+  const rightPostX=rightTerminalX-(rightPostWidth/2);
+  const tensionBandCount=tensionBandsEach(fabricHeight);
+  const bandSpacing=tensionBandCount>1?(fabricHeightPx-24)/(tensionBandCount-1):0;
+  const tensionBarHeight=Math.max(94,fabricHeightPx-16);
+  const topPipeStroke=hasTopRail?railStroke(topTreatment):0;
+  const middlePipeStroke=hasMiddleRail?railStroke(middleRail):0;
+  const bottomPipeStroke=hasBottomRail?railStroke(bottomRailSize):0;
+  const topRailCenterY=hasTopRail ? fabricTopY-2 : fabricTopY;
+  const middleRailY=fabricTopY+(fabricHeightPx/2);
+  const terminalAssemblyCenterY=topRailCenterY;
+  const leftBandWrapX=leftPostX-4;
+  const leftBandWrapWidth=leftPostWidth+4;
+  const leftBandTabWidth=Math.max(11,Math.round(leftPostWidth*.52)+4);
+  const bandWrapX=rightPostX-4;
+  const bandWrapWidth=rightPostWidth+4;
+  const bandTabWidth=Math.max(11,Math.round(rightPostWidth*.52)+4);
+  const tensionBarWidth=4.2;
+  const leftBandTabCenterX=(leftBandWrapX+leftBandWrapWidth-.7)+(leftBandTabWidth/2);
+  const rightBandTabCenterX=(bandWrapX-bandTabWidth+.7)+(bandTabWidth/2);
+  const leftTensionBarX=leftBandTabCenterX-(tensionBarWidth/2);
+  const rightTensionBarX=rightBandTabCenterX-(tensionBarWidth/2);
+  const leftTensionBarCenterX=leftTensionBarX+(tensionBarWidth/2);
+  const rightTensionBarCenterX=rightTensionBarX+(tensionBarWidth/2);
+  const fabricLeftX=leftTensionBarCenterX+.2;
+  const fabricRightX=rightTensionBarCenterX-.2;
+  const tensionBandHeight=Math.max(4.6,Math.min(6.1,(rightPostWidth*.18)+2.1));
+  const braceBandHeight=Math.max(5.8,topPipeStroke+1.6);
+  const braceBandY=terminalAssemblyCenterY-(braceBandHeight/2);
+  const leftTopRailEndX=leftBandWrapX+leftBandWrapWidth+4;
+  const topRailEndWidth=Math.max(10,Math.round(topPipeStroke*1.55)+4);
+  const leftMiddleRailEndX=leftBandWrapX+leftBandWrapWidth+4;
+  const middleRailEndWidth=Math.max(9,Math.round(middlePipeStroke*1.5)+4);
+  const leftBottomRailEndX=leftBandWrapX+leftBandWrapWidth+4;
+  const bottomRailEndWidth=Math.max(9,Math.round(bottomPipeStroke*1.5)+4);
+  const topRailEndX=bandWrapX-topRailEndWidth-4;
+  const middleRailEndX=bandWrapX-middleRailEndWidth-4;
+  const bottomRailEndX=bandWrapX-bottomRailEndWidth-4;
+  const topRailRunStart=leftTopRailEndX+topRailEndWidth-1;
+  const middleRailRunStart=leftMiddleRailEndX+middleRailEndWidth-1;
+  const bottomRailRunStart=leftBottomRailEndX+bottomRailEndWidth-1;
+  const topRailRunEnd=topRailEndX+1;
+  const middleRailRunEnd=middleRailEndX+1;
+  const bottomRailRunEnd=bottomRailEndX+1;
+  function terminalBandMarkupAt(wrapX,wrapWidth,tabWidth,centerY,strapHeight,tabSide='right'){
+    const y=centerY-(strapHeight/2);
+    const tabHeight=Math.max(3.7,strapHeight-2);
+    const tabY=centerY-(tabHeight/2);
+    const tabX=tabSide==='right' ? wrapX+wrapWidth-.7 : wrapX-tabWidth+.7;
+    const nutCx=tabSide==='right' ? tabX+tabWidth-6.2 : tabX+6.2;
+    const boltStemX1=tabSide==='right' ? wrapX+wrapWidth-.8 : tabX+tabWidth-.4;
+    const boltStemX2=tabSide==='right' ? tabX+3.4 : wrapX+2.6;
+    return `<rect x="${wrapX}" y="${y.toFixed(2)}" width="${wrapWidth}" height="${strapHeight.toFixed(2)}" rx="1.25" fill="url(#bandGrad)" stroke="#555555" stroke-width=".95"></rect>
+      <line x1="${wrapX+1.15}" y1="${(y+1.1).toFixed(2)}" x2="${wrapX+wrapWidth-1.15}" y2="${(y+1.1).toFixed(2)}" stroke="#ffffff" stroke-width=".72"></line>
+      <line x1="${wrapX+1.05}" y1="${(y+strapHeight-1.05).toFixed(2)}" x2="${wrapX+wrapWidth-1.05}" y2="${(y+strapHeight-1.05).toFixed(2)}" stroke="rgba(94,94,94,.5)" stroke-width=".58"></line>
+      <rect x="${tabX.toFixed(2)}" y="${tabY.toFixed(2)}" width="${tabWidth.toFixed(2)}" height="${tabHeight.toFixed(2)}" rx="1" fill="url(#bandGrad)" stroke="#555555" stroke-width=".85"></rect>
+      <line x1="${(tabX+1.1).toFixed(2)}" y1="${(tabY+1).toFixed(2)}" x2="${(tabX+tabWidth-1.1).toFixed(2)}" y2="${(tabY+1).toFixed(2)}" stroke="#ffffff" stroke-width=".7"></line>
+      <line x1="${boltStemX1.toFixed(2)}" y1="${centerY.toFixed(2)}" x2="${boltStemX2.toFixed(2)}" y2="${centerY.toFixed(2)}" stroke="#6b6b6b" stroke-width=".8"></line>
+      ${hexNutMarkup(nutCx,centerY,2.8)}`;
+  }
+  function railEndAssemblyMarkup(centerY,pipeStroke,railEndWidth,postSide='right',tabSide='right'){
+    const railEndHeight=Math.max(6.6,pipeStroke+2.4);
+    const localWrapX=postSide==='right' ? bandWrapX : leftBandWrapX;
+    const localWrapWidth=postSide==='right' ? bandWrapWidth : leftBandWrapWidth;
+    const localTabWidth=postSide==='right' ? bandTabWidth : leftBandTabWidth;
+    const railEndX=postSide==='right' ? localWrapX-railEndWidth-4 : localWrapX+localWrapWidth+4;
+    const railEndY=centerY-(railEndHeight/2);
+    const bridgeHeight=Math.max(3.6,pipeStroke*.58);
+    const bridgeX=postSide==='right' ? railEndX+railEndWidth-1.1 : railEndX-2.6;
+    const slotX1=postSide==='right' ? railEndX+2.2 : railEndX+railEndWidth-2.2;
+    const slotX2=postSide==='right' ? railEndX+2.2 : railEndX+railEndWidth-2.2;
+    const lipX1=postSide==='right' ? railEndX+3.4 : railEndX+railEndWidth-3.4;
+    return `<rect x="${railEndX.toFixed(2)}" y="${railEndY.toFixed(2)}" width="${railEndWidth.toFixed(2)}" height="${railEndHeight.toFixed(2)}" rx="1.25" fill="url(#railEndGrad)" stroke="#555555" stroke-width=".95"></rect>
+      <line x1="${(railEndX+1.2).toFixed(2)}" y1="${(railEndY+1.05).toFixed(2)}" x2="${(railEndX+railEndWidth-1.2).toFixed(2)}" y2="${(railEndY+1.05).toFixed(2)}" stroke="#ffffff" stroke-width=".7"></line>
+      <line x1="${slotX1.toFixed(2)}" y1="${(railEndY+1.4).toFixed(2)}" x2="${slotX2.toFixed(2)}" y2="${(railEndY+railEndHeight-1.4).toFixed(2)}" stroke="#8a8a8a" stroke-width=".9"></line>
+      <line x1="${lipX1.toFixed(2)}" y1="${(centerY-(pipeStroke*.5)).toFixed(2)}" x2="${lipX1.toFixed(2)}" y2="${(centerY+(pipeStroke*.5)).toFixed(2)}" stroke="#c9c9c9" stroke-width=".85"></line>
+      <rect x="${bridgeX.toFixed(2)}" y="${(centerY-(bridgeHeight/2)).toFixed(2)}" width="2.6" height="${bridgeHeight.toFixed(2)}" fill="#ececec" stroke="#555555" stroke-width=".85"></rect>
+      ${terminalBandMarkupAt(localWrapX,localWrapWidth,localTabWidth,centerY,Math.max(4.8,pipeStroke+1.2),tabSide)}`;
+  }
+  const rightTensionBandsMarkup=Array.from({length:tensionBandCount},(_,index)=>{
+    const centerY=fabricTopY+15+(index*bandSpacing);
+    return terminalBandMarkupAt(bandWrapX,bandWrapWidth,bandTabWidth,centerY,tensionBandHeight,'left');
+  }).join('');
+  const leftTensionBandsMarkup=Array.from({length:tensionBandCount},(_,index)=>{
+    const centerY=fabricTopY+15+(index*bandSpacing);
+    return terminalBandMarkupAt(leftBandWrapX,leftBandWrapWidth,leftBandTabWidth,centerY,tensionBandHeight,'right');
+  }).join('');
+  const leftTopRailEndMarkup=hasTopRail?railEndAssemblyMarkup(terminalAssemblyCenterY,topPipeStroke,topRailEndWidth,'left','right'):'';
+  const topRailEndMarkup=hasTopRail?railEndAssemblyMarkup(terminalAssemblyCenterY,topPipeStroke,topRailEndWidth,'right','left'):'';
+  const leftMiddleRailEndMarkup=hasMiddleRail?railEndAssemblyMarkup(middleRailY,middlePipeStroke,middleRailEndWidth,'left','right'):'';
+  const middleRailEndMarkup=hasMiddleRail?railEndAssemblyMarkup(middleRailY,middlePipeStroke,middleRailEndWidth,'right','left'):'';
+  const leftBottomRailEndMarkup=hasBottomRail?railEndAssemblyMarkup(fabricBottomY,bottomPipeStroke,bottomRailEndWidth,'left','right'):'';
+  const bottomRailEndMarkup=hasBottomRail?railEndAssemblyMarkup(fabricBottomY,bottomPipeStroke,bottomRailEndWidth,'right','left'):'';
+  const securityMarkup=barbedWire==='none' ? '' : `
+    <line x1="${fenceLeftX}" y1="${topY}" x2="${fenceRightX}" y2="${topY}" stroke="#555555" stroke-width="1.5"></line>
+    ${Array.from({length:16},(_,i)=>`<line x1="${fenceLeftX+10+i*30}" y1="${topY-9}" x2="${fenceLeftX+18+i*30}" y2="${topY}" stroke="#4b4b4b" stroke-width="1"></line>`).join('')}
+    <text x="690" y="${topY-20}" fill="#222222" font-size="12" font-weight="700">${esc(barbedLabel)}</text>
+    <line x1="674" y1="${topY-16}" x2="592" y2="${topY}" stroke="#666666" stroke-width="1"></line>`;
+  const bottomMarkup=bottomEdge==='None' ? '' : hasBottomRail
+    ? `<line x1="150" y1="366" x2="650" y2="366" stroke="#666666" stroke-width="4" stroke-linecap="round"></line>`
+    : `<line x1="150" y1="366" x2="650" y2="366" stroke="#666666" stroke-width="2"></line>`;
+  const bottomLabel=hasBottomRail ? `${bottomRailSize} Bottom Rail` : bottomEdge==='None' ? '' : 'Bottom Tension Wire';
+  const bottomCallout=bottomEdge==='None' ? '' : `
+    <text x="554" y="408" fill="#222222" font-size="12" font-weight="700">${esc(bottomLabel)}</text>
+    <line x1="548" y1="398" x2="522" y2="366" stroke="#666666" stroke-width="1"></line>`;
+  const fabricMarkup=chainLinkFabricMarkup(fabricLeftX,fabricRightX,fabricTopY,fabricBottomY);
+  const topRailSheetMarkup=hasTopRail ? pipeRunMarkup(topRailRunStart,topRailRunEnd,topRailCenterY,topPipeStroke) : '';
+  const topTensionSheetMarkup=hasTopTensionWire ? `
+    <line x1="${fabricLeftX}" y1="${topRailCenterY}" x2="${fabricRightX}" y2="${topRailCenterY}" stroke="#666666" stroke-width="2.2"></line>
+    ${wireClipMarkup(fabricLeftX,fabricRightX,topRailCenterY,fabricTopY,'down',36)}`
+    : '';
+  const middleRailSheetMarkup=hasMiddleRail ? `
+    ${pipeRunMarkup(middleRailRunStart,middleRailRunEnd,middleRailY,middlePipeStroke)}
+    ${lineRailClampMarkup(linePostLeftX,linePostWidth,middleRailY,middlePipeStroke)}`
+    : '';
+  const bottomRailSheetMarkup=hasBottomRail ? `
+    ${pipeRunMarkup(bottomRailRunStart,bottomRailRunEnd,fabricBottomY,bottomPipeStroke)}
+    ${lineRailClampMarkup(linePostLeftX,linePostWidth,fabricBottomY,bottomPipeStroke)}`
+    : bottomEdge!=='None' ? `<line x1="${fabricLeftX}" y1="${fabricBottomY}" x2="${fabricRightX}" y2="${fabricBottomY}" stroke="#666666" stroke-width="2"></line>
+    ${wireClipMarkup(fabricLeftX,fabricRightX,fabricBottomY,fabricBottomY,'up',bottomEdge.includes('Hog Rings')?28:40)}` : '';
+  const domeCapMarkup=(centerX,postWidth)=>{
+    const capBandWidth=Math.max(15,postWidth+5);
+    const capBandX=centerX-(capBandWidth/2);
+    const capBandY=fabricTopY-2.5;
+    const capRise=Math.max(8.6,postWidth*.62+5.6);
+    const capTopY=capBandY-capRise;
+    return `<rect x="${capBandX.toFixed(2)}" y="${capBandY.toFixed(2)}" width="${capBandWidth.toFixed(2)}" height="4.1" rx="1.8" fill="url(#bandGrad)" stroke="#626262" stroke-width=".9"></rect>
+      <path d="M${(capBandX-.5).toFixed(2)} ${capBandY.toFixed(2)} Q${centerX.toFixed(2)} ${capTopY.toFixed(2)} ${(capBandX+capBandWidth+.5).toFixed(2)} ${capBandY.toFixed(2)}" fill="url(#capGrad)" stroke="#626262" stroke-width="1"></path>
+      <ellipse cx="${centerX.toFixed(2)}" cy="${capBandY.toFixed(2)}" rx="${Math.max(7.2,capBandWidth*.46).toFixed(2)}" ry="1.9" fill="none" stroke="#575757" stroke-width=".85"></ellipse>`;
+  };
+  const leftDomeCapMarkup=domeCapMarkup(leftTerminalX,leftPostWidth);
+  const rightDomeCapMarkup=domeCapMarkup(rightTerminalX,rightPostWidth);
+  const loopCapMarkup=hasTopRail
+    ? `<rect x="${(linePostCenterX-(linePostWidth/2)-1.8).toFixed(2)}" y="${(topRailCenterY+2.1).toFixed(2)}" width="${(linePostWidth+3.6).toFixed(2)}" height="4.1" rx="1.6" fill="url(#bandGrad)" stroke="#626262" stroke-width=".9"></rect>
+    <path d="M${(linePostCenterX-5.8).toFixed(2)} ${(topRailCenterY+2.1).toFixed(2)} L${(linePostCenterX-2.7).toFixed(2)} ${(topRailCenterY-4.9).toFixed(2)}" fill="none" stroke="#626262" stroke-width="1.15" stroke-linecap="round"></path>
+    <path d="M${(linePostCenterX+5.8).toFixed(2)} ${(topRailCenterY+2.1).toFixed(2)} L${(linePostCenterX+2.7).toFixed(2)} ${(topRailCenterY-4.9).toFixed(2)}" fill="none" stroke="#626262" stroke-width="1.15" stroke-linecap="round"></path>
+    <ellipse cx="${linePostCenterX.toFixed(2)}" cy="${(topRailCenterY-5.2).toFixed(2)}" rx="6.3" ry="4.3" fill="#f7f7f7" stroke="#626262" stroke-width="1"></ellipse>
+    <ellipse cx="${linePostCenterX.toFixed(2)}" cy="${(topRailCenterY-5.2).toFixed(2)}" rx="4" ry="2.5" fill="#ffffff" stroke="#626262" stroke-width=".8"></ellipse>`
+    : `<rect x="${(linePostCenterX-(linePostWidth/2)-1.2).toFixed(2)}" y="${(fabricTopY-1.9).toFixed(2)}" width="${(linePostWidth+2.4).toFixed(2)}" height="3.7" rx="1.5" fill="url(#bandGrad)" stroke="#626262" stroke-width=".8"></rect>
+    <path d="M${(linePostCenterX-5.2).toFixed(2)} ${(fabricTopY-1.9).toFixed(2)} Q${linePostCenterX.toFixed(2)} ${(fabricTopY-11.8).toFixed(2)} ${(linePostCenterX+5.2).toFixed(2)} ${(fabricTopY-1.9).toFixed(2)}" fill="url(#capGrad)" stroke="#626262" stroke-width=".9"></path>`;
+
+  if(drawingType==='Gate Detail'){
+    document.getElementById('drawingStage').innerHTML=`<svg viewBox="0 0 900 700" width="100%" height="auto" aria-label="Gate drawing preview coming soon">
+      <rect x="18" y="18" width="864" height="664" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.4"></rect>
+      <rect x="262" y="40" width="376" height="60" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.2"></rect>
+      <text x="450" y="66" text-anchor="middle" fill="#111111" font-size="20" font-weight="700">CHAIN LINK GATE DETAIL</text>
+      <text x="450" y="88" text-anchor="middle" fill="#111111" font-size="14" font-weight="700">gate drawing set coming next</text>
+      <rect x="118" y="128" width="664" height="338" fill="#ffffff" stroke="#cfcfcf" stroke-width="1"></rect>
+      <text x="450" y="220" text-anchor="middle" fill="#111111" font-size="23" font-weight="700">Gate drawing mode is being split out on purpose</text>
+      <text x="450" y="258" text-anchor="middle" fill="#333333" font-size="16">Fence detail sheets stay focused on fabric, posts, rails, fittings, and footing geometry.</text>
+      <text x="450" y="292" text-anchor="middle" fill="#333333" font-size="16">Next pass will add separate single swing, double swing, and slide-gate sheets.</text>
+      <image href="LOGO PACK/fenceflow-logo-transparent.png" x="70" y="580" width="216" height="62" preserveAspectRatio="xMinYMid meet"></image>
+      <rect x="430" y="586" width="412" height="96" fill="#ffffff" stroke="#1b1b1b" stroke-width="1"></rect>
+      <line x1="430" y1="618" x2="842" y2="618" stroke="#1b1b1b" stroke-width="1"></line>
+      <line x1="430" y1="650" x2="842" y2="650" stroke="#1b1b1b" stroke-width="1"></line>
+      <line x1="640" y1="618" x2="640" y2="682" stroke="#1b1b1b" stroke-width="1"></line>
+      <text x="438" y="609" fill="#111111" font-size="11" font-weight="700">Project:</text>
+      <text x="438" y="641" fill="#111111" font-size="11" font-weight="700">Site:</text>
+      <text x="648" y="641" fill="#111111" font-size="11" font-weight="700">Date:</text>
+      <text x="438" y="673" fill="#111111" font-size="11" font-weight="700">Drawn by:</text>
+      <text x="648" y="673" fill="#111111" font-size="11" font-weight="700">Drawing #</text>
+      <text x="492" y="609" fill="#222222" font-size="11">${esc(jobName)}</text>
+      <text x="484" y="641" fill="#222222" font-size="11">${esc(siteLocation)}</text>
+      <text x="682" y="641" fill="#222222" font-size="11">${esc(issueDate)}</text>
+      <text x="500" y="673" fill="#222222" font-size="11">FenceFlow / Pro Fence</text>
+      <text x="712" y="673" fill="#222222" font-size="11">${esc(`FF-GT-${height.replace(/[^0-9]/g,'') || '6'}`)}</text>
+    </svg>`;
+    return;
+  }
+
+  document.getElementById('drawingStage').innerHTML=`<svg viewBox="0 0 900 700" width="100%" height="auto" aria-label="Shop drawing preview">
+    <defs>
+      <linearGradient id="terminalPostGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#8b8b8b"></stop>
+        <stop offset="18%" stop-color="#d6d6d6"></stop>
+        <stop offset="46%" stop-color="#b7b7b7"></stop>
+        <stop offset="80%" stop-color="#7c7c7c"></stop>
+        <stop offset="100%" stop-color="#676767"></stop>
+      </linearGradient>
+      <linearGradient id="linePostGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#979797"></stop>
+        <stop offset="22%" stop-color="#dbdbdb"></stop>
+        <stop offset="50%" stop-color="#c3c3c3"></stop>
+        <stop offset="84%" stop-color="#8a8a8a"></stop>
+        <stop offset="100%" stop-color="#737373"></stop>
+      </linearGradient>
+      <linearGradient id="bandGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#fafafa"></stop>
+        <stop offset="52%" stop-color="#dfdfdf"></stop>
+        <stop offset="100%" stop-color="#c9c9c9"></stop>
+      </linearGradient>
+      <linearGradient id="railEndGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f8f8f8"></stop>
+        <stop offset="48%" stop-color="#e3e3e3"></stop>
+        <stop offset="100%" stop-color="#cfcfcf"></stop>
+      </linearGradient>
+      <linearGradient id="capGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f1f1f1"></stop>
+        <stop offset="65%" stop-color="#c9c9c9"></stop>
+        <stop offset="100%" stop-color="#a8a8a8"></stop>
+      </linearGradient>
+      <pattern id="concretePattern" patternUnits="userSpaceOnUse" width="18" height="18">
+        <rect width="18" height="18" fill="#f5f5f5"></rect>
+        <circle cx="4" cy="6" r="1.2" fill="#c9c9c9"></circle>
+        <circle cx="11" cy="4" r="1" fill="#d3d3d3"></circle>
+        <circle cx="9" cy="13" r="1.4" fill="#c7c7c7"></circle>
+        <circle cx="15" cy="10" r="1" fill="#d0d0d0"></circle>
+      </pattern>
+      <marker id="arrowEnd" markerWidth="7" markerHeight="7" refX="6.4" refY="3.5" orient="auto">
+        <path d="M0,0 L7,3.5 L0,7 z" fill="#111111"></path>
+      </marker>
+      <marker id="arrowStart" markerWidth="7" markerHeight="7" refX=".6" refY="3.5" orient="auto">
+        <path d="M7,0 L0,3.5 L7,7 z" fill="#111111"></path>
+      </marker>
+    </defs>
+    <rect x="18" y="18" width="864" height="664" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.4"></rect>
+    <rect x="248" y="38" width="404" height="62" fill="#ffffff" stroke="#1b1b1b" stroke-width="1.2"></rect>
+    <text x="450" y="65" text-anchor="middle" fill="#111111" font-size="21" font-weight="700">${esc(sheetTitle)}</text>
+    <text x="450" y="88" text-anchor="middle" fill="#111111" font-size="14" font-weight="700">${esc(sheetSubtitle || `${height} chain link fence`)}</text>
+
+    <line x1="92" y1="${gradeY}" x2="812" y2="${gradeY}" stroke="#8b8b8b" stroke-width="1"></line>
+
+    ${securityMarkup}
+    ${selvageMarkup(fabricLeftX,fabricRightX,fabricTopY,'up')}
+    ${fabricMarkup}
+    ${selvageMarkup(fabricLeftX,fabricRightX,fabricBottomY,'down')}
+    ${topRailSheetMarkup}
+    ${topTensionSheetMarkup}
+    ${middleRailSheetMarkup}
+    ${bottomRailSheetMarkup}
+    ${hasTopRail ? topTieWireMarkup(fabricLeftX,fabricRightX,topRailCenterY,fabricTopY) : ''}
+
+    ${postMarkup(leftPostX,leftPostWidth,fabricTopY,gradeY,'terminalPostGrad')}
+    ${postMarkup(linePostLeftX,linePostWidth,fabricTopY,gradeY,'linePostGrad')}
+    ${postMarkup(rightPostX,rightPostWidth,fabricTopY,gradeY,'terminalPostGrad')}
+
+    ${concreteMarkup(leftPostX,leftPostWidth,gradeY,footingBottomY)}
+    ${concreteMarkup(linePostLeftX,linePostWidth,gradeY,footingBottomY)}
+    ${concreteMarkup(rightPostX,rightPostWidth,gradeY,footingBottomY)}
+
+    ${leftDomeCapMarkup}
+    ${loopCapMarkup}
+    ${rightDomeCapMarkup}
+
+    ${leftTopRailEndMarkup}
+    ${topRailEndMarkup}
+    ${leftMiddleRailEndMarkup}
+    ${middleRailEndMarkup}
+    ${leftBottomRailEndMarkup}
+    ${bottomRailEndMarkup}
+    ${leftTensionBandsMarkup}
+    ${rightTensionBandsMarkup}
+    <rect x="${leftTensionBarX.toFixed(2)}" y="${(fabricTopY+16).toFixed(2)}" width="${tensionBarWidth}" height="${tensionBarHeight}" fill="#5c5c5c"></rect>
+    <rect x="${rightTensionBarX.toFixed(2)}" y="${(fabricTopY+16).toFixed(2)}" width="${tensionBarWidth}" height="${tensionBarHeight}" fill="#5c5c5c"></rect>
+    ${fabricWrapEdgeMarkup(leftTensionBarCenterX,fabricTopY+16,fabricTopY+16+tensionBarHeight,'left')}
+    ${fabricWrapEdgeMarkup(rightTensionBarCenterX,fabricTopY+16,fabricTopY+16+tensionBarHeight,'right')}
+
+    <line x1="${fenceLeftX}" y1="${topY-14}" x2="${linePostCenterX}" y2="${topY-14}" stroke="#111111" stroke-width="1" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"></line>
+    <line x1="${fenceLeftX}" y1="${topY-14}" x2="${fenceLeftX}" y2="${fabricTopY}" stroke="#666666" stroke-width="1"></line>
+    <line x1="${linePostCenterX}" y1="${topY-14}" x2="${linePostCenterX}" y2="${fabricTopY}" stroke="#666666" stroke-width="1"></line>
+    <text x="${(fenceLeftX+linePostCenterX)/2}" y="${topY-29}" text-anchor="middle" fill="#111111" font-size="11" font-weight="700">${esc(span)}' MAX</text>
+    <text x="${(fenceLeftX+linePostCenterX)/2}" y="${topY-16}" text-anchor="middle" fill="#111111" font-size="11" font-weight="700">SPACING</text>
+
+    <line x1="84" y1="${fabricTopY}" x2="84" y2="${fabricBottomY}" stroke="#222222" stroke-width="1" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"></line>
+    <line x1="84" y1="${fabricTopY}" x2="${fenceLeftX}" y2="${fabricTopY}" stroke="#666666" stroke-width="1"></line>
+    <line x1="84" y1="${fabricBottomY}" x2="${fenceLeftX}" y2="${fabricBottomY}" stroke="#666666" stroke-width="1"></line>
+    <text x="56" y="${(fabricTopY+fabricBottomY)/2}" text-anchor="middle" fill="#111111" font-size="11" font-weight="700">${esc(height)} HIGH</text>
+
+    <line x1="52" y1="${gradeY}" x2="52" y2="${footingBottomY}" stroke="#222222" stroke-width="1" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"></line>
+    <line x1="52" y1="${gradeY}" x2="${leftPostX-1}" y2="${gradeY}" stroke="#666666" stroke-width="1"></line>
+    <line x1="52" y1="${footingBottomY}" x2="${leftPostX-1}" y2="${footingBottomY}" stroke="#666666" stroke-width="1"></line>
+    <line x1="736" y1="${gradeY}" x2="736" y2="${footingBottomY}" stroke="#222222" stroke-width="1" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"></line>
+    <line x1="${rightPostX+rightPostWidth+1}" y1="${gradeY}" x2="736" y2="${gradeY}" stroke="#666666" stroke-width="1"></line>
+    <line x1="${rightPostX+rightPostWidth+1}" y1="${footingBottomY}" x2="736" y2="${footingBottomY}" stroke="#666666" stroke-width="1"></line>
+
+    <text x="286" y="${topY+2}" text-anchor="middle" fill="#111111" font-size="12" font-weight="700">Line Post</text>
+    <line x1="306" y1="${topY+6}" x2="${linePostCenterX}" y2="${fabricTopY-4}" stroke="#4d4d4d" stroke-width="1"></line>
+
+    <text x="422" y="${topY-4}" fill="#111111" font-size="12" font-weight="700">${hasTopRail ? 'Loop Cap' : 'Line Post Cap'}</text>
+    <line x1="492" y1="${topY-2}" x2="${linePostCenterX+10}" y2="${fabricTopY-5}" stroke="#4d4d4d" stroke-width="1"></line>
+
+    ${topTreatment==='None' ? '' : `<text x="602" y="${topY-32}" fill="#111111" font-size="12" font-weight="700">${esc(hasTopTensionWire ? 'Top Tension Wire' : 'Top Rail')}</text>
+    <line x1="592" y1="${topY-28}" x2="548" y2="${topRailCenterY}" stroke="#4d4d4d" stroke-width="1"></line>`}
+
+    <text x="626" y="${topY+10}" fill="#111111" font-size="12" font-weight="700">Tie Wire</text>
+    <line x1="616" y1="${topY+12}" x2="540" y2="${fabricTopY+24}" stroke="#4d4d4d" stroke-width="1"></line>
+
+    ${hasMiddleRail ? `<text x="580" y="${middleRailY-18}" fill="#222222" font-size="12" font-weight="700">Middle Rail</text>
+    <line x1="570" y1="${middleRailY-16}" x2="536" y2="${middleRailY}" stroke="#666666" stroke-width="1"></line>` : ''}
+
+    ${(hasMiddleRail || hasBottomRail) ? `<text x="202" y="522" fill="#222222" font-size="12" font-weight="700">End Rail Clamp</text>
+    <text x="202" y="538" fill="#222222" font-size="12" font-weight="700">(ERC)</text>
+    <line x1="262" y1="514" x2="411" y2="${hasMiddleRail ? '337' : '406'}" stroke="#666666" stroke-width="1"></line>` : ''}
+
+    <text x="744" y="${fabricTopY+2}" fill="#111111" font-size="12" font-weight="700">Dome Cap</text>
+    <line x1="732" y1="${fabricTopY+4}" x2="${rightTerminalX+3}" y2="${fabricTopY-1}" stroke="#4d4d4d" stroke-width="1"></line>
+
+    <text x="744" y="${braceBandY+18}" fill="#111111" font-size="12" font-weight="700">Brace Band</text>
+    <line x1="732" y1="${braceBandY+20}" x2="${bandWrapX+bandWrapWidth+10}" y2="${terminalAssemblyCenterY}" stroke="#4d4d4d" stroke-width="1"></line>
+
+    <text x="744" y="${fabricTopY+78}" fill="#111111" font-size="12" font-weight="700">End/Corner Post</text>
+    <line x1="732" y1="${fabricTopY+80}" x2="${rightTerminalX+4}" y2="${fabricTopY+80}" stroke="#4d4d4d" stroke-width="1"></line>
+
+    <text x="744" y="${fabricTopY+110}" fill="#111111" font-size="12" font-weight="700">Tension Band</text>
+    <line x1="732" y1="${fabricTopY+112}" x2="${bandWrapX+bandWrapWidth+10}" y2="${fabricTopY+15+Math.min(tensionBandCount-1,1)*bandSpacing}" stroke="#4d4d4d" stroke-width="1"></line>
+
+    <text x="744" y="${fabricTopY+142}" fill="#111111" font-size="12" font-weight="700">Tension Bar</text>
+    <line x1="732" y1="${fabricTopY+144}" x2="${rightPostX-8}" y2="${fabricTopY+60}" stroke="#4d4d4d" stroke-width="1"></line>
+
+    ${bottomEdge==='None' ? '' : `<text x="598" y="${fabricBottomY+24}" fill="#111111" font-size="12" font-weight="700">${esc(bottomLabel)}</text>
+    <line x1="588" y1="${fabricBottomY+18}" x2="536" y2="${fabricBottomY}" stroke="#4d4d4d" stroke-width="1"></line>`}
+
+    <text x="468" y="${footingBottomY-6}" fill="#111111" font-size="12" font-weight="700">Concrete</text>
+    <line x1="454" y1="${footingBottomY-12}" x2="${linePostCenterX}" y2="${gradeY+22}" stroke="#4d4d4d" stroke-width="1"></line>
+
+    <image href="LOGO PACK/fenceflow-logo-transparent.png" x="62" y="586" width="214" height="60" preserveAspectRatio="xMinYMid meet"></image>
+
+    <rect x="430" y="586" width="412" height="96" fill="#ffffff" stroke="#1b1b1b" stroke-width="1"></rect>
+    <line x1="430" y1="618" x2="842" y2="618" stroke="#1b1b1b" stroke-width="1"></line>
+    <line x1="430" y1="650" x2="842" y2="650" stroke="#1b1b1b" stroke-width="1"></line>
+    <line x1="640" y1="618" x2="640" y2="682" stroke="#1b1b1b" stroke-width="1"></line>
+    <text x="438" y="609" fill="#111111" font-size="11" font-weight="700">Project:</text>
+    <text x="438" y="641" fill="#111111" font-size="11" font-weight="700">Site:</text>
+    <text x="648" y="641" fill="#111111" font-size="11" font-weight="700">Date:</text>
+    <text x="438" y="673" fill="#111111" font-size="11" font-weight="700">Drawn by:</text>
+    <text x="648" y="673" fill="#111111" font-size="11" font-weight="700">Drawing #</text>
+    <text x="492" y="609" fill="#222222" font-size="11">${esc(jobName)}</text>
+    <text x="484" y="641" fill="#222222" font-size="11">${esc(siteLocation)}</text>
+    <text x="682" y="641" fill="#222222" font-size="11">${esc(issueDate)}</text>
+    <text x="500" y="673" fill="#222222" font-size="11">FenceFlow / Pro Fence</text>
+    <text x="712" y="673" fill="#222222" font-size="11">${esc(drawingNumber)}</text>
+  </svg>`;
+}
+async function copyPayload(){
+  if(!currentPayload)return;
+  const text=JSON.stringify(currentPayload,null,2);
+  try{
+    await navigator.clipboard.writeText(text);
+    document.getElementById('copyPayloadBtn').textContent='Copied';
+    setTimeout(()=>{document.getElementById('copyPayloadBtn').textContent='Copy Request JSON'},1400);
+  }catch(_error){
+    document.getElementById('copyPayloadBtn').textContent='Copy Failed';
+    setTimeout(()=>{document.getElementById('copyPayloadBtn').textContent='Copy Request JSON'},1400);
+  }
+}
+async function copyApsPayload(){
+  if(!currentApsPayload)return;
+  const text=JSON.stringify(currentApsPayload,null,2);
+  const button=document.getElementById('copyApsPayloadBtn');
+  try{
+    await navigator.clipboard.writeText(text);
+    button.textContent='Copied APS';
+    setTimeout(()=>{button.textContent='Copy APS Payload'},1400);
+  }catch(_error){
+    button.textContent='Copy Failed';
+    setTimeout(()=>{button.textContent='Copy APS Payload'},1400);
+  }
+}
+async function sendCadRequest(){
+  if(!currentPayload)return;
+  const button=document.getElementById('sendCadRequestBtn');
+  const originalText=button.textContent;
+  button.disabled=true;
+  button.textContent='Sending...';
+  try{
+    const response=await fetch(cadEndpoint,{
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify(currentPayload)
+    });
+    const data=await response.json();
+    if(!response.ok || !data.ok){
+      throw new Error(data.message || 'CAD request failed.');
+    }
+    currentApsPayload={
+      aps_workitem_payload:data.aps_workitem_payload,
+      aps_activity_blueprint:data.aps_activity_blueprint,
+      aps_requirements:data.aps_requirements,
+      request_summary:data.request_summary,
+      queue_target:data.queue_target,
+      aps_submission:data.aps_submission
+    };
+    document.getElementById('apsPayloadPreview').textContent=JSON.stringify(currentApsPayload,null,2);
+    if(data.simulated){
+      showCadStatus('success','CAD request queued',`${data.request_id} was packaged successfully, but this site is still in APS dry-run mode. Add the Autodesk environment variables and the same button will submit the real workitem.`);
+    }else{
+      showCadStatus('success','CAD request submitted',`${data.request_id} submitted to Autodesk APS. Workitem: ${data.aps_submission?.workitem_id || 'created'}. The next step is wiring report/output polling back into FenceFlow.`);
+    }
+  }catch(error){
+    currentApsPayload=null;
+    document.getElementById('apsPayloadPreview').textContent='Unable to build APS payload preview from the CAD request response.';
+    showCadStatus('error','CAD request failed',error.message || 'Unable to reach the CAD request endpoint.');
+  }finally{
+    button.disabled=false;
+    button.textContent=originalText;
+  }
+}
+function downloadPayload(){
+  if(!currentPayload)return;
+  const blob=new Blob([JSON.stringify(currentPayload,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const link=document.createElement('a');
+  link.href=url;
+  link.download=`${(currentPayload.sheet?.drawing_number || 'fenceflow-cad-request').replace(/[^a-z0-9_-]+/gi,'-').toLowerCase()}.json`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+ids.forEach(id=>document.getElementById(id).addEventListener('input',render));
+ids.forEach(id=>document.getElementById(id).addEventListener('change',render));
+fillSelect('height',fabricHeights,v=>({value:`${v}'`,label:`${v}'`}));
+fillSelect('linePostSize',linePostSizes,v=>({value:v,label:v}));
+fillSelect('terminalPostSize',terminalPostSizes,v=>({value:v,label:v}));
+fillSelect('topTreatment',['None','Top Tension Wire',...railSizes],v=>({value:v,label:v==='None'?'None':v==='Top Tension Wire'?'Top Tension Wire':`${v} Top Rail`}));
+fillSelect('middleRail',['None',...railSizes],v=>({value:v,label:v==='None'?'None':`${v} Middle Rail`}));
+fillSelect('bottomEdge',['None','Bottom Tension Wire','Bottom Tension Wire and Hog Rings',...railSizes.map(size=>`${size} Bottom Rail`)],v=>({value:v,label:v}));
+fillSelect('barbedWire',barbedOptions,v=>({value:v.value,label:v.label}));
+fillSelect('sheetSize',sheetSizes,v=>({value:v,label:v}));
+fillSelect('outputPackage',outputPackages,v=>({value:v,label:v}));
+fillSelect('cadTemplate',cadTemplates,v=>({value:v,label:v}));
+document.getElementById('height').value="6'";
+document.getElementById('linePostSize').value='1-7/8"';
+document.getElementById('terminalPostSize').value='2-3/8"';
+document.getElementById('topTreatment').value='1-3/8"';
+document.getElementById('middleRail').value='None';
+document.getElementById('bottomEdge').value='Bottom Tension Wire';
+document.getElementById('barbedWire').value='none';
+document.getElementById('sheetSize').value='24" x 36"';
+document.getElementById('outputPackage').value='PDF + DWG';
+document.getElementById('cadTemplate').value='Pro Fence Chain Link Sheet';
+document.getElementById('sendCadRequestBtn').addEventListener('click',sendCadRequest);
+document.getElementById('copyPayloadBtn').addEventListener('click',copyPayload);
+document.getElementById('copyApsPayloadBtn').addEventListener('click',copyApsPayload);
+document.getElementById('downloadPayloadBtn').addEventListener('click',downloadPayload);
+window.addEventListener('scroll',()=>document.body.classList.toggle('logo-shrink',window.scrollY>28),{passive:true});
+document.body.classList.toggle('logo-shrink',window.scrollY>28);
+render();
+</script>
+</body>
+</html>

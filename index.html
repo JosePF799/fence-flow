@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FenceFlow | Home</title>
+  <meta name="description" content="FenceFlow is a chain link fence layout, takeoff, footing, and shop drawing toolset built from real installer and estimator experience." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="theme-color" content="#07101d" />
+  <link rel="canonical" href="https://fence-flow.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FenceFlow" />
+  <meta property="og:title" content="FenceFlow | Chain Link Fence Tools" />
+  <meta property="og:description" content="Plan chain link fence layout, calculate concrete footings, and generate shop drawings in one workflow." />
+  <meta property="og:url" content="https://fence-flow.com/" />
+  <meta property="og:image" content="https://fence-flow.com/LOGO%20PACK/fenceflow-logo-transparent.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FenceFlow | Chain Link Fence Tools" />
+  <meta name="twitter:description" content="Layout, footing, and shop drawing tools for chain link fence jobs." />
+  <meta name="twitter:image" content="https://fence-flow.com/LOGO%20PACK/fenceflow-logo-transparent.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"FenceFlow","url":"https://fence-flow.com/","description":"Chain link fence layout, takeoff, footing, and shop drawing tools.","publisher":{"@type":"Organization","name":"Pro Fence","url":"https://caprofence.com"}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#060b16;--border:rgba(125,156,204,.26);--text:#e8f1ff;--muted:#9fb3d3;--accent:#4f86e8;--accentStrong:#214b95}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:
+      radial-gradient(circle at 12% 12%, rgba(132,170,235,.18) 0%, rgba(132,170,235,0) 22%),
+      radial-gradient(circle at 82% 18%, rgba(74,118,201,.16) 0%, rgba(74,118,201,0) 24%),
+      radial-gradient(circle at 72% 78%, rgba(37,79,156,.18) 0%, rgba(37,79,156,0) 28%),
+      linear-gradient(145deg,#010308 0%,#07101d 34%,#10213c 68%,#1c3761 100%);color:var(--text)}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;background:
+      linear-gradient(120deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,0) 22%,rgba(255,255,255,.03) 52%,rgba(255,255,255,0) 78%),
+      radial-gradient(circle at 20% 0%, rgba(124,170,255,.08) 0%, rgba(124,170,255,0) 26%);opacity:.9}
+    body.intro-playing{overflow:hidden}
+    body.intro-playing .wrap{opacity:0;transform:translateY(28px);filter:blur(6px);pointer-events:none}
+    body.intro-done .wrap{opacity:1;transform:none;filter:none;pointer-events:auto;transition:opacity .85s ease,transform .85s ease,filter .85s ease}
+    .wrap{max-width:1500px;margin:0 auto;padding:14px 20px 34px;position:relative}
+    .topRight{position:absolute;top:118px;right:24px;display:flex;align-items:center;gap:12px;z-index:5}
+    .hero{display:flex;align-items:center;margin-bottom:-12px;position:relative;z-index:1}
+    .logoBox{width:680px;display:flex;align-items:center;position:relative;transform-origin:left center;transition:width .28s ease,transform .28s ease}
+    .logoBox img{width:100%;height:auto;display:block;filter:brightness(0) invert(1) drop-shadow(0 14px 30px rgba(111,154,225,.14))}
+    .logoHotspot{position:absolute;left:21%;top:59%;width:26%;height:16%;border-radius:999px}
+    body.logo-shrink .logoBox{width:540px;transform:translateY(-2px)}
+    .siteNav{display:flex;gap:22px;flex-wrap:wrap;margin:8px 0 22px;position:relative;z-index:4;padding-bottom:6px}
+    .siteNav a{position:relative;display:inline-flex;align-items:center;padding:6px 0;text-decoration:none;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#9fb3d3;transition:color .18s ease}
+    .siteNav a::after{content:'';position:absolute;left:0;right:0;bottom:-7px;height:3px;border-radius:999px;background:linear-gradient(90deg,var(--accent) 0%,#8fb7ff 100%);transform:scaleX(0);transform-origin:left center;transition:transform .22s ease}
+    .siteNav a:hover{color:#e8f1ff}
+    .siteNav a.active{color:#fff}
+    .siteNav a.active::after{transform:scaleX(1)}
+    .betaBadge{display:inline-flex;align-items:center;padding:6px 14px;border-radius:999px;background:linear-gradient(180deg,rgba(127,29,29,.34) 0%,rgba(91,16,16,.2) 100%);border:1px solid rgba(248,113,113,.34);color:#fda4af;font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-left:6px;vertical-align:middle;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 10px 18px rgba(0,0,0,.16);backdrop-filter:blur(10px)}
+    .introSplash{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;background:
+      radial-gradient(circle at 12% 12%, rgba(132,170,235,.18) 0%, rgba(132,170,235,0) 22%),
+      radial-gradient(circle at 82% 18%, rgba(74,118,201,.16) 0%, rgba(74,118,201,0) 24%),
+      radial-gradient(circle at 72% 78%, rgba(37,79,156,.18) 0%, rgba(37,79,156,0) 28%),
+      linear-gradient(145deg,#010308 0%,#07101d 34%,#10213c 68%,#1c3761 100%);z-index:9999;pointer-events:none;opacity:0;visibility:hidden}
+    body.intro-playing .introSplash{opacity:1;visibility:visible;transition:opacity .45s ease}
+    .introLogo{position:fixed;left:50%;top:50%;width:min(72vw,860px);transform:translate(-50%,-50%);transform-origin:center center;filter:drop-shadow(0 22px 36px rgba(13,29,55,.18))}
+    .introLogo img{width:100%;height:auto;display:block;filter:brightness(0) invert(1)}
+    .heroPanel{position:relative;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr);gap:20px;align-items:center;padding:36px 36px 32px;border-radius:34px;background:linear-gradient(145deg,rgba(8,15,29,.96) 0%,rgba(12,25,49,.96) 48%,rgba(25,52,98,.86) 100%);border:1px solid rgba(126,159,212,.18);box-shadow:0 30px 56px rgba(0,0,0,.34);overflow:hidden}
+    .heroPanel::before{content:'';position:absolute;inset:auto auto -120px -90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(109,150,224,.18) 0%,rgba(109,150,224,0) 68%)}
+    .heroPanel::after{content:'';position:absolute;top:-90px;right:-70px;width:290px;height:290px;border-radius:50%;background:radial-gradient(circle,rgba(126,167,222,.16) 0%,rgba(126,167,222,0) 70%)}
+    .heroCopy,.heroStats{position:relative;z-index:1}
+    .heroTitle{margin:0 0 14px;font-size:54px;line-height:1;letter-spacing:-.05em;color:#fff;max-width:760px}
+    .heroText{margin:0 0 20px;max-width:700px;font-size:16px;line-height:1.7;color:rgba(226,237,255,.82)}
+    .heroBtns{display:flex;gap:10px;flex-wrap:wrap}
+    .primaryBtn,.ghostBtn{display:inline-flex;align-items:center;justify-content:center;border:none;border-radius:18px;padding:13px 20px;text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.02em;transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease}
+    .primaryBtn{background:linear-gradient(135deg,var(--accent) 0%,var(--accentStrong) 100%);color:#fff;box-shadow:0 14px 28px rgba(33,75,149,.28)}
+    .ghostBtn{background:rgba(255,255,255,.06);color:#dce9fd;border:1px solid rgba(151,179,225,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 18px rgba(0,0,0,.18)}
+    .primaryBtn:hover,.ghostBtn:hover{transform:translateY(-1px)}
+    .heroStats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .heroStat{padding:16px 18px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.04) 100%);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px)}
+    .heroStat strong{display:block;font-size:24px;color:#fff;margin-bottom:6px}
+    .heroStat span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#d7e6fb}
+    .section{margin-top:20px}
+    .sectionHead{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}
+    .eyebrow{display:flex;align-items:center;gap:8px;color:#8fa8d0;text-transform:uppercase;font-size:11px;letter-spacing:.14em;font-weight:900;margin:0 0 8px}
+    .eyebrow::before{content:'';width:22px;height:2px;border-radius:999px;background:linear-gradient(90deg,#5f87c2 0%,#9dc1ff 100%)}
+    .sectionTitle{margin:0;font-size:32px;line-height:1.05;letter-spacing:-.04em;color:#eef4ff}
+    .sectionText{margin:0;max-width:680px;color:#9fb3d3;line-height:1.7}
+    .toolGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .card{position:relative;background:linear-gradient(180deg,rgba(10,18,33,.9) 0%,rgba(14,27,49,.92) 100%);border:1px solid rgba(126,159,212,.18);border-radius:28px;overflow:hidden;box-shadow:0 24px 44px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.04);transition:transform .24s ease,box-shadow .24s ease}
+    .card:hover{transform:translateY(-3px);box-shadow:0 30px 54px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.04)}
+    .card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,rgba(79,134,232,.95) 0%,rgba(33,75,149,.88) 55%,rgba(126,167,222,.28) 100%)}
+    .cardBody{padding:22px 22px 24px}
+    .toolBadge{display:inline-flex;align-items:center;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(151,179,225,.16);color:#dce9fd;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+    .toolTitle{margin:0 0 10px;font-size:26px;letter-spacing:-.03em;color:#eef4ff}
+    .toolText{margin:0 0 16px;color:#a8bbd8;line-height:1.7;min-height:116px}
+    .toolPreview{height:168px;margin-bottom:18px;border-radius:22px;border:1px solid rgba(151,179,225,.14);background:linear-gradient(180deg,rgba(7,14,27,.96) 0%,rgba(12,24,46,.98) 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);overflow:hidden;position:relative}
+    .previewTop{display:flex;gap:8px;align-items:center;padding:12px 14px;border-bottom:1px solid rgba(151,179,225,.12);background:rgba(255,255,255,.03)}
+    .previewDot{width:8px;height:8px;border-radius:50%;background:#7aa9ff;opacity:.8}
+    .previewLayoutStage,.previewFootingStage,.previewDrawingStage{position:absolute;inset:46px 14px 14px 14px;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,.02) 100%)}
+    .previewLayoutStage svg,.previewDrawingStage svg{width:100%;height:100%;display:block}
+    .footingCols{position:absolute;inset:18px 16px 16px 16px;display:grid;grid-template-columns:1.1fr .9fr;gap:12px;align-content:start}
+    .footingList,.footingTotals{display:grid;gap:10px}
+    .footingRow,.footingPill{padding:9px 12px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(151,179,225,.12);color:#dce9fd;font-size:12px;font-weight:700}
+    .footingPill strong{display:block;font-size:18px;color:#fff;margin-bottom:4px}
+    .previewDrawingStage::before{content:'';position:absolute;left:18px;right:18px;top:18px;bottom:18px;border-radius:14px;background:#f4f8ff}
+    .previewDrawingStage::after{content:'';position:absolute;left:46px;right:54px;top:88px;height:84px;border:2px solid #2a5aa6;background:rgba(120,170,220,.16)}
+    .drawingLines{position:absolute;left:36px;right:36px;top:58px;bottom:26px}
+    .drawingLines span{position:absolute;background:#17355f}
+    .drawingLines span:nth-child(1){left:0;right:0;top:0;height:2px}
+    .drawingLines span:nth-child(2){left:18px;top:30px;width:8px;height:116px}
+    .drawingLines span:nth-child(3){left:132px;top:30px;width:6px;height:116px}
+    .drawingLines span:nth-child(4){left:246px;top:30px;width:6px;height:116px}
+    .drawingLines span:nth-child(5){right:18px;top:30px;width:8px;height:116px}
+    .toolMeta{display:grid;gap:8px;margin:0 0 18px;padding:0;list-style:none}
+    .toolMeta li{display:flex;justify-content:space-between;gap:16px;padding:11px 12px;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,.03) 100%);border:1px solid rgba(151,179,225,.14);color:#c4d4ee}
+    .toolMeta strong{color:#eef4ff}
+    .splitGrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:18px;align-items:start}
+    .stackCol{display:grid;gap:18px;align-content:start}
+    .listCard{position:relative;background:linear-gradient(180deg,rgba(10,18,33,.9) 0%,rgba(14,27,49,.92) 100%);border:1px solid rgba(126,159,212,.18);border-radius:28px;overflow:hidden;box-shadow:0 24px 44px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.04)}
+    .listCard::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,rgba(79,134,232,.95) 0%,rgba(33,75,149,.88) 55%,rgba(126,167,222,.28) 100%)}
+    .listBody{padding:22px 22px 24px}
+    .benefitList,.audienceList{display:grid;gap:10px;margin:0;padding:0;list-style:none;align-content:start}
+    .benefitList li,.audienceList li{padding:13px 14px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,.03) 100%);border:1px solid rgba(151,179,225,.14);color:#c4d4ee;line-height:1.6}
+    .benefitList strong,.audienceList strong{color:#eef4ff}
+    .footerNote{margin-top:18px;color:#8fa8d0;font-size:13px}
+    .founderNote{margin-top:18px;padding:18px 20px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,.03) 100%);border:1px solid rgba(151,179,225,.14);color:#c9d8ef;line-height:1.75}
+    .founderNote strong{color:#eef4ff}
+    .companyCta{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-top:16px;padding:18px 20px;border-radius:22px;background:linear-gradient(145deg,rgba(16,35,66,.96) 0%,rgba(29,69,129,.92) 100%);border:1px solid rgba(126,159,212,.18);box-shadow:0 18px 34px rgba(0,0,0,.26)}
+    .companyCopy{color:#dce9fb;line-height:1.7;max-width:760px}
+    .companyCopy strong{color:#fff}
+    .founderQuote{margin-top:16px;padding:18px 20px;border-radius:22px;background:linear-gradient(145deg,rgba(16,35,66,.96) 0%,rgba(29,69,129,.92) 100%);border:1px solid rgba(126,159,212,.18);color:#eef4ff;font-size:20px;font-weight:800;line-height:1.5;letter-spacing:-.02em}
+    .quoteSource{display:block;margin-top:10px;color:#bfd4f8;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .timeline{display:grid;gap:12px}
+    .timelineStep{display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:start;padding:14px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,.03) 100%);border:1px solid rgba(151,179,225,.14)}
+    .timelineLabel{display:inline-flex;align-items:center;justify-content:center;padding:8px 10px;border-radius:999px;background:rgba(79,134,232,.18);border:1px solid rgba(126,159,212,.2);font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#dce9fd}
+    .timelineStep strong{display:block;color:#eef4ff;margin-bottom:4px}
+    .roadmapGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .roadmapCard{padding:16px 16px 18px;border-radius:22px;background:linear-gradient(180deg,rgba(10,18,33,.9) 0%,rgba(14,27,49,.92) 100%);border:1px solid rgba(126,159,212,.18);box-shadow:0 20px 36px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.04)}
+    .roadmapCard strong{display:block;color:#eef4ff;font-size:18px;margin-bottom:8px}
+    .roadmapTag{display:inline-flex;align-items:center;padding:6px 10px;margin-bottom:10px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(151,179,225,.14);color:#cfe0fb;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+    .roadmapCard p{margin:0;color:#a8bbd8;line-height:1.6;font-size:14px}
+    .bottomCta{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:22px 24px;border-radius:28px;background:linear-gradient(145deg,rgba(8,15,29,.96) 0%,rgba(12,25,49,.96) 48%,rgba(25,52,98,.86) 100%);border:1px solid rgba(126,159,212,.18);box-shadow:0 26px 46px rgba(0,0,0,.28)}
+    .bottomCtaText{max-width:760px}
+    .bottomCtaText h2{margin:0 0 8px;color:#fff;font-size:30px;letter-spacing:-.04em}
+    .bottomCtaText p{margin:0;color:#c7d8f1;line-height:1.7}
+    .socialRow{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .socialBtn{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:999px;text-decoration:none;color:#dce9fd;background:rgba(255,255,255,.06);border:1px solid rgba(151,179,225,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 18px rgba(0,0,0,.18);transition:transform .18s ease,background .18s ease,border-color .18s ease}
+    .socialBtn:hover{transform:translateY(-1px);background:rgba(255,255,255,.1);border-color:rgba(151,179,225,.26)}
+    .socialBtn svg{width:22px;height:22px;fill:currentColor;display:block}
+    .siteFooter{margin-top:22px;padding:18px 4px 4px;color:#89a2c8;font-size:13px;text-align:center}
+    @media (max-width:1180px){.toolGrid,.splitGrid,.heroPanel,.roadmapGrid{grid-template-columns:1fr}.heroTitle{font-size:42px}}
+    @media (max-width:720px){.wrap{padding:10px 14px 22px}.logoBox{width:min(100%,500px)}body.logo-shrink .logoBox{width:min(100%,420px)}.topRight{top:94px;right:14px;gap:8px}.topRight .socialBtn{width:40px;height:40px}.topRight .socialBtn svg{width:18px;height:18px}.hero{margin-bottom:-8px}.siteNav{margin-bottom:18px}.heroStats,.toolGrid,.roadmapGrid{grid-template-columns:1fr}.sectionTitle{font-size:28px}.introLogo{width:min(88vw,680px)}.timelineStep{grid-template-columns:1fr}.bottomCtaText h2{font-size:26px}.footingCols{grid-template-columns:1fr}}
+
+    /* FenceFlow unified light theme */
+    :root{--bg:#f3f1ea;--bgSoft:#faf9f5;--panel:#ffffff;--panelSoft:#f6f4ed;--panelMute:#eef3ee;--border:#d8ddd8;--borderStrong:#c4ccc4;--text:#1f2822;--muted:#5d675f;--brand:#5e7862;--brandDeep:#1d2a21;--brandSoft:#e6eee6;--accent:#b78a47;--accentStrong:#8d6936;--accentText:#1d2a21;--warnBg:rgba(183,138,71,.16);--warnBorder:rgba(183,138,71,.32);--warnText:#7a5823;--shadow:0 22px 48px rgba(24,31,26,.08);--shadowSoft:0 12px 28px rgba(24,31,26,.06)}
+    body{font-family:"Outfit",Arial,Helvetica,sans-serif;background:
+      radial-gradient(circle at top left, rgba(183,138,71,.14) 0%, rgba(183,138,71,0) 24%),
+      radial-gradient(circle at 82% 10%, rgba(94,120,98,.12) 0%, rgba(94,120,98,0) 28%),
+      linear-gradient(180deg,#f8f6f1 0%,#f1eee7 100%);color:var(--text)}
+    body::before{background:
+      linear-gradient(120deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 28%,rgba(255,255,255,.22) 58%,rgba(255,255,255,0) 80%),
+      radial-gradient(circle at 18% 0%, rgba(94,120,98,.06) 0%, rgba(94,120,98,0) 24%);
+      opacity:.85}
+    .wrap{padding:20px 20px 34px}
+    .topRight{display:flex;align-items:center;gap:10px;z-index:5;flex:0 0 auto;position:static;top:auto;right:auto}
+    .hero{display:grid;grid-template-columns:210px minmax(0,1fr) auto;align-items:center;gap:18px;margin-bottom:16px;position:relative;z-index:1;padding:20px 24px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.96);box-shadow:var(--shadowSoft);transition:padding .22s ease,border-radius .22s ease,box-shadow .22s ease,background-color .22s ease,border-color .22s ease}
+    .logoBox{width:192px;display:flex;align-items:center;position:relative;transform-origin:left center;transition:width .22s ease,transform .22s ease}
+    .logoBox img{filter:none}
+    .logoHotspot{position:absolute;inset:0;border-radius:14px}
+    body.logo-shrink .hero{padding:12px 18px;border-radius:999px;border-color:rgba(196,204,196,.78);background:rgba(255,255,255,.98);box-shadow:0 14px 34px rgba(24,31,26,.1)}
+    body.logo-shrink .logoBox{width:158px;transform:translateY(-1px)}
+    .siteNav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:0;position:relative;z-index:4;padding-bottom:0}
+    .siteNav a{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;min-height:42px;text-decoration:none;border-radius:999px;font-weight:700;font-size:.88rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color .18s ease,background .18s ease,transform .18s ease,box-shadow .18s ease,padding .22s ease,min-height .22s ease,font-size .22s ease}
+    .siteNav a::after{left:14px;right:14px;bottom:8px;height:2px;background:linear-gradient(90deg,var(--accent) 0%,#c79b57 100%);transform-origin:left center}
+    .siteNav a:hover{color:var(--brandDeep);background:#f1f4ee;transform:translateY(-1px)}
+    .siteNav a.active{color:var(--brandDeep);background:linear-gradient(180deg,#e8eee7 0%,#dde6dd 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+    .siteNav a.active::after{transform:scaleX(1)}
+    .betaBadge{display:inline-flex;align-items:center;justify-content:center;padding:0 16px;min-height:42px;border-radius:999px;background:linear-gradient(135deg,rgba(92,7,18,.9) 0%,rgba(145,15,31,.8) 48%,rgba(186,28,47,.66) 100%);border:1px solid rgba(255,255,255,.24);color:#fff7f7;font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;text-shadow:0 1px 0 rgba(53,4,10,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 12px 22px rgba(98,10,22,.24);backdrop-filter:blur(12px) saturate(145%);-webkit-backdrop-filter:blur(12px) saturate(145%);margin-left:0}
+    body.logo-shrink .siteNav a{padding:8px 12px;min-height:36px;font-size:.8rem}
+    body.logo-shrink .betaBadge{min-height:36px;padding:0 14px;font-size:9px}
+    .socialBtn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;text-decoration:none;color:var(--brandDeep);background:rgba(244,240,230,.72);border:1px solid var(--border);box-shadow:var(--shadowSoft);transition:transform .18s ease,background .18s ease,border-color .18s ease,width .22s ease,height .22s ease}
+    .socialBtn:hover{transform:translateY(-1px);background:var(--brandSoft);border-color:rgba(34,49,39,.16)}
+    .socialBtn svg{width:18px;height:18px;fill:currentColor}
+    body.logo-shrink .socialBtn{width:38px;height:38px}
+    .introSplash{background:
+      radial-gradient(circle at top left, rgba(183,138,71,.14) 0%, rgba(183,138,71,0) 24%),
+      radial-gradient(circle at 82% 10%, rgba(94,120,98,.12) 0%, rgba(94,120,98,0) 28%),
+      linear-gradient(180deg,#f8f6f1 0%,#f1eee7 100%)}
+    .introLogo{filter:drop-shadow(0 22px 36px rgba(24,31,26,.12))}
+    .introLogo img{filter:none}
+    .heroPanel,.card,.listCard,.roadmapCard,.founderNote{background:linear-gradient(180deg,#ffffff 0%,#f5f7f3 100%);border:1px solid var(--border);box-shadow:var(--shadow)}
+    .companyCta,.bottomCta,.founderQuote{background:linear-gradient(145deg,#f2efe6 0%,#e9ede5 100%);border:1px solid var(--borderStrong);box-shadow:var(--shadow)}
+    .heroPanel::before{background:radial-gradient(circle,rgba(183,138,71,.16) 0%,rgba(183,138,71,0) 68%)}
+    .heroPanel::after{background:radial-gradient(circle,rgba(94,120,98,.14) 0%,rgba(94,120,98,0) 70%)}
+    .card::before,.listCard::before{background:linear-gradient(90deg,var(--brand) 0%,var(--accent) 60%,rgba(183,138,71,.24) 100%)}
+    .heroTitle,.sectionTitle,.toolTitle,.bottomCtaText h2,.founderQuote,.roadmapCard strong{font-family:"Cormorant Garamond",serif;color:var(--brandDeep)}
+    .heroTitle{font-size:60px;line-height:.96}
+    .heroText,.sectionText,.toolText,.toolMeta li,.benefitList li,.audienceList li,.companyCopy,.founderNote,.roadmapCard p,.bottomCtaText p,.footerNote,.quoteSource{color:var(--muted)}
+    .eyebrow{color:var(--brand)}
+    .eyebrow::before{background:linear-gradient(90deg,var(--brand) 0%,var(--accent) 100%)}
+    .heroStat,.toolMeta li,.benefitList li,.audienceList li,.timelineStep{background:linear-gradient(180deg,#f7f4ec 0%,#eef3ee 100%);border:1px solid var(--border);box-shadow:var(--shadowSoft)}
+    .heroStat strong,.toolMeta strong,.benefitList strong,.audienceList strong,.companyCopy strong,.founderNote strong{color:var(--brandDeep)}
+    .heroStat span{color:var(--brand)}
+    .toolBadge,.roadmapTag,.timelineLabel{background:var(--brandSoft);border:1px solid rgba(94,120,98,.18);color:var(--brand)}
+    .toolPreview{background:linear-gradient(180deg,#faf8f2 0%,#eef3ee 100%);border:1px solid var(--border);box-shadow:inset 0 1px 0 rgba(255,255,255,.7)}
+    .previewTop{border-bottom:1px solid var(--border);background:rgba(255,255,255,.62)}
+    .previewDot{background:var(--accent)}
+    .previewLayoutStage,.previewFootingStage,.previewDrawingStage{background:linear-gradient(180deg,rgba(255,255,255,.75) 0%,rgba(246,244,237,.92) 100%)}
+    .footingRow,.footingPill{background:rgba(255,255,255,.76);border:1px solid var(--border);color:var(--brandDeep)}
+    .footingPill strong{color:var(--brandDeep)}
+    .primaryBtn,.ghostBtn{display:inline-flex;align-items:center;justify-content:center;border:none;border-radius:999px;padding:13px 20px;text-decoration:none;font-family:"Outfit",Arial,Helvetica,sans-serif;font-weight:800;font-size:14px;letter-spacing:.04em;text-transform:uppercase;transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease}
+    .primaryBtn{background:linear-gradient(135deg,var(--accent) 0%,#c79b57 100%);color:var(--accentText);box-shadow:0 16px 32px rgba(183,138,71,.2)}
+    .ghostBtn{background:var(--panel);color:var(--brandDeep);border:1px solid var(--borderStrong);box-shadow:var(--shadowSoft)}
+    .primaryBtn:hover,.ghostBtn:hover{transform:translateY(-1px)}
+    .siteFooter{color:var(--muted)}
+    @media (max-width:1100px){.hero{grid-template-columns:210px minmax(0,1fr);gap:16px}.topRight{justify-content:flex-end}.siteNav{justify-content:flex-start}}
+    @media (max-width:720px){.wrap{padding:14px 14px 22px}.hero{grid-template-columns:1fr;gap:12px;margin-bottom:14px;padding:14px 16px;border-radius:28px}.logoBox{width:min(100%,192px)}body.logo-shrink .logoBox{width:min(100%,158px)}.topRight{justify-content:flex-start}.topRight .socialBtn{width:40px;height:40px}.topRight .socialBtn svg{width:18px;height:18px}.siteNav{justify-content:flex-start;width:100%}.siteNav a{padding:8px 12px;min-height:36px;font-size:.78rem}.betaBadge{padding:0 12px;font-size:9px;min-height:36px}body.logo-shrink .hero{padding:10px 14px;border-radius:24px}.heroTitle{font-size:46px}.sectionTitle{font-size:30px}.introLogo{width:min(80vw,560px)}}
+  </style>
+</head>
+<body class="intro-playing">
+<div class="introSplash" aria-hidden="true">
+  <div class="introLogo"><img src="LOGO PACK/fenceflow-logo-tight.png" alt="FenceFlow intro logo" /></div>
+</div>
+<div class="wrap">
+  <div class="hero">
+    <div class="logoBox">
+      <img src="LOGO PACK/fenceflow-logo-tight.png" alt="FenceFlow logo" />
+      <a class="logoHotspot" href="https://caprofence.com" target="_blank" rel="noopener noreferrer" aria-label="Visit CA Pro Fence"></a>
+    </div>
+    <div class="siteNav">
+      <a class="active" href="./index.html">Home</a>
+      <a href="./layout-calculator.html">Layout Calculator</a>
+      <a href="./concrete-footing-calculator.html">Concrete Footings</a>
+      <a href="./shop-drawings.html">Shop Drawings</a>
+      <span class="betaBadge">Beta</span>
+    </div>
+    <div class="topRight">
+      <a class="socialBtn" href="https://www.tiktok.com/@profence?lang=en" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.3 2.1 1.5 3.7 3.4 4.2v2.9c-1.2 0-2.4-.4-3.4-1.1v6.1c0 3.6-2.8 6.1-6.2 6.1-3.2 0-5.8-2.3-5.8-5.5 0-3.4 2.6-5.8 6.4-5.8.3 0 .6 0 .9.1v3c-.3-.1-.6-.2-.9-.2-1.8 0-3.2 1.1-3.2 2.8 0 1.5 1.2 2.6 2.7 2.6 1.6 0 3-1 3-3.2V3h3.1z"/></svg></a>
+      <a class="socialBtn" href="https://www.instagram.com/profenceca" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm9.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></a>
+      <a class="socialBtn" href="https://www.facebook.com/ProFenceCA/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.7-1.6h1.6V4.8c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.6v8h2.9z"/></svg></a>
+    </div>
+  </div>
+
+  <section class="heroPanel">
+    <div class="heroCopy">
+      <h1 class="heroTitle">Chain link estimating,<br>done faster.</h1>
+      <p class="heroText">FenceFlow is a practical toolset built from real installer and estimator experience. Layout your job, calculate your concrete, and generate a shop drawing - all in the browser, no account required.</p>
+      <div class="heroBtns">
+        <a class="primaryBtn" href="./layout-calculator.html">Start a Layout</a>
+        <a class="ghostBtn" href="https://caprofence.com" target="_blank" rel="noopener noreferrer">Get a Fence Estimate</a>
+      </div>
+    </div>
+    <div class="heroStats">
+      <div class="heroStat"><strong>3</strong><span>Integrated Tools</span></div>
+      <div class="heroStat"><strong>100%</strong><span>Browser-Based</span></div>
+      <div class="heroStat"><strong>0</strong><span>Account Needed</span></div>
+      <div class="heroStat"><strong>Print</strong><span>Ready Output</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sectionHead">
+      <div>
+        <div class="eyebrow">Tool Suite</div>
+        <h2 class="sectionTitle">Pick the chain link workflow you need.</h2>
+      </div>
+      <p class="sectionText">Each tool is built around chain link fence estimating and planning while keeping the same FenceFlow look, feel, and client-ready polish.</p>
+    </div>
+    <div class="toolGrid">
+      <article class="card">
+        <div class="cardBody">
+          <div class="toolBadge">Estimator Core</div>
+          <h3 class="toolTitle">Layout Calculator</h3>
+          <div class="toolPreview">
+            <div class="previewTop"><span class="previewDot"></span><span class="previewDot"></span><span class="previewDot"></span></div>
+            <div class="previewLayoutStage">
+              <svg viewBox="0 0 520 150" aria-hidden="true">
+                <rect x="18" y="18" width="484" height="114" rx="18" fill="rgba(255,255,255,.03)" stroke="rgba(151,179,225,.08)"></rect>
+                <polyline points="46,92 200,70 200,40 384,40 384,100 474,100" fill="none" stroke="#dfe8fb" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                <circle cx="46" cy="92" r="9" fill="#78a8ff"></circle>
+                <circle cx="200" cy="70" r="9" fill="#78a8ff"></circle>
+                <circle cx="200" cy="40" r="9" fill="#78a8ff"></circle>
+                <circle cx="384" cy="40" r="9" fill="#78a8ff"></circle>
+                <circle cx="384" cy="100" r="9" fill="#78a8ff"></circle>
+                <circle cx="474" cy="100" r="9" fill="#78a8ff"></circle>
+                <rect x="220" y="50" width="144" height="42" rx="14" fill="rgba(79,134,232,.18)" stroke="rgba(126,159,212,.26)"></rect>
+                <line x1="242" y1="72" x2="342" y2="72" stroke="#dfe8fb" stroke-width="4" stroke-linecap="round"></line>
+                <text x="272" y="34" fill="#bcd1f5" font-size="12" font-weight="700">40 ft</text>
+                <text x="394" y="84" fill="#bcd1f5" font-size="12" font-weight="700">Gate</text>
+              </svg>
+            </div>
+          </div>
+          <p class="toolText">Build a bird's-eye chain link fence layout, adjust corners and gates, and generate a clean material breakdown with a printable layout and takeoff sheet.</p>
+          <ul class="toolMeta">
+            <li><span>Best for</span><strong>Perimeter takeoffs</strong></li>
+            <li><span>Output</span><strong>Layout + material PDF</strong></li>
+            <li><span>Strength</span><strong>Visual editing</strong></li>
+          </ul>
+          <a class="primaryBtn" href="./layout-calculator.html">Open Tool</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="cardBody">
+          <div class="toolBadge">Field Math</div>
+          <h3 class="toolTitle">Concrete Footings</h3>
+          <div class="toolPreview">
+            <div class="previewTop"><span class="previewDot"></span><span class="previewDot"></span><span class="previewDot"></span></div>
+            <div class="previewFootingStage">
+            <div class="footingCols">
+              <div class="footingList">
+                <div class="footingRow">2-3/8&quot; posts • 18 holes</div>
+                <div class="footingRow">4&quot; gate posts • 4 holes</div>
+                <div class="footingRow">10% overage • 80 lb bags</div>
+              </div>
+              <div class="footingTotals">
+                <div class="footingPill"><strong>5.42</strong>Cu yd</div>
+                <div class="footingPill"><strong>244</strong>Bags</div>
+              </div>
+            </div>
+            </div>
+          </div>
+          <p class="toolText">Calculate concrete for up to five footing groups with different post sizes, depths, diameters, bag sizes, and overage in one polished screen.</p>
+          <ul class="toolMeta">
+            <li><span>Best for</span><strong>Post footing takeoffs</strong></li>
+            <li><span>Output</span><strong>Cu ft, cu yd, bags</strong></li>
+            <li><span>Strength</span><strong>Mixed-size jobs</strong></li>
+          </ul>
+          <a class="primaryBtn" href="./concrete-footing-calculator.html">Open Tool</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="cardBody">
+          <div class="toolBadge">Presentation</div>
+          <h3 class="toolTitle">Shop Drawings</h3>
+          <div class="toolPreview">
+            <div class="previewTop"><span class="previewDot"></span><span class="previewDot"></span><span class="previewDot"></span></div>
+            <div class="previewDrawingStage"></div>
+            <div class="drawingLines"><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <p class="toolText">Turn selected chain link fence options into a cleaner preview-style drawing that helps explain the job to a client before the full submittal workflow is built out.</p>
+          <ul class="toolMeta">
+            <li><span>Best for</span><strong>Client previews</strong></li>
+            <li><span>Output</span><strong>Printable concept sheet</strong></li>
+            <li><span>Strength</span><strong>Clear visuals</strong></li>
+          </ul>
+          <a class="primaryBtn" href="./shop-drawings.html">Open Tool</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:18px;">
+    <div class="splitGrid">
+      <div class="stackCol">
+        <div class="listCard">
+          <div class="listBody">
+            <div class="eyebrow">Why It Helps</div>
+            <h2 class="sectionTitle">Built for faster chain link estimating and cleaner client conversations.</h2>
+            <ul class="benefitList">
+              <li><strong>Visual planning:</strong> lay out chain link fence runs, corners, and gates without sketching everything by hand.</li>
+              <li><strong>Faster takeoffs:</strong> get concrete, posts, rails, fittings, and wire totals from cleaner inputs.</li>
+              <li><strong>Better presentations:</strong> show a branded workflow instead of a rough spreadsheet or handwritten sketch.</li>
+              <li><strong>Print-ready output:</strong> save cleaner PDFs for office review, field use, and client-facing demos.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="listCard">
+          <div class="listBody">
+            <div class="eyebrow">Use Cases</div>
+            <h2 class="sectionTitle">Who this chain link toolset is for.</h2>
+            <ul class="audienceList">
+              <li><strong>Sales:</strong> explain fence scope and material needs faster during quoting.</li>
+              <li><strong>Estimating:</strong> build cleaner takeoffs with fewer missed components.</li>
+              <li><strong>Project management:</strong> turn early decisions into clearer direction for the shop or field.</li>
+              <li><strong>Install teams:</strong> print layout and footing information in a format that is easier to use on site.</li>
+            </ul>
+            <div class="footerNote">FenceFlow is currently in beta and focused on chain link fence estimating, planning, and presentation workflows.</div>
+          </div>
+        </div>
+      </div>
+      <div class="stackCol">
+        <div class="listCard">
+          <div class="listBody">
+            <div class="eyebrow">Founder Story</div>
+            <h2 class="sectionTitle">Why FenceFlow exists.</h2>
+            <div class="timeline">
+              <div class="timelineStep"><div class="timelineLabel">Field</div><div><strong>Started from real jobsite friction.</strong> FenceFlow came out of the repeated headaches of sketching runs, counting materials, and explaining scope the slow way.</div></div>
+              <div class="timelineStep"><div class="timelineLabel">Office</div><div><strong>Built around estimator needs.</strong> The goal was to make common chain link calculations and layout decisions happen faster and with less second-guessing.</div></div>
+              <div class="timelineStep"><div class="timelineLabel">Company</div><div><strong>Created by a real Bay Area fence company.</strong> This is not a generic mock product. It comes directly from actual fence work, quoting, and client conversations.</div></div>
+              <div class="timelineStep"><div class="timelineLabel">Platform</div><div><strong>Growing into a bigger workflow system.</strong> The long-term vision is a platform that helps chain link contractors plan, price, present, and build jobs faster.</div></div>
+            </div>
+            <div class="founderQuote">"Built because chain link estimating should not take longer than winning the job."<span class="quoteSource">FenceFlow Founder Perspective</span></div>
+          </div>
+        </div>
+        <div class="listCard">
+          <div class="listBody">
+            <div class="eyebrow">Built From Experience</div>
+            <h2 class="sectionTitle">Made by someone who actually knows the work.</h2>
+            <div class="founderNote"><strong>FenceFlow was built by a real installer and estimator with hands-on field experience</strong> who spent years wishing someone would create an app that could solve these everyday chain link problems in the snap of a finger. This platform comes from real jobsite frustration, real estimating needs, and a real belief that fence planning should be faster, cleaner, and easier to explain.</div>
+            <div class="companyCta">
+              <div class="companyCopy"><strong>We are also a real fence company serving the Bay Area.</strong> If you are looking for an actual fence estimate, installation help, or project consultation, you can go straight to our company website and request a quote there.</div>
+              <a class="primaryBtn" href="https://caprofence.com" target="_blank" rel="noopener noreferrer">Get a Fence Estimate</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="sectionHead">
+      <div>
+        <div class="eyebrow">Beta Roadmap</div>
+        <h2 class="sectionTitle">What is coming next.</h2>
+      </div>
+      <p class="sectionText">FenceFlow is already useful today, but the bigger vision is a deeper chain link workflow platform with more tools for estimating, presentation, and production planning.</p>
+    </div>
+    <div class="roadmapGrid">
+      <div class="roadmapCard">
+        <div class="roadmapTag">Next Up</div>
+        <strong>Deeper Shop Drawings</strong>
+        <p>More CAD-like details, cleaner schedules, footing callouts, and stronger printable submittal layouts.</p>
+      </div>
+      <div class="roadmapCard">
+        <div class="roadmapTag">Planning</div>
+        <strong>Proposal Tools</strong>
+        <p>Cleaner estimate summaries and presentation-ready outputs that help sales turn takeoffs into faster quotes.</p>
+      </div>
+      <div class="roadmapCard">
+        <div class="roadmapTag">Future</div>
+        <strong>More Estimating Workflows</strong>
+        <p>Expanded tools for additional chain link options, accessories, and more complete material logic.</p>
+      </div>
+      <div class="roadmapCard">
+        <div class="roadmapTag">Long Term</div>
+        <strong>Connected Job Flow</strong>
+        <p>A bigger platform vision that ties planning, estimating, presentation, and field coordination together.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="bottomCta">
+      <div class="bottomCtaText">
+        <h2>Explore the tools or get a real Bay Area fence quote.</h2>
+        <p>FenceFlow lets you explore the product side, while Pro Fence handles real-world estimating and installation for actual projects in the field.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="ghostBtn" href="./layout-calculator.html">Explore FenceFlow</a>
+        <a class="primaryBtn" href="https://caprofence.com" target="_blank" rel="noopener noreferrer">Get a Real Estimate</a>
+      </div>
+    </div>
+  </section>
+  <footer class="siteFooter">© 2026 FenceFlow by Pro Fence. All rights reserved.</footer>
+</div>
+<script>
+function startIntro(){const splash=document.querySelector('.introSplash'),introLogo=document.querySelector('.introLogo'),targetLogo=document.querySelector('.logoBox img');if(!splash||!introLogo||!targetLogo){document.body.classList.remove('intro-playing');document.body.classList.add('intro-done');return}if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.body.classList.remove('intro-playing');document.body.classList.add('intro-done');splash.remove();return}targetLogo.style.opacity='0';introLogo.style.opacity='0';requestAnimationFrame(()=>{introLogo.style.transition='opacity .95s ease';introLogo.style.opacity='1'});window.setTimeout(()=>{const currentRect=introLogo.getBoundingClientRect(),targetRect=targetLogo.getBoundingClientRect();introLogo.style.transition='none';introLogo.style.transform='none';introLogo.style.left=`${currentRect.left}px`;introLogo.style.top=`${currentRect.top}px`;introLogo.style.width=`${currentRect.width}px`;introLogo.style.opacity='1';splash.style.visibility='visible';splash.style.opacity='1';document.body.classList.remove('intro-playing');document.body.classList.add('intro-done');requestAnimationFrame(()=>{requestAnimationFrame(()=>{introLogo.style.transition='left .95s cubic-bezier(.19,.82,.22,1), top .95s cubic-bezier(.19,.82,.22,1), width .95s cubic-bezier(.19,.82,.22,1)';introLogo.style.left=`${targetRect.left}px`;introLogo.style.top=`${targetRect.top}px`;introLogo.style.width=`${targetRect.width}px`})})},3050);window.setTimeout(()=>{targetLogo.style.transition='opacity .18s ease';targetLogo.style.opacity='1';splash.style.transition='opacity .34s ease';splash.style.opacity='0'},4100);window.setTimeout(()=>{splash.remove()},4480)}
+window.addEventListener('scroll',()=>document.body.classList.toggle('logo-shrink',window.scrollY>28),{passive:true});
+document.body.classList.toggle('logo-shrink',window.scrollY>28);
+startIntro();
+</script>
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FenceFlow | Layout Calculator</title>
+  <meta name="description" content="Build chain link fence layouts with stretches, corners, and gates, then generate a material breakdown and printable sheets." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="theme-color" content="#07101d" />
+  <link rel="canonical" href="https://fence-flow.com/layout-calculator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FenceFlow" />
+  <meta property="og:title" content="FenceFlow | Layout Calculator" />
+  <meta property="og:description" content="Draw chain link fence runs, corners, and gates with live takeoff quantities and printable layout sheets." />
+  <meta property="og:url" content="https://fence-flow.com/layout-calculator.html" />
+  <meta property="og:image" content="https://fence-flow.com/LOGO%20PACK/fenceflow-logo-transparent.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FenceFlow | Layout Calculator" />
+  <meta name="twitter:description" content="Chain link fence layout builder with live materials and print-ready output." />
+  <meta name="twitter:image" content="https://fence-flow.com/LOGO%20PACK/fenceflow-logo-transparent.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"FenceFlow Layout Calculator","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://fence-flow.com/layout-calculator.html","description":"Chain link fence layout planning tool with materials and printable output.","creator":{"@type":"Organization","name":"Pro Fence","url":"https://caprofence.com"}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#f3f1ea;--bgSoft:#faf9f5;--panel:#ffffff;--panelSoft:#f6f4ed;--panelMute:#eef3ee;--border:#d8ddd8;--borderStrong:#c4ccc4;--text:#1f2822;--muted:#5d675f;--brand:#5e7862;--brandDeep:#1d2a21;--brandSoft:#e6eee6;--accent:#b78a47;--accentStrong:#8d6936;--accentText:#1d2a21;--warnBg:rgba(183,138,71,.16);--warnBorder:rgba(183,138,71,.32);--warnText:#7a5823;--select:#5e7862;--shadow:0 22px 48px rgba(24,31,26,.08);--shadowSoft:0 12px 28px rgba(24,31,26,.06)}
+    *{box-sizing:border-box} body{margin:0;font-family:"Outfit",Arial,Helvetica,sans-serif;background:
+      radial-gradient(circle at top left, rgba(183,138,71,.14) 0%, rgba(183,138,71,0) 24%),
+      radial-gradient(circle at 82% 10%, rgba(94,120,98,.12) 0%, rgba(94,120,98,0) 28%),
+      linear-gradient(180deg,#f8f6f1 0%,#f1eee7 100%);color:var(--text)}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;background:
+      linear-gradient(120deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 28%,rgba(255,255,255,.22) 58%,rgba(255,255,255,0) 80%),
+      radial-gradient(circle at 18% 0%, rgba(94,120,98,.06) 0%, rgba(94,120,98,0) 24%);
+      opacity:.85}
+    .wrap{max-width:1280px;margin:0 auto;padding:20px 20px 34px;position:relative}
+    .topRight{display:flex;align-items:center;gap:10px;z-index:5;flex:0 0 auto}
+    .hero{display:grid;grid-template-columns:210px minmax(0,1fr) auto;align-items:center;gap:18px;margin-bottom:16px;position:relative;z-index:1;padding:20px 24px;min-height:0;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.96);box-shadow:var(--shadowSoft);transition:padding .22s ease,border-radius .22s ease,box-shadow .22s ease,background-color .22s ease,border-color .22s ease}
+    .logoBox{width:192px;display:flex;align-items:center;position:relative;transform-origin:left center;transition:width .22s ease,transform .22s ease}
+    .logoBox img{width:100%;height:auto;display:block;filter:none}
+    .logoHotspot{position:absolute;inset:0;border-radius:14px}
+    body.logo-shrink .hero{padding:12px 18px;border-radius:999px;border-color:rgba(196,204,196,.78);background:rgba(255,255,255,.98);box-shadow:0 14px 34px rgba(24,31,26,.1)}
+    body.logo-shrink .logoBox{width:158px;transform:translateY(-1px)}
+    .siteNav{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:0;position:relative;z-index:4}
+    .siteNav a{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;min-height:42px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.88rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color .18s ease,background .18s ease,transform .18s ease,box-shadow .18s ease,padding .22s ease,min-height .22s ease,font-size .22s ease}
+    .siteNav a::after{content:'';position:absolute;left:14px;right:14px;bottom:8px;height:2px;border-radius:999px;background:linear-gradient(90deg,var(--accent) 0%,#c79b57 100%);transform:scaleX(0);transform-origin:left center;transition:transform .22s ease}
+    .siteNav a:hover{color:var(--brandDeep);background:#f1f4ee;transform:translateY(-1px)}
+    .siteNav a.active{color:var(--brandDeep);background:linear-gradient(180deg,#e8eee7 0%,#dde6dd 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+    .siteNav a.active::after{transform:scaleX(1)}
+    .betaBadge{display:inline-flex;align-items:center;justify-content:center;padding:0 16px;min-height:42px;border-radius:999px;background:linear-gradient(135deg,rgba(92,7,18,.9) 0%,rgba(145,15,31,.8) 48%,rgba(186,28,47,.66) 100%);border:1px solid rgba(255,255,255,.24);color:#fff7f7;font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;text-shadow:0 1px 0 rgba(53,4,10,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 12px 22px rgba(98,10,22,.24);backdrop-filter:blur(12px) saturate(145%);-webkit-backdrop-filter:blur(12px) saturate(145%);transition:min-height .22s ease,padding .22s ease,font-size .22s ease}
+    body.logo-shrink .siteNav a{padding:8px 12px;min-height:36px;font-size:.8rem}
+    body.logo-shrink .betaBadge{min-height:36px;padding:0 14px;font-size:9px}
+    .actions,.visualBuilderTools{display:flex;gap:10px;flex-wrap:wrap}.builderActions{margin-bottom:12px} button{border:none;border-radius:999px;padding:12px 18px;cursor:pointer;font-family:"Outfit",Arial,Helvetica,sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease}.primary{background:linear-gradient(135deg,var(--accent) 0%,#c79b57 100%);color:var(--accentText);box-shadow:0 16px 32px rgba(183,138,71,.2)} .ghost{background:var(--panel);color:var(--brandDeep);border:1px solid var(--borderStrong);box-shadow:var(--shadowSoft)} button:hover{transform:translateY(-1px)} .primary:hover{box-shadow:0 20px 34px rgba(183,138,71,.24)} .ghost:hover{background:var(--brandSoft);border-color:rgba(34,49,39,.16)}
+    .saveBar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;padding:12px 14px;border-radius:20px;background:linear-gradient(180deg,#ffffff 0%,#f4f7f3 100%);border:1px solid var(--border)}
+    .saveBarText{color:var(--muted);font-size:12px;flex:1;min-width:180px}
+    .saveIndicator{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;color:var(--brand);opacity:0;transition:opacity .35s ease}
+    .saveIndicator.show{opacity:1}
+    .saveIndicator::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brand)}
+    .sketchWrap{
+      background:
+        radial-gradient(circle at center, rgba(94,120,98,.14) 0 1.6px, transparent 1.8px) 0 0/76px 76px,
+        radial-gradient(circle at 16% 14%, rgba(183,138,71,.09) 0%, rgba(183,138,71,0) 24%),
+        radial-gradient(circle at 84% 18%, rgba(94,120,98,.08) 0%, rgba(94,120,98,0) 30%),
+        linear-gradient(180deg,#f4f1ea 0%,#ebe6db 100%);
+      border:1px solid var(--borderStrong);
+      border-radius:24px;
+      padding:12px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.6),var(--shadowSoft);
+      overflow:auto;
+      min-height:640px;
+      max-height:720px
+    }
+    .sketchWrap::-webkit-scrollbar{height:10px;width:10px}
+    .sketchWrap::-webkit-scrollbar-thumb{background:rgba(94,120,98,.26);border-radius:999px}
+    .sketchWrap::-webkit-scrollbar-track{background:rgba(255,255,255,.45);border-radius:999px}
+    .layout{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;align-items:start}.card{position:relative;background:linear-gradient(180deg,#ffffff 0%,#f5f7f3 100%);border:1px solid var(--border);border-radius:28px;overflow:hidden;box-shadow:var(--shadow)}.card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--brand) 0%,var(--accent) 60%,rgba(183,138,71,.24) 100%)}.cardHead{padding:24px 22px 12px;font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:700;color:var(--brandDeep);letter-spacing:-.02em}.cardBody{padding:18px 22px 22px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:8px}.field label{color:var(--muted);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase} input,select{width:100%;border-radius:16px;border:1px solid var(--borderStrong);background:var(--panel);color:var(--text);padding:12px 14px;font-size:15px;font-weight:600;box-shadow:inset 0 1px 0 rgba(255,255,255,.65)} select option{background:#ffffff;color:var(--text)}
+    .sectionGap{margin-top:18px}.miniTitle,.results .sectionTitle{display:flex;align-items:center;gap:8px;color:var(--brand);text-transform:uppercase;font-size:11px;letter-spacing:.14em;font-weight:900;margin:0 0 12px}.miniTitle::before,.results .sectionTitle::before{content:'';width:22px;height:2px;border-radius:999px;background:linear-gradient(90deg,var(--brand) 0%,var(--accent) 100%)}.row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:12px 14px;border-radius:18px;background:linear-gradient(180deg,#ffffff 0%,#f6f4ed 100%);border:1px solid var(--border);margin-bottom:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}.muted{color:var(--muted)}
+    .warning{padding:14px 16px;border-radius:18px;background:var(--warnBg);border:1px solid var(--warnBorder);color:var(--warnText);margin-bottom:16px;font-size:14px;font-weight:600}.builderNote{font-size:13px;color:var(--muted);margin:12px 0 14px}.builderError{display:none;padding:12px 14px;border-radius:14px;background:rgba(122,88,35,.08);border:1px solid rgba(122,88,35,.22);color:var(--warnText);font-size:13px;font-weight:700;margin:-4px 0 12px}.sketchWrap,.inspectorWrap{border:1px solid var(--border);border-radius:22px;padding:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}.inspectorWrap{background:linear-gradient(180deg,#ffffff 0%,#f7f5ef 100%);margin-top:14px}.inspectorGrid,.summaryGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.summaryGrid{gap:10px;margin-bottom:14px}.summaryChip{background:linear-gradient(180deg,#f7f4ec 0%,#eef3ee 100%);border:1px solid var(--border);border-radius:16px;padding:10px 12px;font-size:14px;box-shadow:var(--shadowSoft)}.summaryChip strong{display:block;font-size:18px;color:var(--brandDeep)}
+    .floatingWarnings{position:fixed;right:18px;bottom:18px;z-index:1000;max-width:min(420px,calc(100vw - 36px));display:none}
+    .floatingBuilderError{display:none;padding:12px 14px;border-radius:14px;background:rgba(255,248,235,.96);border:1px solid var(--warnBorder);color:var(--warnText);font-size:13px;font-weight:700;box-shadow:var(--shadowSoft);backdrop-filter:blur(6px);margin-bottom:8px}
+    .floatingWarnings .warning{margin:0 0 8px;box-shadow:var(--shadowSoft);backdrop-filter:blur(6px)}
+    .floatingWarnings .warning:last-child{margin-bottom:0}
+    .layoutList{max-height:360px;overflow:auto;padding-right:4px}.layoutItem{display:grid;grid-template-columns:1fr auto;gap:12px;padding:12px;border:1px solid var(--border);border-radius:18px;background:linear-gradient(180deg,#ffffff 0%,#f6f4ed 100%);margin-bottom:10px;box-shadow:inset 0 1px 0 rgba(255,255,255,.45)}.layoutItem.selected{border-color:var(--select);box-shadow:0 0 0 1px rgba(94,120,98,.18) inset,var(--shadowSoft)}.layoutItemTitle{font-weight:800;margin-bottom:6px;color:var(--brandDeep)}.layoutButtons{display:flex;gap:8px;flex-wrap:wrap;align-items:start}.layoutButtons button{padding:9px 12px}.publicNote{color:var(--muted);font-size:13px;margin-top:8px}.socialRow{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}.socialBtn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;text-decoration:none;color:var(--brandDeep);background:rgba(244,240,230,.72);border:1px solid var(--border);box-shadow:var(--shadowSoft);transition:transform .18s ease,background .18s ease,border-color .18s ease,width .22s ease,height .22s ease}.socialBtn:hover{transform:translateY(-1px);background:var(--brandSoft);border-color:rgba(34,49,39,.16)}.socialBtn svg{width:18px;height:18px;fill:currentColor;display:block}.siteFooter{margin-top:22px;padding:18px 4px 4px;color:var(--muted);font-size:13px;text-align:center}
+    body.logo-shrink .socialBtn{width:38px;height:38px}
+    .svgHit{cursor:pointer}.svgMeasureLabel,.svgPointLabel,.svgGate{cursor:move}
+    body.printing{background:#fff!important;color:#000!important}
+    body.printing::before{display:none!important}
+    body.printing .wrap,body.printing .topRight,body.printing .siteFooter{display:none!important}
+    body.printing .printSheets{display:block!important}
+    .printSheets{display:none}.printPage{background:#fff;color:#111;break-inside:avoid;page-break-inside:avoid;padding-top:0}.printHeader{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:8px;padding-bottom:8px;border-bottom:2px solid #16315d}.printBrand{display:flex;align-items:flex-start;gap:16px}.printBrand img{width:210px;height:auto;display:block}.printTitleWrap{display:flex;flex-direction:column;gap:4px;padding-top:2px}.printEyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#46679f}.printHeader h2{margin:0;font-size:24px;line-height:1.1;color:#142849}.printMeta{font-size:12px;color:#3f4d63;line-height:1.45}.printMeta strong{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#46679f;margin-bottom:2px}.printSection{margin-bottom:10px}.printSection h3{margin:0 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#16315d}.printList{display:grid;grid-template-columns:72px 1fr 90px 110px;gap:6px 14px}.printListHead,.printListRow{display:contents}.printListHead div,.printListRow div{padding:6px 0;border-bottom:1px solid #ddd}.printListHead div{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid #16315d;color:#16315d}.printQty{text-align:left;font-weight:700}.printFound,.printBackorder{text-align:center}.printWriteLine{display:block;min-height:20px;border-bottom:1px solid #888}.printLayout svg{height:620px!important;background:#fff!important}.printLayout svg polyline{stroke:#000!important;fill:none!important}.printLayout svg line{stroke:#000!important}.printLayout svg text{fill:#000!important;stroke:none!important}.printLayout svg text.svgGateTextMain,.printLayout svg text.svgGateTextSub{fill:#fff!important;stroke:none!important}.pageBreak{break-before:page;page-break-before:always}
+    @media print{@page{size:auto;margin:.35in}body{background:#fff!important;color:#000!important}body::before{display:none!important}.wrap,.topRight,.siteFooter,.floatingWarnings{display:none!important}.printSheets{display:block!important}.printPage{min-height:auto}.visualBuilderTools,.builderNote,#layoutInspector,.layoutList,.publicNote{display:none!important}.card,.sketchWrap{box-shadow:none;border-color:#ccc;background:#fff}svg{background:#fff!important}}
+    @media (max-width:1280px){.layout{grid-template-columns:1fr}}
+    @media (max-width:1100px){.hero{grid-template-columns:210px minmax(0,1fr);gap:16px}.topRight{justify-content:flex-end}.siteNav{justify-content:flex-start}}
+    @media (max-width:720px){.logoBox{width:min(100%,192px)}body.logo-shrink .logoBox{width:min(100%,158px)}.builderActions{justify-content:flex-start}.grid,.inspectorGrid,.summaryGrid{grid-template-columns:1fr}.wrap{padding:14px 14px 20px}.hero{grid-template-columns:1fr;gap:12px;margin-bottom:14px;padding:14px 16px;min-height:auto;border-radius:28px}.topRight{justify-content:flex-start}.topRight .socialBtn{width:40px;height:40px}.topRight .socialBtn svg{width:18px;height:18px}.siteNav{justify-content:flex-start;width:100%}.siteNav a{padding:8px 12px;min-height:36px;font-size:.78rem}.layoutItem{grid-template-columns:1fr}.betaBadge{padding:0 12px;font-size:9px;min-height:36px}body.logo-shrink .hero{padding:10px 14px;min-height:auto;border-radius:24px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="logoBox"><img src="LOGO PACK/fenceflow-logo-tight.png" alt="FenceFlow logo" /><a class="logoHotspot" href="https://caprofence.com" target="_blank" rel="noopener noreferrer" aria-label="Visit CA Pro Fence"></a></div>
+    <div class="siteNav"><a href="./index.html">Home</a><a class="active" href="./layout-calculator.html">Layout Calculator</a><a href="./concrete-footing-calculator.html">Concrete Footings</a><a href="./shop-drawings.html">Shop Drawings</a><span class="betaBadge">Beta</span></div>
+    <div class="topRight">
+      <a class="socialBtn" href="https://www.tiktok.com/@profence?lang=en" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.3 2.1 1.5 3.7 3.4 4.2v2.9c-1.2 0-2.4-.4-3.4-1.1v6.1c0 3.6-2.8 6.1-6.2 6.1-3.2 0-5.8-2.3-5.8-5.5 0-3.4 2.6-5.8 6.4-5.8.3 0 .6 0 .9.1v3c-.3-.1-.6-.2-.9-.2-1.8 0-3.2 1.1-3.2 2.8 0 1.5 1.2 2.6 2.7 2.6 1.6 0 3-1 3-3.2V3h3.1z"/></svg></a>
+      <a class="socialBtn" href="https://www.instagram.com/profenceca" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm9.75 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></a>
+      <a class="socialBtn" href="https://www.facebook.com/ProFenceCA/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.7-1.6h1.6V4.8c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.6v8h2.9z"/></svg></a>
+    </div>
+  </div>
+  <div class="layout">
+    <div>
+      <div class="card"><div class="cardHead">Bird's-Eye Visual Builder</div><div class="cardBody">
+        <div class="saveBar"><span class="saveBarText">This layout auto-saves to this browser.</span><span class="saveIndicator" id="saveIndicator">Saved</span><button class="ghost" id="resetLayoutBtn" type="button">Reset Layout</button></div>
+        <div class="actions builderActions"><button class="ghost" id="undoBtn" type="button">Undo</button><button class="ghost" id="redoBtn" type="button">Redo</button><button class="primary" id="printBtn" type="button">Print / Save PDF</button></div>
+        <div class="builderNote">Click runs, ends, corners, or gates to edit them. Drag measurement labels, post labels, and gate labels to move text where you want it.</div>
+        <div id="builderError" class="builderError"></div>
+        <div id="layoutSketch"></div><div id="layoutInspector"></div>
+      </div></div>
+      <div class="card sectionGap"><div class="cardHead">Job Setup</div><div class="cardBody grid"><div class="field"><label for="name">Job Name</label><input id="name" /></div><div class="field"><label for="fabricHeight">Fabric Height</label><select id="fabricHeight"></select></div><div class="field"><label for="postSpacing">Post Spacing</label><select id="postSpacing"></select></div><div class="field"><label for="diamondSize">Diamond Size</label><select id="diamondSize"></select></div></div></div>
+      <div class="card sectionGap"><div class="cardHead">Materials & Options</div><div class="cardBody grid"><div class="field"><label for="linePostSize">Line Post Size</label><select id="linePostSize"></select></div><div class="field"><label for="railSize">Rail Size</label><select id="railSize"></select></div><div class="field"><label for="barbedWire">Barbed Wire</label><select id="barbedWire"></select></div><div class="field"><label for="bottomMiddleConnectorType">Bottom/Middle Connector Type</label><select id="bottomMiddleConnectorType"></select></div><div class="field"><label for="terminalFootingDepth">Terminal Depth</label><select id="terminalFootingDepth"></select></div><div class="field"><label for="terminalFootingWidth">Terminal Width</label><select id="terminalFootingWidth"></select></div><div class="field"><label for="gateFootingDepth">Gate Post Depth</label><select id="gateFootingDepth"></select></div><div class="field"><label for="gateFootingWidth">Gate Post Width</label><select id="gateFootingWidth"></select></div><div class="field"><label for="lineFootingDepth">Line Depth</label><select id="lineFootingDepth"></select></div><div class="field"><label for="lineFootingWidth">Line Width</label><select id="lineFootingWidth"></select></div></div></div>
+      <div class="card sectionGap"><div class="cardHead">Rails & Security</div><div class="cardBody grid"><label class="row" style="margin:0;"><span>Top Rail</span><input id="useTopRail" type="checkbox" style="width:18px;height:18px;" /></label><label class="row" style="margin:0;"><span>Top Tension Wire</span><input id="useTopTensionWire" type="checkbox" style="width:18px;height:18px;" /></label><label class="row" style="margin:0;"><span>Bottom Rail</span><input id="useBottomRail" type="checkbox" style="width:18px;height:18px;" /></label><label class="row" style="margin:0;"><span>Bottom Tension Wire</span><input id="useBottomTensionWire" type="checkbox" style="width:18px;height:18px;" /></label><label class="row" style="margin:0;"><span>Middle Rail</span><input id="useMiddleRail" type="checkbox" style="width:18px;height:18px;" /></label><label class="row" style="margin:0;"><span>Box Braces at All Ends</span><input id="useBoxBraces" type="checkbox" style="width:18px;height:18px;" /></label><label class="row" style="margin:0; grid-column:1/-1;"><span>Razor Ribbon Pop-Up</span><input id="razorRibbon" type="checkbox" style="width:18px;height:18px;" /></label></div></div>
+      <div class="card results" style="position:sticky; top:18px;"><div class="cardHead">FenceFlow Material Breakdown</div><div class="cardBody"><div id="warnings"></div><div id="layoutSummary"></div><div id="results"></div><div class="publicNote">Use your browser's print dialog and choose "Save as PDF" to save this page.</div></div></div>
+    </div>
+  </div>
+</div>
+<div id="floatingWarnings" class="floatingWarnings"><div id="floatingBuilderError" class="floatingBuilderError"></div></div>
+<footer class="siteFooter">© 2026 FenceFlow by Pro Fence. All rights reserved.</footer>
+<div class="printSheets" id="printSheets"></div>
+<script>
+const fabricHeights=[3,4,5,6,7,8,10,12],terminalPostSizes=['2-3/8"','2-7/8"','3-1/2"','4"','6-5/8"'],linePostSizes=['1-7/8"','2-3/8"','2-7/8"','3-1/2"'],railSizes=['1-3/8"','1-5/8"','1-7/8"','2-3/8"'],spacings=[10,9,8,7,6,5,4],footingDepths=[2,2.5,3,3.5,4,4.5,5,6,7,8,9,10],footingWidths=[6,8,10,12,16,18,20,22,24];
+const diamondOptions=[{label:'3/8"',roll:25},{label:'1/2"',roll:25},{label:'5/8"',roll:25},{label:'1"',roll:25},{label:'1-3/4"',roll:50},{label:'2"',roll:50},{label:'2-1/4"',roll:50},{label:'2-3/8"',roll:50},{label:'3" privacy slat mesh',roll:25}],barbedOptions=[{value:'none',label:'No barbed wire',strands:0,braceBandsPerTerminal:0},{value:'3',label:'3 strands',strands:3,braceBandsPerTerminal:3},{value:'4',label:'4 strands',strands:4,braceBandsPerTerminal:4},{value:'6',label:'6 strands',strands:6,braceBandsPerTerminal:3}],connectorOptions=[{value:'none',label:'None'},{value:'brace_bands',label:'2-way brace bands'},{value:'rail_clamps',label:'Rail clamps'}];
+const LS_KEY='fenceflow_layout_v1';
+const fieldIds=['name','fabricHeight','postSpacing','linePostSize','railSize','diamondSize','useTopRail','useTopTensionWire','useBottomRail','useBottomTensionWire','useMiddleRail','useBoxBraces','bottomMiddleConnectorType','barbedWire','razorRibbon','terminalFootingDepth','terminalFootingWidth','gateFootingDepth','gateFootingWidth','lineFootingDepth','lineFootingWidth'];
+function createId(){if(window.crypto&&typeof window.crypto.randomUUID==='function')return window.crypto.randomUUID();return 'id-'+Math.random().toString(36).slice(2)+Date.now().toString(36)}
+function clone(x){return JSON.parse(JSON.stringify(x))}
+function fmtFeet(v){const w=Math.floor(v),i=Math.round((v-w)*12);return i===0?`${w}'`:`${w}' ${i}"`}
+function cylVolumeFt3(d,depth){const df=d/12,r=df/2;return Math.PI*r*r*depth}
+function railStockLength(spacing){return [10,9,7,5].includes(spacing)?21:24}
+function tensionBandsEach(height){return height<=4?height:height-1}
+function escapeHtml(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
+function postRadius(size){const map={'1-7/8"':6,'2-3/8"':8,'2-7/8"':9,'3-1/2"':10,'4"':11,'6-5/8"':13};return map[size||'2-3/8"']||8}
+function defaultJob(){return{name:'Public Layout',fabricHeight:'6',postSpacing:'10',linePostSize:'1-7/8"',railSize:'1-3/8"',diamondSize:'2"',useTopRail:true,useTopTensionWire:false,useBottomRail:false,useBottomTensionWire:true,useMiddleRail:false,useBoxBraces:false,bottomMiddleConnectorType:'none',barbedWire:'none',razorRibbon:false,terminalFootingDepth:'3',terminalFootingWidth:'12',gateFootingDepth:'3',gateFootingWidth:'12',lineFootingDepth:'2',lineFootingWidth:'8',layoutItems:[{id:createId(),type:'end',postSize:'2-3/8"'},{id:createId(),type:'stretch',length:100},{id:createId(),type:'end',postSize:'2-3/8"'}],measureOffsets:{},labelOffsets:{}}}
+let job=defaultJob(),selectedLayoutItemId=null,draggedId=null,undoStack=[],redoStack=[],builderErrorMessage='';
+let saveTimeout=null;
+function lsSave(){try{localStorage.setItem(LS_KEY,JSON.stringify(job));showSaveIndicator()}catch(e){}}
+function lsLoad(){try{const raw=localStorage.getItem(LS_KEY);return raw?JSON.parse(raw):null}catch(e){return null}}
+function showSaveIndicator(){const el=document.getElementById('saveIndicator');if(!el)return;el.classList.add('show');clearTimeout(el._timer);el._timer=setTimeout(()=>el.classList.remove('show'),1800)}
+function scheduleSave(){clearTimeout(saveTimeout);saveTimeout=setTimeout(lsSave,500)}
+function saveHistory(){undoStack.push(clone(job));if(undoStack.length>100)undoStack.shift();redoStack=[]}
+function restoreState(state){job=clone(state);selectedLayoutItemId=null;renderAll()}
+function setBuilderError(message){
+  builderErrorMessage=message||'';
+  const errorEl=document.getElementById('builderError');
+  const floatingErrorEl=document.getElementById('floatingBuilderError');
+  if(!errorEl)return;
+  if(builderErrorMessage){
+    errorEl.textContent=builderErrorMessage;
+    errorEl.style.display='block';
+    if(floatingErrorEl){
+      floatingErrorEl.textContent=builderErrorMessage;
+      floatingErrorEl.style.display='block';
+    }
+  }else{
+    errorEl.textContent='';
+    errorEl.style.display='none';
+    if(floatingErrorEl){
+      floatingErrorEl.textContent='';
+      floatingErrorEl.style.display='none';
+    }
+  }
+}
+function itemLabel(item){if(item.type==='stretch')return `Stretch ${item.length||0} ft`;if(item.type==='end')return `End ${item.postSize||'2-3/8"'}`;if(item.type==='corner')return `Corner ${item.postSize||'2-3/8"'}`;if(item.type==='singleGate')return `Single Gate ${item.width||4} ft`;if(item.type==='doubleGate')return `Double Gate ${item.width||12} ft`;if(item.type==='slideGate')return `Slide Gate ${item.width||20} ft`;return item.type}
+function applyTurnToDirection(dir,turn){if(turn==='straight'||!turn)return dir;if(dir===0||dir===2)return turn==='up'?3:1;return turn==='left'?2:0}
+function getDirectionAtIndex(index){let dir=0;for(let i=0;i<index;i++){const prev=job.layoutItems[i];if(prev.type==='corner')dir=applyTurnToDirection(dir,normalizeCornerTurn(prev,i));else if(['singleGate','doubleGate','slideGate'].includes(prev.type))dir=applyTurnToDirection(dir,normalizeGateTurn(prev,i))}return dir}
+function getTurnOptions(index,includeStraight=false){const dir=getDirectionAtIndex(index),options=(dir===0||dir===2)?[{value:'up',label:'Up'},{value:'down',label:'Down'}]:[{value:'left',label:'Left'},{value:'right',label:'Right'}];return includeStraight?[{value:'straight',label:'Straight'},...options]:options}
+function getCornerOptions(index){return getTurnOptions(index,false)}
+function normalizeCornerTurn(item,index){const vals=getCornerOptions(index).map(x=>x.value);return vals.includes(item.turn)?item.turn:vals[0]}
+function normalizeGateTurn(item,index){const vals=getTurnOptions(index,true).map(x=>x.value);return vals.includes(item.turn)?item.turn:vals[0]}
+function normalizeHingeSide(value){return value==='right'?'right':'left'}
+function analyzeGateAt(index){const items=job.layoutItems||[];const prev=items[index-1]||null,next=items[index+1]||null;return{leftFence:!!prev&&prev.type==='stretch',rightFence:!!next&&next.type==='stretch',leftOverlap:!!prev&&['end','corner'].includes(prev.type),rightOverlap:!!next&&['end','corner'].includes(next.type)}}
+function getOverlappedTerminalIndices(){const set=new Set();(job.layoutItems||[]).forEach((item,index)=>{if(['singleGate','doubleGate','slideGate'].includes(item.type)){const info=analyzeGateAt(index);if(info.leftOverlap)set.add(index-1);if(info.rightOverlap)set.add(index+1)}});return set}
+function isTerminalType(type){
+  return ['end','corner','singleGate','doubleGate','slideGate'].includes(type);
+}
+function canPlaceCornerAtInsertIndex(index){
+  const prev=job.layoutItems[index-1],next=job.layoutItems[index];
+  return !(prev&&isTerminalType(prev.type))&&!(next&&isTerminalType(next.type));
+}
+function deriveCounts(){const items=job.layoutItems||[],overlapped=getOverlappedTerminalIndices();let totalFenceLength=0,endPosts=0,cornerPosts=0,gatePosts=0,singleGates=0,doubleGates=0,slideGates=0,stretches=0,gateWidthTotal=0;items.forEach((item,index)=>{if(item.type==='stretch'){totalFenceLength+=Number(item.length)||0;stretches+=1}else if(item.type==='end'&&!overlapped.has(index))endPosts+=1;else if(item.type==='corner'&&!overlapped.has(index))cornerPosts+=1;else if(['singleGate','doubleGate','slideGate'].includes(item.type)){gatePosts+=2;gateWidthTotal+=Number(item.width)||0;if(item.type==='singleGate')singleGates+=1;if(item.type==='doubleGate')doubleGates+=1;if(item.type==='slideGate')slideGates+=1}});return{totalFenceLength,endPosts,cornerPosts,gatePosts,singleGates,doubleGates,slideGates,stretches,gateWidthTotal}}
+function calculate(){const d=deriveCounts(),warnings=[],totalFenceLength=d.totalFenceLength,fenceLengthLessGates=Math.max(0,totalFenceLength-d.gateWidthTotal),fabricHeight=Number(job.fabricHeight),spacing=Number(job.postSpacing),endPosts=d.endPosts,cornerPosts=d.cornerPosts,gatePosts=d.gatePosts,terminalPosts=endPosts+cornerPosts+gatePosts;const stretchItems=(job.layoutItems||[]).filter(i=>i.type==='stretch');const linePostsPerStretch=stretchItems.map(i=>Math.max(0,Math.ceil((Number(i.length)||0)/spacing)-1));const estimatedLinePosts=linePostsPerStretch.reduce((a,b)=>a+b,0);const railLength=railStockLength(spacing),piecesPerStretch=stretchItems.map(i=>Math.ceil((Number(i.length)||0)/railLength));const topRailPieces=job.useTopRail?piecesPerStretch.reduce((a,b)=>a+b,0):0,bottomRailPieces=job.useBottomRail?piecesPerStretch.reduce((a,b)=>a+b,0):0,middleRailPieces=job.useMiddleRail?piecesPerStretch.reduce((a,b)=>a+b,0):0,topRailSleeves=job.useTopRail?piecesPerStretch.reduce((sum,p)=>sum+Math.max(0,p-1),0):0;const diamond=diamondOptions.find(x=>x.label===job.diamondSize)||diamondOptions[5],barbed=barbedOptions.find(x=>x.value===job.barbedWire)||barbedOptions[0];
+const firstItem=(job.layoutItems||[])[0];
+if(firstItem && !isTerminalType(firstItem.type)) warnings.push('Layout should start at an end, corner, or gate post.');
+const lastItem=(job.layoutItems||[])[(job.layoutItems||[]).length-1];
+if(lastItem && !isTerminalType(lastItem.type)) warnings.push('Layout should end at an end, corner, or gate post.');
+if((job.layoutItems||[]).length===0) warnings.push('Add layout items to begin the job.'); if(job.useTopRail&&job.useTopTensionWire)warnings.push('Choose top rail or top tension wire, not both.'); if(job.useBottomRail&&job.useBottomTensionWire)warnings.push('Choose bottom rail or bottom tension wire, not both.'); if(!job.useTopRail&&!job.useTopTensionWire&&!job.useBottomRail&&!job.useBottomTensionWire&&!job.useMiddleRail)warnings.push('Choose at least one rail or tension wire option.'); if(d.stretches===0)warnings.push('Add at least one stretch to the visual builder.'); if(job.razorRibbon&&job.barbedWire==='none')warnings.push('Razor ribbon is on, but barbed wire is off.');
+const tEach=tensionBandsEach(fabricHeight),railBracePerTouch=(job.useTopRail?1:0)+(job.useBottomRail?1:0)+(job.useMiddleRail?1:0),wireBracePerTouch=(job.useTopTensionWire?1:0)+(job.useBottomTensionWire?1:0),bracePerTouch=railBracePerTouch+wireBracePerTouch+barbed.braceBandsPerTerminal;const tensionBandsBySize={},braceBandsBySize={},railEndsBySize={};let totalTensionBands=0,totalBraceBandsTerminal=0,touches=0;
+(job.layoutItems||[]).forEach((item,index)=>{if(item.type==='end'||item.type==='corner'){const size=item.postSize||'2-3/8"',itemTouches=item.type==='corner'?2:1;touches+=itemTouches;tensionBandsBySize[size]=(tensionBandsBySize[size]||0)+tEach*itemTouches;braceBandsBySize[size]=(braceBandsBySize[size]||0)+bracePerTouch*itemTouches+(job.useBoxBraces?2:0);railEndsBySize[size]=(railEndsBySize[size]||0)+railBracePerTouch*itemTouches+(job.useBoxBraces?2:0);totalTensionBands+=tEach*itemTouches;totalBraceBandsTerminal+=bracePerTouch*itemTouches+(job.useBoxBraces?2:0)} if(['singleGate','doubleGate','slideGate'].includes(item.type)){const size=item.postSize||'2-3/8"',info=analyzeGateAt(index),gateTouches=(info.leftFence||info.leftOverlap?1:0)+(info.rightFence||info.rightOverlap?1:0);touches+=gateTouches;tensionBandsBySize[size]=(tensionBandsBySize[size]||0)+tEach*gateTouches;braceBandsBySize[size]=(braceBandsBySize[size]||0)+bracePerTouch*gateTouches+(job.useBoxBraces?gateTouches*2:0);railEndsBySize[size]=(railEndsBySize[size]||0)+railBracePerTouch*gateTouches+(job.useBoxBraces?gateTouches*2:0);totalTensionBands+=tEach*gateTouches;totalBraceBandsTerminal+=bracePerTouch*gateTouches+(job.useBoxBraces?gateTouches*2:0)}});
+let connectorPairs=0;if(job.bottomMiddleConnectorType!=='none'){if(job.useBottomRail)connectorPairs+=estimatedLinePosts;if(job.useMiddleRail)connectorPairs+=estimatedLinePosts}const boxBraceLinePostBands=job.useBoxBraces?terminalPosts:0,standardNutBolts=totalTensionBands+totalBraceBandsTerminal+boxBraceLinePostBands,connectorNutBolts=connectorPairs*2,lineCapLabel=barbed.value==='none'?'eye tops':'barbed arms',fabricRolls=Math.ceil(fenceLengthLessGates/diamond.roll),barbedFootage=Math.ceil(totalFenceLength*barbed.strands); const terminalDepth=Number(job.terminalFootingDepth),terminalWidth=Number(job.terminalFootingWidth),gateDepth=Number(job.gateFootingDepth),gateWidth=Number(job.gateFootingWidth),lineDepth=Number(job.lineFootingDepth),lineWidth=Number(job.lineFootingWidth),endCornerPosts=endPosts+cornerPosts,totalConcrete=cylVolumeFt3(terminalWidth,terminalDepth)*endCornerPosts+cylVolumeFt3(gateWidth,gateDepth)*gatePosts+cylVolumeFt3(lineWidth,lineDepth)*estimatedLinePosts,bags80=Math.ceil(totalConcrete/.6),concreteYards=totalConcrete/27,terminalPostHeight=fabricHeight+terminalDepth+(barbed.value==='none'?0:16/12),gatePostHeight=fabricHeight+gateDepth+(barbed.value==='none'?0:16/12),linePostHeight=fabricHeight+lineDepth;
+const overlapped=getOverlappedTerminalIndices(),terminalSizeCounts={},gateSizeCounts={};(job.layoutItems||[]).forEach((item,index)=>{if(['end','corner'].includes(item.type)&&!overlapped.has(index)){const s=item.postSize||'2-3/8"';terminalSizeCounts[s]=(terminalSizeCounts[s]||0)+1} if(['singleGate','doubleGate','slideGate'].includes(item.type)){const s=item.postSize||'2-3/8"';gateSizeCounts[s]=(gateSizeCounts[s]||0)+2}});
+const postsRows=[...Object.entries(terminalSizeCounts).map(([s,q])=>[q,`${s} terminal posts x ${fmtFeet(terminalPostHeight)}`]),...Object.entries(gateSizeCounts).map(([s,q])=>[q,`${s} gate posts x ${fmtFeet(gatePostHeight)}`]),[estimatedLinePosts,`${job.linePostSize} line posts x ${fmtFeet(linePostHeight)}`]];
+const fabricRows=[[fabricRolls,`${fabricHeight}' x ${diamond.roll}' rolls (${diamond.label})`],[d.gateWidthTotal,'gate opening width total (ft)']];
+const totalRailEnds=Object.values(railEndsBySize).reduce((sum,q)=>sum+(Number(q)||0),0)+(job.bottomMiddleConnectorType==='brace_bands'?connectorPairs*2:0),railRows=[...(job.useTopRail?[[topRailPieces,`${job.railSize} x ${railLength}' top rail`]]:[]),...(job.useBottomRail?[[bottomRailPieces,`${job.railSize} x ${railLength}' bottom rail`]]:[]),...(job.useMiddleRail?[[middleRailPieces,`${job.railSize} x ${railLength}' middle rail`]]:[]),...(job.useTopTensionWire?[[Math.ceil(totalFenceLength),'ft top tension wire']]:[]),...(job.useBottomTensionWire?[[Math.ceil(totalFenceLength),'ft bottom tension wire']]:[]),...(barbed.value!=='none'?[[barbedFootage,`ft barbed wire (${barbed.label})`]]:[]),...(job.razorRibbon?[[Math.ceil(totalFenceLength),'ft razor ribbon pop-up']]:[]),...(job.bottomMiddleConnectorType!=='none'?[[connectorPairs,`${connectorOptions.find(x=>x.value===job.bottomMiddleConnectorType)?.label||'Connector'} pairs`]]:[])];
+const fittingsRows=[...Object.entries(tensionBandsBySize).map(([s,q])=>[q,`${s} tension bands`]),...Object.entries(braceBandsBySize).map(([s,q])=>[q,`${s} brace bands (terminal / gate posts)`]),[touches,'tension bars'],...(job.useTopRail?[[topRailSleeves,`${job.railSize} top rail sleeves`]]:[]),...(totalRailEnds?[[totalRailEnds,`${job.railSize} rail ends`]]:[]),...(job.useBoxBraces?[[terminalPosts,'2-hole rail ends']]:[]),[boxBraceLinePostBands,`${job.linePostSize} brace bands (box-brace line posts)`],[standardNutBolts,'nuts & bolts (standard)'],[connectorNutBolts,'nuts & bolts (connectors)'],...Object.entries(terminalSizeCounts).map(([s,q])=>[q,`${s} dome caps`]),...Object.entries(gateSizeCounts).map(([s,q])=>[q,`${s} dome caps`]),[estimatedLinePosts,`${job.linePostSize} ${lineCapLabel}`],...(job.useBoxBraces?[[terminalPosts,'truss rods'],[terminalPosts,'truss rod tighteners']]:[]),...(d.singleGates?[[d.singleGates*2,'single gate hinges'],[d.singleGates,'single gate fork latches']]:[]),...(d.doubleGates?[[d.doubleGates*4,'double gate hinges'],[d.doubleGates,'double gate drop bars']]:[]),...(d.slideGates?[[d.slideGates,'slide gate assemblies']]:[])];
+const concreteRows=[[endCornerPosts,`terminal footings (${terminalWidth}" x ${fmtFeet(terminalDepth)})`],[gatePosts,`gate post footings (${gateWidth}" x ${fmtFeet(gateDepth)})`],[estimatedLinePosts,`line footings (${lineWidth}" x ${fmtFeet(lineDepth)})`],[bags80,'80 lb concrete bags'],[concreteYards.toFixed(2),'yards of concrete']];
+const summaryRows=[[totalFenceLength,'total fence length (ft)'],[fenceLengthLessGates,'fence length less gates (ft)'],[d.stretches,'estimated stretches'],[terminalPosts,'terminal posts total'],[estimatedLinePosts,'line posts total'],[topRailPieces+bottomRailPieces+middleRailPieces,'rail pieces total']];
+return{warnings,layoutSummary:d,fenceLengthLessGates,linePostsPerStretch,sections:{Posts:postsRows,Fabric:fabricRows,'Rails & Wire':railRows,Fittings:fittingsRows,Concrete:concreteRows,Summary:summaryRows}}}
+function fillSelect(id,values,mapper){const el=document.getElementById(id);el.innerHTML='';values.forEach(v=>{const m=mapper(v),o=document.createElement('option');o.value=m.value;o.textContent=m.label;el.appendChild(o)})}
+function requiresBottomMiddleConnector(){return !!(job.useBottomRail||job.useMiddleRail)}
+function syncBottomMiddleConnector(){if(requiresBottomMiddleConnector()&&job.bottomMiddleConnectorType==='none')job.bottomMiddleConnectorType='brace_bands'}
+function bindBaseInputs(){fieldIds.forEach(id=>{const el=document.getElementById(id);if(!el)return;if(el.type==='checkbox'){el.addEventListener('change',()=>{saveHistory();job[id]=el.checked;if(id==='useTopRail'&&el.checked)job.useTopTensionWire=false;if(id==='useTopTensionWire'&&el.checked)job.useTopRail=false;if(id==='useBottomRail'&&el.checked)job.useBottomTensionWire=false;if(id==='useBottomTensionWire'&&el.checked)job.useBottomRail=false;if(id==='razorRibbon'&&job.barbedWire==='none')job.razorRibbon=false;syncBottomMiddleConnector();renderAll()})}else{el.addEventListener('change',()=>{saveHistory();job[id]=el.value;if(id==='barbedWire'&&job.barbedWire==='none')job.razorRibbon=false;if(id==='bottomMiddleConnectorType'&&requiresBottomMiddleConnector()&&job.bottomMiddleConnectorType==='none')job.bottomMiddleConnectorType='brace_bands';renderAll()})}})}
+function populateForm(){syncBottomMiddleConnector();fieldIds.forEach(id=>{const el=document.getElementById(id);if(!el)return;if(el.type==='checkbox')el.checked=!!job[id];else el.value=job[id]});document.getElementById('razorRibbon').disabled=job.barbedWire==='none';const connectorSelect=document.getElementById('bottomMiddleConnectorType');if(connectorSelect){const disableNone=requiresBottomMiddleConnector();Array.from(connectorSelect.options).forEach(option=>{option.disabled=disableNone&&option.value==='none'})}}
+function insertAfterSelected(newItem){
+  const idx=job.layoutItems.findIndex(x=>x.id===selectedLayoutItemId);
+  const insertIndex=idx>=0?idx+1:job.layoutItems.length;
+  if(newItem.type==='corner'&&!canPlaceCornerAtInsertIndex(insertIndex)){
+    setBuilderError('Corner post cannot be placed on top of another post. Insert a stretch between the posts first.');
+    return;
+  }
+  saveHistory();
+  if(idx>=0)job.layoutItems.splice(insertIndex,0,newItem);else job.layoutItems.push(newItem);
+  selectedLayoutItemId=newItem.id;
+  setBuilderError('');
+  renderAll();
+}
+function deleteSelectedLayoutItem(){
+  if(!selectedLayoutItemId)return;
+  saveHistory();
+  const id=selectedLayoutItemId;
+  job.layoutItems=job.layoutItems.filter(x=>x.id!==id);
+  selectedLayoutItemId=null;
+  setBuilderError('');
+  renderAll();
+}
+function clearSelectedLayoutItem(){
+  if(!selectedLayoutItemId)return;
+  selectedLayoutItemId=null;
+  setBuilderError('');
+  renderAll();
+}
+function appendNew(type){if(type==='stretch')return insertAfterSelected({id:createId(),type:'stretch',length:10});if(type==='corner')return insertAfterSelected({id:createId(),type:'corner',postSize:'2-3/8"'});if(type==='end')return insertAfterSelected({id:createId(),type:'end',postSize:'2-3/8"'});if(type==='singleGate')return insertAfterSelected({id:createId(),type:'singleGate',width:4,postSize:'2-3/8"',hingeSide:'left',openingDirection:'in',turn:'straight'});if(type==='doubleGate')return insertAfterSelected({id:createId(),type:'doubleGate',width:12,postSize:'2-3/8"',openingDirection:'in',turn:'straight'});if(type==='slideGate')return insertAfterSelected({id:createId(),type:'slideGate',width:20,postSize:'2-3/8"',openingDirection:'in',turn:'straight'})}
+ function buildBirdsEyeSvg(items,calc,options={}){
+ const forPrint=options.mode==='print';
+ const startX=120,startY=180,scale=5,overlapped=getOverlappedTerminalIndices();
+ const points=[],labels=[],gateMarkers=[],linePostMarkers=[];
+ let x=startX,y=startY,dir=0;
+ const movePoint=len=>{if(dir===0)x+=len;if(dir===1)y+=len;if(dir===2)x-=len;if(dir===3)y-=len};
+ let stretchIndex=0;
+ items.forEach((item,index)=>{
+ if(item.type==='stretch'){
+ const feet=Number(item.length)||0,seg=feet*scale,sx=x,sy=y,count=calc.linePostsPerStretch[stretchIndex]||0;
+ for(let i=1;i<=count;i++){
+ const r=i/(count+1),px=sx+(dir===0?seg*r:dir===2?-seg*r:0),py=sy+(dir===1?seg*r:dir===3?-seg*r:0);
+ linePostMarkers.push({x:px,y:py})
+ }
+ movePoint(seg);
+ labels.push({x:(sx+x)/2,y:(sy+y)/2,text:`${feet} ft`,itemId:item.id});
+ stretchIndex+=1;
+ return
+ }
+ if(['end','corner'].includes(item.type)){
+ if(overlapped.has(index)) return;
+ points.push({x,y,kind:item.type,label:itemLabel(item),itemId:item.id,postSize:item.postSize});
+ if(item.type==='corner')dir=applyTurnToDirection(dir,normalizeCornerTurn(item,index));
+ return
+ }
+ if(['singleGate','doubleGate','slideGate'].includes(item.type)){
+ const widthFt=Number(item.width)||0,seg=widthFt*scale,sx=x,sy=y;
+ movePoint(seg);
+ gateMarkers.push({x1:sx,y1:sy,x2:x,y2:y,x:(sx+x)/2,y:(sy+y)/2,dir,kind:item.type,label:itemLabel(item),itemId:item.id,width:widthFt,postSize:item.postSize||'2-3/8"',hingeSide:normalizeHingeSide(item.hingeSide),openingDirection:item.openingDirection||'in'});
+ dir=applyTurnToDirection(dir,normalizeGateTurn(item,index))
+ }
+ });
+ const vertices=[];
+ x=startX;y=startY;dir=0;
+ vertices.push(`${x},${y}`);
+ items.forEach((item,index)=>{
+ if(item.type==='stretch'){
+ movePoint((Number(item.length)||0)*scale);
+ vertices.push(`${x},${y}`)
+ }else if(['singleGate','doubleGate','slideGate'].includes(item.type)){
+ movePoint((Number(item.width)||0)*scale);
+ vertices.push(`${x},${y}`);
+ dir=applyTurnToDirection(dir,normalizeGateTurn(item,index))
+ }else if(item.type==='corner'){
+ dir=applyTurnToDirection(dir,normalizeCornerTurn(item,index))
+ }
+ });
+ const geometryX=[startX,...points.map(p=>p.x),...gateMarkers.flatMap(g=>[g.x1,g.x2]),...linePostMarkers.map(p=>p.x)];
+ const geometryY=[startY,...points.map(p=>p.y),...gateMarkers.flatMap(g=>[g.y1,g.y2]),...linePostMarkers.map(p=>p.y)];
+ const labelX=[...labels.map(l=>l.x),...gateMarkers.map(g=>g.x)];
+ const labelY=[...labels.map(l=>l.y),...gateMarkers.map(g=>g.y)];
+ const allX=forPrint?[...geometryX]:[...geometryX,...labelX];
+ const allY=forPrint?[...geometryY]:[...geometryY,...labelY];
+ const minX=(forPrint?Math.min(...allX):Math.min(...allX,0))-70,maxX=(forPrint?Math.max(...allX):Math.max(...allX,500))+70,minY=(forPrint?Math.min(...allY):Math.min(...allY,0))-70,maxY=(forPrint?Math.max(...allY):Math.max(...allY,340))+70,width=maxX-minX,height=maxY-minY;
+ const circles=points.map(p=>`<circle class="svgHit" data-select-layout="${p.itemId}" cx="${p.x}" cy="${p.y}" r="${postRadius(p.postSize)}" fill="${p.kind==='corner'?'rgba(135,148,174,.24)':'rgba(79,134,232,.24)'}" stroke="${p.itemId===selectedLayoutItemId?'#fbbf24':'#73a1ff'}" stroke-width="${p.itemId===selectedLayoutItemId?4:3}"></circle>`).join('');
+ const xMarks=linePostMarkers.map(p=>`<circle cx="${p.x}" cy="${p.y}" r="6" fill="#2f5faa" stroke="#79a8ff" stroke-width="2"></circle>`).join('');
+ const pointLabels=points.map((p,idx)=>{
+ const nearRight=p.x>(minX+width*.72),nearTop=p.y<(minY+height*.32),nearBottom=p.y>(minY+height*.68);
+ let baseX=nearRight?p.x-28:p.x+14,anchor=nearRight?'end':'start',baseY=nearTop?p.y+34:nearBottom?p.y-34:p.y+(idx%2===0?-26:34);
+ const off=job.labelOffsets[p.itemId]||{dx:0,dy:0},tx=baseX+off.dx,ty=baseY+off.dy;
+ return `<g class="svgPointLabel" data-select-layout="${p.itemId}" data-drag-label="${p.itemId}"><line x1="${p.x}" y1="${p.y}" x2="${anchor==='end'?tx+6:tx-6}" y2="${ty-4}" stroke="rgba(110,138,190,.75)" stroke-width="1.4"></line><text x="${tx}" y="${ty}" text-anchor="${anchor}" fill="#79a8ff" font-size="13" font-weight="700">${escapeHtml(p.label)}</text></g>`
+ }).join('');
+ const usedSlots=[],collides=(lx,ly,w,h)=>usedSlots.some(s=>!(lx+w<s.x1||lx>s.x2||ly+h<s.y1||ly>s.y2)),reserve=(lx,ly,w,h)=>usedSlots.push({x1:lx,y1:ly,x2:lx+w,y2:ly+h});
+ const lengthLabels=labels.map(l=>{
+ const selected=l.itemId===selectedLayoutItemId,boxW=68,boxH=24,opts=[{dx:-44,dy:-62},{dx:-44,dy:44},{dx:-128,dy:-18},{dx:52,dy:-18},{dx:-44,dy:68},{dx:-128,dy:24},{dx:52,dy:24}];
+ let chosen=opts[0];
+ for(const opt of opts){if(!collides(l.x+opt.dx,l.y+opt.dy,boxW,boxH)){chosen=opt;break}}
+ const off=job.measureOffsets[l.itemId]||{dx:0,dy:0},finalX=l.x+chosen.dx+off.dx,finalY=l.y+chosen.dy+off.dy;
+ reserve(finalX,finalY,boxW,boxH);
+ return `<g class="svgMeasureLabel" data-select-layout="${l.itemId}" data-drag-measure="${l.itemId}"><line x1="${l.x}" y1="${l.y}" x2="${finalX+boxW/2}" y2="${finalY+boxH/2}" stroke="rgba(110,138,190,.72)" stroke-width="1.3"></line><text x="${finalX+boxW/2}" y="${finalY+boxH/2+4}" text-anchor="middle" fill="${selected?'#fbbf24':'#a9bbdd'}" font-size="12" font-weight="800">${escapeHtml(l.text)}</text></g>`
+ }).join('');
+ const gateLabels=gateMarkers.map(g=>{
+ const selected=g.itemId===selectedLayoutItemId,sub=`${g.postSize} posts${g.hingeSide?` • hinge ${g.hingeSide}`:''}`,horizontal=g.dir===0||g.dir===2;
+ const gateAccent=selected?'#fbbf24':'#79a8ff',gateStroke=selected?'#fbbf24':'#79a8ff';
+ let boxX=horizontal?g.x-62:g.x+28,boxY=horizontal?(g.openingDirection==='out'?g.y-68:g.y+28):g.y-20,textX=horizontal?g.x:g.x+90,textY1=horizontal?(g.openingDirection==='out'?g.y-52:g.y+44):g.y-4,textY2=horizontal?(g.openingDirection==='out'?g.y-38:g.y+58):g.y+10;
+ if(!horizontal&&g.openingDirection==='out'){boxX=g.x-152;textX=g.x-90}
+ const off=job.labelOffsets[g.itemId]||{dx:0,dy:0};
+ boxX+=off.dx;boxY+=off.dy;textX+=off.dx;textY1+=off.dy;textY2+=off.dy;
+ const gatePostR=postRadius(g.postSize);
+ let gateShape=`<line x1="${g.x1}" y1="${g.y1}" x2="${g.x2}" y2="${g.y2}" stroke="${gateStroke}" stroke-width="4" stroke-linecap="round"></line><circle cx="${g.x1}" cy="${g.y1}" r="${gatePostR}" fill="${gateAccent}" stroke="#111" stroke-width="2"></circle><circle cx="${g.x2}" cy="${g.y2}" r="${gatePostR}" fill="${gateAccent}" stroke="#111" stroke-width="2"></circle>`;
+ if(g.kind==='singleGate'){
+ if(horizontal){
+ const hingeAtRight=(g.hingeSide||'left')==='right',hingeX=hingeAtRight?g.x2:g.x1,leafEndX=hingeAtRight?g.x1:g.x2,tipX=hingeX+(leafEndX-hingeX)*.72,tipY=g.y+(g.openingDirection==='in'?-30:30);
+ gateShape+=`<line x1="${hingeX}" y1="${g.y}" x2="${tipX}" y2="${tipY}" stroke="${gateAccent}" stroke-width="3" stroke-linecap="round"></line>`
+ }else{
+ const hingeAtBottom=(g.hingeSide||'left')==='right',hingeY=hingeAtBottom?g.y2:g.y1,leafEndY=hingeAtBottom?g.y1:g.y2,tipX=g.x+(g.openingDirection==='in'?30:-30),tipY=hingeY+(leafEndY-hingeY)*.72;
+ gateShape+=`<line x1="${g.x}" y1="${hingeY}" x2="${tipX}" y2="${tipY}" stroke="${gateAccent}" stroke-width="3" stroke-linecap="round"></line>`
+ }
+ }else if(g.kind==='doubleGate'){
+ if(horizontal){
+ const midX=(g.x1+g.x2)/2,tipY=g.y+(g.openingDirection==='in'?-28:28),leftTipX=g.x1+(midX-g.x1)*.72,rightTipX=g.x2+(midX-g.x2)*.72;
+ gateShape+=`<line x1="${g.x1}" y1="${g.y}" x2="${leftTipX}" y2="${tipY}" stroke="${gateAccent}" stroke-width="3" stroke-linecap="round"></line><line x1="${g.x2}" y1="${g.y}" x2="${rightTipX}" y2="${tipY}" stroke="${gateAccent}" stroke-width="3" stroke-linecap="round"></line>`
+ }else{
+ const midY=(g.y1+g.y2)/2,tipX=g.x+(g.openingDirection==='in'?28:-28),topTipY=g.y1+(midY-g.y1)*.72,botTipY=g.y2+(midY-g.y2)*.72;
+ gateShape+=`<line x1="${g.x}" y1="${g.y1}" x2="${tipX}" y2="${topTipY}" stroke="${gateAccent}" stroke-width="3" stroke-linecap="round"></line><line x1="${g.x}" y1="${g.y2}" x2="${tipX}" y2="${botTipY}" stroke="${gateAccent}" stroke-width="3" stroke-linecap="round"></line>`
+ }
+ }else if(g.kind==='slideGate'){
+ if(horizontal){
+ const trackY=g.y+(g.openingDirection==='out'?-16:16);
+ gateShape+=`<line x1="${g.x1-10}" y1="${trackY}" x2="${g.x2+10}" y2="${trackY}" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6 4"></line><line x1="${g.x1+10}" y1="${trackY}" x2="${g.x2-10}" y2="${trackY}" stroke="${gateAccent}" stroke-width="4" stroke-linecap="round"></line>`
+ }else{
+ const trackX=g.x+(g.openingDirection==='out'?-16:16);
+ gateShape+=`<line x1="${trackX}" y1="${g.y1-10}" x2="${trackX}" y2="${g.y2+10}" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6 4"></line><line x1="${trackX}" y1="${g.y1+10}" x2="${trackX}" y2="${g.y2-10}" stroke="${gateAccent}" stroke-width="4" stroke-linecap="round"></line>`
+ }
+ }
+ const gateBoxW=124,gateBoxH=40,boxCenterX=boxX+gateBoxW/2,boxCenterY=boxY+gateBoxH/2,deltaX=g.x-boxCenterX,deltaY=g.y-boxCenterY;
+ let anchorX=Math.max(boxX,Math.min(g.x,boxX+gateBoxW)),anchorY=Math.max(boxY,Math.min(g.y,boxY+gateBoxH));
+ if(Math.abs(deltaX)>Math.abs(deltaY)){anchorX=deltaX<0?boxX:boxX+gateBoxW}else{anchorY=deltaY<0?boxY:boxY+gateBoxH}
+ return `<g class="svgGate" data-select-layout="${g.itemId}" data-drag-label="${g.itemId}">${gateShape}<line x1="${g.x}" y1="${g.y}" x2="${anchorX}" y2="${anchorY}" stroke="#4d6185" stroke-width="1.5"></line><rect x="${boxX}" y="${boxY}" width="${gateBoxW}" height="${gateBoxH}" rx="10" fill="${selected?'#fbbf24':'#27272a'}" stroke="#4d6185"></rect><text class="svgGateTextMain" x="${textX}" y="${textY1}" text-anchor="middle" fill="${selected?'#111':'#f4f4f5'}" font-size="11" font-weight="800">${escapeHtml(g.label)}</text><text class="svgGateTextSub" x="${textX}" y="${textY2}" text-anchor="middle" fill="${selected?'#111':'#d4d4d8'}" font-size="9" font-weight="700">${escapeHtml(sub)}</text></g>`
+ }).join('');
+ const displayWidth=forPrint?980:Math.max(1500,Math.round(width*1.14));
+ const displayHeight=forPrint?520:Math.max(580,Math.round(height*1.14));
+ const printPadX=16,printPadY=16,screenPadX=48,screenPadY=36;
+ const displayMinX=forPrint?minX-printPadX:minX-screenPadX,displayMinY=forPrint?minY-printPadY:minY-screenPadY,displayWidthUnits=forPrint?width+(printPadX*2):width+(screenPadX*2),displayHeightUnits=forPrint?height+(printPadY*2):height+(screenPadY*2);
+ const wrapClass=forPrint?'printSketchWrap':'sketchWrap';
+ const svgStyle=forPrint?'display:block;width:100%;height:100%;background:transparent;':'display:block;background:transparent;';
+ const preserveAspect='xMidYMid meet';
+ return `<div class="${wrapClass}"><svg viewBox="${displayMinX} ${displayMinY} ${displayWidthUnits} ${displayHeightUnits}" width="${displayWidth}" height="${displayHeight}" preserveAspectRatio="${preserveAspect}" style="${svgStyle}"><polyline points="${vertices.join(' ')}" fill="none" stroke="#6d9fff" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"></polyline>${xMarks}${circles}${pointLabels}${lengthLabels}${gateLabels}</svg></div>`
+}
+function renderInspector(){const inspector=document.getElementById('layoutInspector'),item=job.layoutItems.find(x=>x.id===selectedLayoutItemId);if(!item){inspector.innerHTML=`<div class="inspectorWrap"><div class="miniTitle">Selected Layout Item</div><div class="muted">Click a run, end, corner, or gate to edit it here.</div></div>`;return} const itemIndex=job.layoutItems.findIndex(x=>x.id===item.id),isGate=['singleGate','doubleGate','slideGate'].includes(item.type),normalizedSingleGateHinge=normalizeHingeSide(item.hingeSide),typeField=`<div class="field"><label>Item Type</label><select id="inspectorItemType">${['stretch','end','corner','singleGate','doubleGate','slideGate'].map(type=>`<option value="${type}" ${item.type===type?'selected':''}>${type==='stretch'?'Stretch':type==='end'?'End':type==='corner'?'Corner':type==='singleGate'?'Single Gate':type==='doubleGate'?'Double Gate':'Slide Gate'}</option>`).join('')}</select></div>`,lengthField=item.type==='stretch'?`<div class="field"><label>Stretch Length (ft)</label><input id="inspectorStretchLength" type="number" value="${item.length||0}" /></div>`:'',postField=['end','corner'].includes(item.type)?`<div class="field"><label>Post Size</label><select id="inspectorPostSize">${terminalPostSizes.map(size=>`<option value="${escapeHtml(size)}" ${(item.postSize||'2-3/8"')===size?'selected':''}>${escapeHtml(size)}</option>`).join('')}</select></div>`:'',gatePostSizeField=isGate?`<div class="field"><label>Gate Post Size</label><select id="inspectorGatePostSize">${terminalPostSizes.map(size=>`<option value="${escapeHtml(size)}" ${(item.postSize||'2-3/8"')===size?'selected':''}>${escapeHtml(size)}</option>`).join('')}</select></div>`:'',gateWidthField=isGate?`<div class="field"><label>Gate Width (ft)</label><input id="inspectorGateWidth" type="number" value="${item.width||0}" /></div>`:'',hingeSideField=item.type==='singleGate'?`<div class="field"><label>Single Gate Hinge Side</label><select id="inspectorHingeSide"><option value="left" ${normalizedSingleGateHinge==='left'?'selected':''}>Left</option><option value="right" ${normalizedSingleGateHinge==='right'?'selected':''}>Right</option></select></div>`:'',openingField=isGate?`<div class="field"><label>Gate Opening Direction</label><select id="inspectorOpeningDirection"><option value="in" ${(item.openingDirection||'in')==='in'?'selected':''}>In</option><option value="out" ${(item.openingDirection||'in')==='out'?'selected':''}>Out</option></select></div>`:'',cornerOpts=item.type==='corner'?getCornerOptions(itemIndex):[],activeTurn=item.type==='corner'?normalizeCornerTurn(item,itemIndex):'',cornerTurnField=item.type==='corner'?`<div class="field"><label>Corner Turn</label><select id="inspectorCornerTurn">${cornerOpts.map(opt=>`<option value="${opt.value}" ${activeTurn===opt.value?'selected':''}>${opt.label}</option>`).join('')}</select></div>`:'',gateTurnOpts=isGate?getTurnOptions(itemIndex,true):[],activeGateTurn=isGate?normalizeGateTurn(item,itemIndex):'',gateTurnField=isGate?`<div class="field"><label>After Gate</label><select id="inspectorGateTurn">${gateTurnOpts.map(opt=>`<option value="${opt.value}" ${activeGateTurn===opt.value?'selected':''}>${opt.label}</option>`).join('')}</select></div>`:''; inspector.innerHTML=`<div class="inspectorWrap"><div class="miniTitle">Selected Layout Item</div><div style="font-size:20px; font-weight:800; margin-bottom:4px;">${escapeHtml(itemLabel(item))}</div><div class="inspectorGrid">${typeField}${lengthField}${postField}${gatePostSizeField}${gateWidthField}${hingeSideField}${openingField}${cornerTurnField}${gateTurnField}</div><div class="visualBuilderTools" style="margin-top:14px;"><button class="ghost" type="button" id="insertStretchAfterBtn">Insert Stretch After</button><button class="ghost" type="button" id="insertCornerAfterBtn">Insert Corner After</button><button class="ghost" type="button" id="insertEndAfterBtn">Insert End After</button><button class="ghost" type="button" id="insertSingleGateAfterBtn">Insert Single Gate After</button><button class="ghost" type="button" id="insertDoubleGateAfterBtn">Insert Double Gate After</button><button class="ghost" type="button" id="insertSlideGateAfterBtn">Insert Slide Gate After</button><button class="ghost" type="button" id="deleteSelectedBtn">Delete Selected</button></div></div>`; document.getElementById('inspectorItemType').addEventListener('change',e=>{saveHistory();const nextType=e.target.value;item.type=nextType;if(nextType==='stretch'){delete item.postSize;delete item.width;delete item.hingeSide;delete item.openingDirection;delete item.turn;if(item.length==null)item.length=10}if(['end','corner'].includes(nextType)){delete item.length;delete item.width;delete item.hingeSide;delete item.openingDirection;if(!item.postSize)item.postSize='2-3/8"';if(nextType!=='corner')delete item.turn}if(['singleGate','doubleGate','slideGate'].includes(nextType)){delete item.length;if(!item.postSize)item.postSize='2-3/8"';if(item.width==null)item.width=nextType==='singleGate'?4:nextType==='doubleGate'?12:20;if(nextType==='singleGate')item.hingeSide=normalizeHingeSide(item.hingeSide);if(nextType!=='singleGate')delete item.hingeSide;if(!item.openingDirection)item.openingDirection='in';if(!item.turn)item.turn='straight'}renderAll()}); const stretchInput=document.getElementById('inspectorStretchLength');if(stretchInput){const commit=()=>{const nextValue=Number(stretchInput.value)||0;if(nextValue===(Number(item.length)||0))return;saveHistory();item.length=nextValue;renderAll()};stretchInput.addEventListener('change',commit);stretchInput.addEventListener('blur',commit)} const postSelect=document.getElementById('inspectorPostSize');if(postSelect){postSelect.value=item.postSize||'2-3/8"';postSelect.addEventListener('change',()=>{saveHistory();item.postSize=postSelect.value;selectedLayoutItemId=item.id;renderAll()})} const gatePostSelect=document.getElementById('inspectorGatePostSize');if(gatePostSelect){gatePostSelect.value=item.postSize||'2-3/8"';gatePostSelect.addEventListener('change',()=>{saveHistory();item.postSize=gatePostSelect.value;selectedLayoutItemId=item.id;renderAll()})} const gateWidth=document.getElementById('inspectorGateWidth');if(gateWidth){const commit=()=>{const nextValue=Number(gateWidth.value)||0;if(nextValue===(Number(item.width)||0))return;saveHistory();item.width=nextValue;renderAll()};gateWidth.addEventListener('change',commit);gateWidth.addEventListener('blur',commit)} const hinge=document.getElementById('inspectorHingeSide');if(hinge)hinge.addEventListener('change',()=>{saveHistory();item.hingeSide=normalizeHingeSide(hinge.value);renderAll()}); const opening=document.getElementById('inspectorOpeningDirection');if(opening)opening.addEventListener('change',()=>{saveHistory();item.openingDirection=opening.value;renderAll()}); const cornerTurn=document.getElementById('inspectorCornerTurn');if(cornerTurn)cornerTurn.addEventListener('change',()=>{saveHistory();item.turn=cornerTurn.value;renderAll()}); const gateTurn=document.getElementById('inspectorGateTurn');if(gateTurn)gateTurn.addEventListener('change',()=>{saveHistory();item.turn=gateTurn.value;renderAll()}); document.getElementById('insertStretchAfterBtn').addEventListener('click',()=>appendNew('stretch'));document.getElementById('insertCornerAfterBtn').addEventListener('click',()=>appendNew('corner'));document.getElementById('insertEndAfterBtn').addEventListener('click',()=>appendNew('end'));document.getElementById('insertSingleGateAfterBtn').addEventListener('click',()=>appendNew('singleGate'));document.getElementById('insertDoubleGateAfterBtn').addEventListener('click',()=>appendNew('doubleGate'));document.getElementById('insertSlideGateAfterBtn').addEventListener('click',()=>appendNew('slideGate'));document.getElementById('deleteSelectedBtn').addEventListener('click',deleteSelectedLayoutItem)}
+function renderLayoutBuilder(){const wrap=document.getElementById('layoutBuilder'),items=job.layoutItems||[];if(!wrap)return;if(!items.length){wrap.innerHTML='<div class="muted">No layout items yet.</div>';return} wrap.innerHTML=items.map((item,idx)=>`<div class="layoutItem${item.id===selectedLayoutItemId?' selected':''}" draggable="true" data-drag-id="${item.id}" data-select-list="${item.id}"><div><div class="layoutItemTitle">${idx+1}. ${escapeHtml(itemLabel(item))}</div></div><div class="layoutButtons"><button class="ghost" type="button" data-delete-item="${item.id}">Delete</button></div></div>`).join('');wrap.querySelectorAll('[data-select-list]').forEach(el=>{el.addEventListener('click',e=>{if(e.target.matches('button'))return;selectedLayoutItemId=el.getAttribute('data-select-list');renderAll()});el.addEventListener('dragstart',()=>{draggedId=el.getAttribute('data-drag-id')});el.addEventListener('dragover',e=>e.preventDefault());el.addEventListener('drop',()=>{const targetId=el.getAttribute('data-drag-id');if(!draggedId||draggedId===targetId)return;const from=job.layoutItems.findIndex(x=>x.id===draggedId),to=job.layoutItems.findIndex(x=>x.id===targetId);if(from<0||to<0)return;saveHistory();const [moved]=job.layoutItems.splice(from,1);job.layoutItems.splice(to,0,moved);draggedId=null;renderAll()})});wrap.querySelectorAll('[data-delete-item]').forEach(el=>el.addEventListener('click',()=>{saveHistory();const id=el.getAttribute('data-delete-item');job.layoutItems=job.layoutItems.filter(x=>x.id!==id);if(selectedLayoutItemId===id)selectedLayoutItemId=null;renderAll()}))}
+function attachLabelDragHandlers(svg){if(!svg)return;const rect=svg.getBoundingClientRect(),vb=svg.viewBox.baseVal,scaleX=rect.width?vb.width/rect.width:1,scaleY=rect.height?vb.height/rect.height:1;const addDrag=(selector,attr,storeName)=>{document.querySelectorAll(selector).forEach(el=>{el.addEventListener('mousedown',e=>{e.preventDefault();e.stopPropagation();const itemId=el.getAttribute(attr);if(!itemId)return;const startClientX=e.clientX,startClientY=e.clientY,existing=(job[storeName]||{})[itemId]||{dx:0,dy:0},startOffset={dx:existing.dx,dy:existing.dy};let historySaved=false;const onMove=ev=>{if(!historySaved){saveHistory();historySaved=true}const deltaX=(ev.clientX-startClientX)*scaleX,deltaY=(ev.clientY-startClientY)*scaleY;job[storeName]=job[storeName]||{};job[storeName][itemId]={dx:startOffset.dx+deltaX,dy:startOffset.dy+deltaY};renderResults()};const onUp=()=>{window.removeEventListener('mousemove',onMove);window.removeEventListener('mouseup',onUp)};window.addEventListener('mousemove',onMove);window.addEventListener('mouseup',onUp)})})};addDrag('[data-drag-measure]','data-drag-measure','measureOffsets');addDrag('[data-drag-label]','data-drag-label','labelOffsets')}
+function renderPrintSheets(data){
+  const printRoot=document.getElementById('printSheets');
+  if(!printRoot)return;
+  const simpleSections=['Posts','Fabric','Rails & Wire','Fittings'];
+  const simpleRows=simpleSections.flatMap(title=>(data.sections[title]||[])
+    .filter(r=>Number(r[0])!==0)
+    .map(r=>({qty:r[0],label:r[1]})));
+  const layoutMarkup=buildBirdsEyeSvg(job.layoutItems||[],data,{mode:'print'})
+    .replace("Bird's-Eye Layout",'Layout Overview')
+    .replace('Measurements, post labels, and gate labels are draggable.','');
+  const jobName=escapeHtml(job.name||'Public Layout');
+  const printLogo='LOGO PACK/fenceflow-logo-transparent.png';
+  const brandBlock=`<div class="printBrand"><img src="${printLogo}" alt="FenceFlow logo" /><div class="printTitleWrap"><div class="printEyebrow">FenceFlow by Pro Fence</div><h2>${jobName}</h2></div></div>`;
+  printRoot.innerHTML=`<div class="printPage"><div class="printHeader">${brandBlock}<div class="printMeta"><strong>Layout Page</strong>Total Feet: ${data.layoutSummary.totalFenceLength}<br>Fence Less Gates: ${data.fenceLengthLessGates}</div></div><div class="printLayout">${layoutMarkup}</div></div><div class="printPage pageBreak"><div class="printHeader">${brandBlock}<div class="printMeta"><strong>Material Page</strong>Simple takeoff sheet</div></div><div class="printSection"><h3>Materials Needed</h3><div class="printList"><div class="printListHead"><div>Qty</div><div>Item</div><div class="printFound">Found</div><div class="printBackorder">Back Order</div></div>${simpleRows.map(row=>`<div class="printListRow"><div class="printQty">${escapeHtml(String(row.qty))}</div><div>${escapeHtml(String(row.label))}</div><div class="printFound"><span class="printWriteLine"></span></div><div class="printBackorder"><span class="printWriteLine"></span></div></div>`).join('')}</div></div></div>`;
+}
+function renderResults(){
+  const data=calculate();
+  const warningHtml=data.warnings.map(w=>`<div class="warning">! ${w}</div>`).join('');
+  const warningsEl=document.getElementById('warnings');
+  const floatingWarningsEl=document.getElementById('floatingWarnings');
+  warningsEl.innerHTML=warningHtml;
+  floatingWarningsEl.innerHTML=`<div id="floatingBuilderError" class="floatingBuilderError"></div>${warningHtml}`;
+  const floatingBuilderErrorEl=document.getElementById('floatingBuilderError');
+  if(builderErrorMessage){
+    floatingBuilderErrorEl.textContent=builderErrorMessage;
+    floatingBuilderErrorEl.style.display='block';
+  }else{
+    floatingBuilderErrorEl.textContent='';
+    floatingBuilderErrorEl.style.display='none';
+  }
+  const hasBuilderError=!!builderErrorMessage;
+  floatingWarningsEl.style.display=(data.warnings.length||hasBuilderError)?'block':'none';
+  document.getElementById('layoutSummary').innerHTML=`<div class="miniTitle">Layout Summary</div><div class="summaryGrid"><div class="summaryChip"><strong>${data.layoutSummary.totalFenceLength}</strong>Total Feet</div><div class="summaryChip"><strong>${data.fenceLengthLessGates}</strong>Fence Less Gates</div><div class="summaryChip"><strong>${data.layoutSummary.stretches}</strong>Stretches</div><div class="summaryChip"><strong>${data.layoutSummary.endPosts}</strong>End Posts</div><div class="summaryChip"><strong>${data.layoutSummary.cornerPosts}</strong>Corners</div><div class="summaryChip"><strong>${data.layoutSummary.gatePosts}</strong>Gate Posts</div></div>`;
+  document.getElementById('layoutSketch').innerHTML=buildBirdsEyeSvg(job.layoutItems||[],data);
+  document.querySelectorAll('[data-select-layout]').forEach(el=>el.addEventListener('click',()=>{selectedLayoutItemId=el.getAttribute('data-select-layout');renderAll()}));
+  attachLabelDragHandlers(document.querySelector('#layoutSketch svg'));
+  renderInspector();
+  const formatLabel=label=>{const m=String(label).match(/^(1-7\/8"|2-3\/8"|2-7\/8"|3-1\/2"|4"|6-5\/8")\s+(.*)$/);return m?`<strong>${m[1]}</strong> ${m[2]}`:label};
+  const renderRows=rows=>rows.filter(r=>Number(r[0])!==0).map(r=>`<div class="row"><div>${formatLabel(r[1])} (qty: ${r[0]})</div></div>`).join('');
+  document.getElementById('results').innerHTML=Object.entries(data.sections).map(([title,rows])=>`<div style="margin-bottom:18px;"><div class="sectionTitle">${title}</div>${renderRows(rows)}</div>`).join('');
+  renderPrintSheets(data);
+  scheduleSave();
+}
+function renderAll(){populateForm();renderLayoutBuilder();renderResults()}
+function buildPrintFrameHtml(content){
+  const baseHref=window.location.href.replace(/[^/]*$/,'');
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><base href="${baseHref}"><title>FenceFlow Print</title><style>
+    body{margin:0;background:#fff;color:#111;font-family:Inter,Arial,Helvetica,sans-serif}
+    .printPage{background:#fff;color:#111;break-inside:avoid;page-break-inside:avoid;padding-top:0}
+    .printHeader{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:8px;padding-bottom:8px;border-bottom:2px solid #16315d}
+    .printBrand{display:flex;align-items:flex-start;gap:16px}
+    .printBrand img{width:210px;height:auto;display:block}
+    .printTitleWrap{display:flex;flex-direction:column;gap:4px;padding-top:2px}
+    .printEyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#46679f}
+    .printHeader h2{margin:0;font-size:24px;line-height:1.1;color:#142849}
+    .printMeta{font-size:12px;color:#3f4d63;line-height:1.45}
+    .printMeta strong{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#46679f;margin-bottom:2px}
+    .printSection{margin-bottom:10px}
+    .printSection h3{margin:0 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#16315d}
+    .printList{display:grid;grid-template-columns:72px 1fr 90px 110px;gap:6px 14px}
+    .printListHead,.printListRow{display:contents}
+    .printListHead div,.printListRow div{padding:6px 0;border-bottom:1px solid #ddd}
+    .printListHead div{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid #16315d;color:#16315d}
+    .printQty{text-align:left;font-weight:700}
+    .printFound,.printBackorder{text-align:center}
+    .printWriteLine{display:block;min-height:20px;border-bottom:1px solid #888}
+    .printLayout{overflow:hidden}
+    .printSketchWrap{padding:0;overflow:visible;background:#fff;height:620px}
+    .printSketchWrap svg{display:block;width:100%!important;height:620px!important;max-height:none!important;background:#fff!important}
+    .printLayout svg{height:620px!important;background:#fff!important}
+    .printLayout svg polyline{stroke:#000!important;fill:none!important}
+    .printLayout svg line{stroke:#000!important}
+    .printLayout svg text{fill:#000!important;stroke:none!important}
+    .printLayout svg text.svgGateTextMain,.printLayout svg text.svgGateTextSub{fill:#fff!important;stroke:none!important}
+    .pageBreak{break-before:page;page-break-before:always}
+    @page{size:auto;margin:.35in}
+  </style></head><body>${content}</body></html>`;
+}
+function runPrint(){
+  const previousSelectedId=selectedLayoutItemId;
+  if(previousSelectedId){
+    selectedLayoutItemId=null;
+    renderResults();
+  }
+  const restoreSelection=()=>{
+    if(previousSelectedId){
+      selectedLayoutItemId=previousSelectedId;
+      renderResults();
+    }
+  };
+  const sheets=document.getElementById('printSheets');
+  if(!sheets||!sheets.innerHTML.trim()){
+    restoreSelection();
+    return;
+  }
+  const frame=document.createElement('iframe');
+  frame.setAttribute('aria-hidden','true');
+  frame.style.position='fixed';
+  frame.style.right='0';
+  frame.style.bottom='0';
+  frame.style.width='0';
+  frame.style.height='0';
+  frame.style.border='0';
+  frame.style.visibility='hidden';
+  document.body.appendChild(frame);
+  const doc=frame.contentWindow.document;
+  doc.open();
+  doc.write(buildPrintFrameHtml(sheets.innerHTML));
+  doc.close();
+  const cleanup=()=>{
+    if(frame.parentNode)frame.parentNode.removeChild(frame);
+    restoreSelection();
+  };
+  frame.onload=()=>{
+    frame.contentWindow.focus();
+    frame.contentWindow.print();
+    window.setTimeout(cleanup,1200);
+  };
+  window.setTimeout(()=>{
+    try{
+      frame.contentWindow.focus();
+      frame.contentWindow.print();
+    }catch(e){}
+    window.setTimeout(cleanup,1500);
+  },450);
+}
+function isTypingTarget(el){
+  if(!el)return false;
+  const tag=(el.tagName||'').toLowerCase();
+  return tag==='input'||tag==='textarea'||tag==='select'||el.isContentEditable;
+}
+function setupKeyboardShortcuts(){
+  document.addEventListener('keydown',event=>{
+    if(event.repeat)return;
+    const key=event.key;
+    const typing=isTypingTarget(document.activeElement);
+    if((key==='Delete'||key==='Backspace')&&!typing&&selectedLayoutItemId){
+      event.preventDefault();
+      deleteSelectedLayoutItem();
+      return;
+    }
+    if(key==='Escape'){
+      if(selectedLayoutItemId){
+        event.preventDefault();
+        clearSelectedLayoutItem();
+      }
+    }
+  });
+}
+function setupButtons(){document.getElementById('undoBtn').addEventListener('click',()=>{if(!undoStack.length)return;redoStack.push(clone(job));restoreState(undoStack.pop())});document.getElementById('redoBtn').addEventListener('click',()=>{if(!redoStack.length)return;undoStack.push(clone(job));restoreState(redoStack.pop())});document.getElementById('printBtn').addEventListener('click',runPrint);document.getElementById('resetLayoutBtn').addEventListener('click',()=>{if(!confirm('Reset this layout and clear the saved browser copy?'))return;try{localStorage.removeItem(LS_KEY)}catch(e){}job=defaultJob();undoStack=[];redoStack=[];selectedLayoutItemId=null;builderErrorMessage='';renderAll()})}
+fillSelect('fabricHeight',fabricHeights,v=>({value:String(v),label:`${v}'`}));fillSelect('postSpacing',spacings,v=>({value:String(v),label:`${v}'`}));fillSelect('linePostSize',linePostSizes,v=>({value:v,label:v}));fillSelect('railSize',railSizes,v=>({value:v,label:v}));fillSelect('diamondSize',diamondOptions,v=>({value:v.label,label:`${v.label} - ${v.roll}' roll`}));fillSelect('barbedWire',barbedOptions,v=>({value:v.value,label:v.label}));fillSelect('bottomMiddleConnectorType',connectorOptions,v=>({value:v.value,label:v.label}));fillSelect('terminalFootingDepth',footingDepths,v=>({value:String(v),label:fmtFeet(v)}));fillSelect('gateFootingDepth',footingDepths,v=>({value:String(v),label:fmtFeet(v)}));fillSelect('lineFootingDepth',footingDepths,v=>({value:String(v),label:fmtFeet(v)}));fillSelect('terminalFootingWidth',footingWidths,v=>({value:String(v),label:`${v}"`}));fillSelect('gateFootingWidth',footingWidths,v=>({value:String(v),label:`${v}"`}));fillSelect('lineFootingWidth',footingWidths,v=>({value:String(v),label:`${v}"`}));const savedJob=lsLoad();if(savedJob&&savedJob.layoutItems)job=savedJob;bindBaseInputs();setupButtons();setupKeyboardShortcuts();renderAll();window.addEventListener('scroll',()=>document.body.classList.toggle('logo-shrink',window.scrollY>28),{passive:true});document.body.classList.toggle('logo-shrink',window.scrollY>28);
+</script>
+</body>
+</html>
+

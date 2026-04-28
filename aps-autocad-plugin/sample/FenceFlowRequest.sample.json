@@ -1,0 +1,32 @@
+{
+  "request_type": "chain_link_fence_detail",
+  "backend_target": "aps-autocad-template",
+  "template": "FenceFlow Chain Link Detail v1",
+  "revision": "R0",
+  "issue_date": "2026-04-16",
+  "sheet": {
+    "size": "24\" x 36\"",
+    "output_package": "PDF + DWG",
+    "drawing_number": "CL-01"
+  },
+  "project": {
+    "name": "Sample Perimeter Fence",
+    "client": "Demo Client",
+    "site_location": "Hayward, CA"
+  },
+  "fence": {
+    "height": "7'",
+    "typical_bay_width_ft": 10,
+    "drawing_type": "Fence Detail",
+    "line_post_size": "2-3/8\"",
+    "terminal_post_size": "4\"",
+    "top_treatment": "Top Rail 1-5/8\"",
+    "middle_rail": "Middle Rail 1-5/8\"",
+    "bottom_edge": "Bottom Tension Wire",
+    "security": "3 strands"
+  },
+  "notes": [
+    "Verify all field dimensions prior to fabrication.",
+    "Contractor to confirm terminal sizing, fittings, and footing schedule before install."
+  ]
+}

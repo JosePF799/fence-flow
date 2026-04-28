@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage
+  SchemaVersion="1.0"
+  AutodeskProduct="AutoCAD"
+  Name="FenceFlowCadPlugin"
+  AppVersion="1.0.0"
+  ProductCode="{7C50A3A4-9AC4-4F75-9A55-2BDF6225F701}"
+  Description="FenceFlow AutoCAD Design Automation plugin"
+  Author="Pro Fence / FenceFlow">
+  <CompanyDetails
+    Name="Pro Fence"
+    Url="https://fence-flow.com"
+    Email="info@fence-flow.com" />
+  <Components>
+    <RuntimeRequirements OS="Win64" Platform="AutoCAD" />
+    <ComponentEntry
+      AppName="FenceFlowCadPlugin"
+      ModuleName="./Contents/FenceFlowCadPlugin.dll"
+      AppDescription="FenceFlow AutoCAD command set for APS-generated chain link detail sheets"
+      LoadOnCommandInvocation="True"
+      LoadOnAutoCADStartup="True">
+      <Commands GroupName="FenceFlowCommands">
+        <Command Global="FenceFlowGenerateSheet" Local="FenceFlowGenerateSheet" />
+        <Command Global="FenceFlowSmokeTest" Local="FenceFlowSmokeTest" />
+      </Commands>
+    </ComponentEntry>
+  </Components>
+</ApplicationPackage>
