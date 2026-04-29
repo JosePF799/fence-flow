@@ -56,6 +56,7 @@
       linear-gradient(180deg,#f9f6ef 0%,#edf2eb 100%);
       box-shadow:inset 0 1px 0 rgba(255,255,255,.7),var(--shadowSoft)}
     #viewer{aspect-ratio:16/10;min-height:560px}
+    #viewer canvas{display:block;width:100% !important;height:100% !important}
     .viewerHud{position:absolute;left:16px;top:16px;display:flex;gap:10px;flex-wrap:wrap;pointer-events:none}
     .hudPill{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.82);border:1px solid rgba(196,204,196,.8);backdrop-filter:blur(8px);color:var(--brandDeep);font-size:12px;font-weight:700;letter-spacing:.02em;box-shadow:var(--shadowSoft)}
     .hudDot{width:7px;height:7px;border-radius:999px;background:var(--accent)}
@@ -200,8 +201,15 @@
   <footer class="siteFooter">Temporary browser-based 3D experiment for FenceFlow by Pro Fence.</footer>
 </div>
 
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.164.1/build/three.module.js"
+    }
+  }
+</script>
 <script type="module">
-  import * as THREE from 'https://unpkg.com/three@0.164.1/build/three.module.js';
+  import * as THREE from 'three';
   import { OrbitControls } from 'https://unpkg.com/three@0.164.1/examples/jsm/controls/OrbitControls.js';
 
   const viewer = document.getElementById('viewer');
@@ -489,7 +497,7 @@
   function resizeRenderer() {
     const width = viewer.clientWidth;
     const height = viewer.clientHeight;
-    renderer.setSize(width, height, false);
+    renderer.setSize(width, height);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
   }
