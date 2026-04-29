@@ -65,6 +65,11 @@
     .metricChip{padding:12px 14px;border-radius:18px;background:linear-gradient(180deg,#f7f4ec 0%,#eef3ee 100%);border:1px solid var(--border);box-shadow:var(--shadowSoft)}
     .metricChip strong{display:block;font-size:20px;color:var(--brandDeep);margin-bottom:4px}
     .metricChip span{display:block;color:var(--brand);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .drawingInset{margin-top:14px;padding:16px;border-radius:22px;background:linear-gradient(180deg,#ffffff 0%,#f7f5ee 100%);border:1px solid var(--border);box-shadow:var(--shadowSoft)}
+    .drawingInsetHead{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:12px}
+    .drawingInsetTitle{font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+    .drawingInsetMeta{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .drawingCanvas{display:block;width:100%;height:auto;border-radius:18px;background:linear-gradient(180deg,#fbfaf6 0%,#f2f4ef 100%);border:1px solid var(--borderStrong)}
     .controlGrid{display:grid;gap:14px}
     .field{display:grid;gap:8px}
     .field label{color:var(--muted);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
@@ -142,6 +147,13 @@
           <div class="metricChip"><strong id="metricGate">4'</strong><span>Gate Width</span></div>
           <div class="metricChip"><strong id="metricOpen">22 deg</strong><span>Gate Swing</span></div>
         </div>
+        <div class="drawingInset">
+          <div class="drawingInsetHead">
+            <div class="drawingInsetTitle">Technical Elevation</div>
+            <div class="drawingInsetMeta">Live from current inputs</div>
+          </div>
+          <svg id="elevationPreview" class="drawingCanvas" viewBox="0 0 920 260" aria-label="Fence elevation preview"></svg>
+        </div>
         <div class="sceneNote">What you're seeing here is the style of system I'd build for a live 3D estimator: geometry from inputs first, polished visuals second, and CAD export only if we decide it needs production drawing output later.</div>
       </div>
     </div>
@@ -213,9 +225,10 @@
   import { OrbitControls } from 'https://unpkg.com/three@0.164.1/examples/jsm/controls/OrbitControls.js';
 
   const viewer = document.getElementById('viewer');
+  const elevationPreview = document.getElementById('elevationPreview');
   const scene = new THREE.Scene();
   scene.background = new THREE.Color('#edf1ea');
-  scene.fog = new THREE.Fog('#edf1ea', 7, 18);
+  scene.fog = new THREE.Fog('#edf1ea', 15, 34);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -223,15 +236,16 @@
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   viewer.appendChild(renderer.domElement);
 
-  const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-  camera.position.set(5.8, 3.5, 7.2);
+  const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
+  camera.position.set(6.55, 2.52, 7.55);
 
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
-  controls.target.set(0, 1.65, 0);
+  controls.target.set(0, 1.18, 0);
   controls.minDistance = 4;
   controls.maxDistance = 18;
-  controls.maxPolarAngle = Math.PI * 0.48;
+  controls.minPolarAngle = Math.PI * 0.18;
+  controls.maxPolarAngle = Math.PI * 0.46;
 
   const hemi = new THREE.HemisphereLight('#fffaf0', '#b0b8ad', 1.35);
   scene.add(hemi);
@@ -258,11 +272,13 @@
   ground.receiveShadow = true;
   scene.add(ground);
 
-  const postMaterial = new THREE.MeshStandardMaterial({ color: '#9ba6a8', roughness: 0.34, metalness: 0.82 });
-  const frameMaterial = new THREE.MeshStandardMaterial({ color: '#aeb8bb', roughness: 0.36, metalness: 0.78 });
-  const meshMaterial = new THREE.MeshStandardMaterial({ color: '#dfe6e7', roughness: 0.58, metalness: 0.2, transparent: true, opacity: 0.78, side: THREE.DoubleSide });
+  const postMaterial = new THREE.MeshPhysicalMaterial({ color: '#687173', roughness: 0.42, metalness: 0.97, clearcoat: 0.2, clearcoatRoughness: 0.62 });
+  const frameMaterial = new THREE.MeshPhysicalMaterial({ color: '#7b8486', roughness: 0.38, metalness: 0.94, clearcoat: 0.16, clearcoatRoughness: 0.6 });
+  const meshMaterial = new THREE.MeshStandardMaterial({ color: '#959fa1', roughness: 0.68, metalness: 0.52, transparent: true, opacity: 0.92, side: THREE.DoubleSide, depthWrite: false });
   const slatMaterial = new THREE.MeshStandardMaterial({ color: '#7b8d76', roughness: 0.88, metalness: 0.05 });
-  const accentMaterial = new THREE.MeshStandardMaterial({ color: '#485a48', roughness: 0.65, metalness: 0.15 });
+  const accentMaterial = new THREE.MeshStandardMaterial({ color: '#47524b', roughness: 0.58, metalness: 0.22 });
+  const bandMaterial = new THREE.MeshStandardMaterial({ color: '#545c5d', roughness: 0.46, metalness: 0.78 });
+  const concreteMaterial = new THREE.MeshStandardMaterial({ color: '#c7c1b7', roughness: 0.96, metalness: 0.03 });
 
   const chainTexture = createChainLinkTexture();
   meshMaterial.map = chainTexture;
@@ -282,25 +298,44 @@
   };
 
   function createChainLinkTexture() {
-    const size = 512;
+    const size = 1024;
     const canvas = document.createElement('canvas');
     canvas.width = size;
     canvas.height = size;
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, size, size);
-    ctx.strokeStyle = 'rgba(255,255,255,0.85)';
-    ctx.lineWidth = 2;
-    const spacing = 36;
-    for (let i = -size; i < size * 2; i += spacing) {
-      ctx.beginPath();
-      ctx.moveTo(i, 0);
-      ctx.lineTo(i - size, size);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(i, size);
-      ctx.lineTo(i - size, 0);
-      ctx.stroke();
+
+    const spacing = 40;
+    const drawPass = (offsetX, offsetY, strokeStyle, lineWidth) => {
+      ctx.save();
+      ctx.translate(offsetX, offsetY);
+      ctx.strokeStyle = strokeStyle;
+      ctx.lineWidth = lineWidth;
+      for (let i = -size; i < size * 2; i += spacing) {
+        ctx.beginPath();
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i - size, size);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(i, size);
+        ctx.lineTo(i - size, 0);
+        ctx.stroke();
+      }
+      ctx.restore();
+    };
+
+    drawPass(0, 0, 'rgba(86,92,94,0.96)', 2.8);
+    drawPass(1.1, 0.95, 'rgba(226,231,233,0.54)', 0.95);
+
+    ctx.fillStyle = 'rgba(148,154,156,0.42)';
+    for (let y = spacing / 2; y < size; y += spacing) {
+      for (let x = spacing / 2; x < size; x += spacing) {
+        ctx.beginPath();
+        ctx.arc(x, y, 1.2, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
+
     const texture = new THREE.CanvasTexture(canvas);
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
@@ -317,22 +352,34 @@
     document.getElementById(id).textContent = value;
   }
 
-  function addPost(group, x, height, isTerminal = false) {
-    const radius = isTerminal ? 0.08 : 0.065;
-    const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, height, 24), postMaterial);
-    mesh.position.set(x, height / 2, 0);
+  function formatFeetLabel(value) {
+    const rounded = Number(value);
+    return `${rounded.toFixed(rounded % 1 ? 1 : 0)}'-0"`;
+  }
+
+  function addPost(group, x, visibleHeight, kind = 'terminal') {
+    const radius = kind === 'line' ? 0.052 : kind === 'gate' ? 0.081 : 0.074;
+    const embedDepth = 0.14;
+    const totalHeight = visibleHeight + embedDepth;
+    const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, totalHeight, 24), postMaterial);
+    mesh.position.set(x, (visibleHeight - embedDepth) / 2, 0);
     mesh.castShadow = true;
     mesh.receiveShadow = true;
     group.add(mesh);
 
-    const cap = new THREE.Mesh(new THREE.SphereGeometry(radius * 1.08, 24, 16), frameMaterial);
-    cap.position.set(x, height + radius * 0.55, 0);
-    cap.scale.y = 0.6;
+    const cap = new THREE.Mesh(new THREE.SphereGeometry(radius * 1.02, 26, 18), frameMaterial);
+    cap.position.set(x, visibleHeight + radius * 0.24, 0);
+    cap.scale.set(1, 0.62, 1);
     cap.castShadow = true;
     group.add(cap);
 
-    const footing = new THREE.Mesh(new THREE.CylinderGeometry(radius * 1.55, radius * 1.75, 0.22, 18), new THREE.MeshStandardMaterial({ color: '#c7c2ba', roughness: 0.95 }));
-    footing.position.set(x, 0.11, 0);
+    const collar = new THREE.Mesh(new THREE.CylinderGeometry(radius * 1.16, radius * 1.16, 0.06, 24, 1, true), bandMaterial);
+    collar.position.set(x, 0.035, 0);
+    collar.receiveShadow = true;
+    group.add(collar);
+
+    const footing = new THREE.Mesh(new THREE.CylinderGeometry(radius * 1.75, radius * 1.95, 0.12, 18), concreteMaterial);
+    footing.position.set(x, -0.01, 0);
     footing.receiveShadow = true;
     group.add(footing);
   }
@@ -365,15 +412,50 @@
     group.add(mesh);
   }
 
+  function addTerminalBand(group, x, y, postRadius, side, armLength = 0.06) {
+    const band = new THREE.Mesh(new THREE.CylinderGeometry(postRadius * 1.14, postRadius * 1.14, 0.026, 20, 1, true), bandMaterial);
+    band.position.set(x, y, 0);
+    band.castShadow = true;
+    group.add(band);
+
+    const lug = new THREE.Mesh(new THREE.BoxGeometry(armLength, 0.026, 0.02), bandMaterial);
+    lug.position.set(x + side * (postRadius + armLength * 0.5 - 0.004), y, 0);
+    lug.castShadow = true;
+    group.add(lug);
+  }
+
+  function addTensionBar(group, x, height, z = 0.016) {
+    const bar = new THREE.Mesh(new THREE.BoxGeometry(0.016, height, 0.016), bandMaterial);
+    bar.position.set(x, height / 2, z);
+    bar.castShadow = true;
+    bar.receiveShadow = true;
+    group.add(bar);
+  }
+
   function addPanelMesh(group, width, height, withSlats) {
-    const plane = new THREE.Mesh(new THREE.PlaneGeometry(width, height), meshMaterial.clone());
+    const geometry = new THREE.PlaneGeometry(width, height, Math.max(18, Math.round(width * 10)), Math.max(12, Math.round(height * 10)));
+    const positions = geometry.attributes.position;
+    for (let i = 0; i < positions.count; i++) {
+      const x = positions.getX(i);
+      const y = positions.getY(i);
+      const horiz = 1 - Math.pow(Math.abs(x) / (width * 0.5), 1.45);
+      const vert = Math.sin(((y / height) + 0.5) * Math.PI);
+      positions.setZ(i, Math.max(0, horiz) * vert * 0.03);
+    }
+    geometry.computeVertexNormals();
+
+    const plane = new THREE.Mesh(geometry, meshMaterial.clone());
     plane.position.set(width / 2, height / 2, 0.01);
-    plane.material.map.repeat.set(Math.max(1, width * 1.8), Math.max(1, height * 1.8));
+    plane.material.map.repeat.set(Math.max(1, width * 2.45), Math.max(1, height * 2.6));
     plane.material.alphaMap.repeat.copy(plane.material.map.repeat);
     plane.material.map.needsUpdate = true;
     plane.material.alphaMap.needsUpdate = true;
+    plane.castShadow = true;
     plane.receiveShadow = true;
     group.add(plane);
+
+    addTensionBar(group, 0.012, height);
+    addTensionBar(group, width - 0.012, height);
 
     if (withSlats) {
       const slatCount = Math.max(4, Math.round(width / 0.28));
@@ -387,18 +469,27 @@
     }
   }
 
-  function addBarbedWire(group, leftX, rightX, baseHeight) {
+  function addBarbedWire(group, postXs, baseHeight) {
+    const leftX = postXs[0];
+    const rightX = postXs[postXs.length - 1];
     [0, 0.09, 0.18].forEach((lift, idx) => {
       const strand = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, rightX - leftX, 12), accentMaterial);
       strand.rotation.z = Math.PI / 2;
       strand.position.set((leftX + rightX) / 2, baseHeight + 0.22 + lift, idx === 1 ? 0.03 : -0.03);
       group.add(strand);
+
+      for (let barbX = leftX + 0.18; barbX < rightX - 0.18; barbX += 0.42) {
+        const barb = new THREE.Mesh(new THREE.CylinderGeometry(0.0035, 0.0035, 0.075, 8), accentMaterial);
+        barb.position.set(barbX, baseHeight + 0.22 + lift, idx === 1 ? 0.03 : -0.03);
+        barb.rotation.z = Math.PI / 3;
+        group.add(barb);
+      }
     });
-    [leftX, rightX].forEach((x) => {
-      [0.07, 0.16, 0.25].forEach((lift) => {
-        const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.24, 12), accentMaterial);
+    postXs.forEach((x) => {
+      [0.07, 0.16, 0.25].forEach((lift, idx) => {
+        const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.011, 0.011, 0.24, 12), accentMaterial);
         arm.position.set(x, baseHeight + lift, 0);
-        arm.rotation.z = -Math.PI / 7;
+        arm.rotation.z = idx === 1 ? -Math.PI / 8.2 : -Math.PI / 7;
         group.add(arm);
       });
     });
@@ -407,13 +498,159 @@
   function addGateHardware(group, width, height) {
     const hingeY = [height * 0.24, height * 0.76];
     hingeY.forEach((y) => {
-      const hinge = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.05, 0.05), accentMaterial);
-      hinge.position.set(0.02, y, 0.04);
-      group.add(hinge);
+      const collar = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.06, 18, 1, true), bandMaterial);
+      collar.position.set(0.03, y, 0);
+      collar.castShadow = true;
+      group.add(collar);
+
+      const hingeArm = new THREE.Mesh(new THREE.BoxGeometry(0.075, 0.022, 0.022), bandMaterial);
+      hingeArm.position.set(-0.01, y, 0.03);
+      hingeArm.castShadow = true;
+      group.add(hingeArm);
     });
-    const latch = new THREE.Mesh(new THREE.BoxGeometry(0.09, 0.06, 0.045), accentMaterial);
-    latch.position.set(width - 0.03, height * 0.52, 0.04);
+
+    const dropRod = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, Math.max(0.18, height * 0.38), 10), accentMaterial);
+    dropRod.position.set(width - 0.05, Math.max(0.22, height * 0.24), 0.028);
+    dropRod.castShadow = true;
+    group.add(dropRod);
+
+    const latch = new THREE.Mesh(new THREE.BoxGeometry(0.11, 0.05, 0.04), bandMaterial);
+    latch.position.set(width - 0.03, height * 0.52, 0.035);
+    latch.castShadow = true;
     group.add(latch);
+
+    const handle = new THREE.Mesh(new THREE.BoxGeometry(0.018, 0.12, 0.018), bandMaterial);
+    handle.position.set(width - 0.07, height * 0.52, 0.05);
+    handle.castShadow = true;
+    group.add(handle);
+  }
+
+  function addGateReceiver(group, x, y) {
+    const keeper = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.06, 0.04), bandMaterial);
+    keeper.position.set(x, y, 0.04);
+    keeper.castShadow = true;
+    group.add(keeper);
+  }
+
+  function renderElevation() {
+    const totalWidthFt = state.panelWidth * 2 + state.gateWidth;
+    const widthAvail = 690;
+    const pxPerFt = widthAvail / totalWidthFt;
+    const startX = 115;
+    const x0 = startX;
+    const x1 = x0 + state.panelWidth * pxPerFt;
+    const x2 = x1 + state.gateWidth * pxPerFt;
+    const x3 = x2 + state.panelWidth * pxPerFt;
+    const groundY = 198;
+    const heightPx = state.fenceHeight * 21;
+    const topY = groundY - heightPx;
+    const bottomWireY = groundY - 16;
+    const fabricTopY = topY + 7;
+    const gateInset = 12;
+    const gateTopY = topY + 8;
+    const gateBottomY = groundY - 18;
+    const gateLeft = x1 + gateInset;
+    const gateRight = x2 - gateInset;
+    const gateMidY = (gateTopY + gateBottomY) / 2;
+
+    const privacyFill = state.privacySlats
+      ? Array.from({ length: Math.max(6, Math.round((x1 - x0) / 16)) }, (_, idx) => {
+          const lx = x0 + 14 + idx * 14;
+          return `<line x1="${lx}" y1="${fabricTopY + 4}" x2="${lx}" y2="${groundY - 14}" stroke="#84907f" stroke-width="1.2" opacity="0.6" />`;
+        }).join('')
+      : '';
+
+    const privacyFillRight = state.privacySlats
+      ? Array.from({ length: Math.max(6, Math.round((x3 - x2) / 16)) }, (_, idx) => {
+          const lx = x2 + 14 + idx * 14;
+          return `<line x1="${lx}" y1="${fabricTopY + 4}" x2="${lx}" y2="${groundY - 14}" stroke="#84907f" stroke-width="1.2" opacity="0.6" />`;
+        }).join('')
+      : '';
+
+    const privacyFillGate = state.privacySlats
+      ? Array.from({ length: Math.max(4, Math.round((gateRight - gateLeft) / 16)) }, (_, idx) => {
+          const lx = gateLeft + 10 + idx * 14;
+          return `<line x1="${lx}" y1="${gateTopY + 6}" x2="${lx}" y2="${gateBottomY - 6}" stroke="#84907f" stroke-width="1.1" opacity="0.6" />`;
+        }).join('')
+      : '';
+
+    const barbedLines = state.barbedWire
+      ? `
+        <line x1="${x0}" y1="${topY - 22}" x2="${x3}" y2="${topY - 22}" stroke="#505959" stroke-width="1.2" />
+        <line x1="${x0}" y1="${topY - 14}" x2="${x3}" y2="${topY - 14}" stroke="#505959" stroke-width="1.2" />
+        <line x1="${x0}" y1="${topY - 6}" x2="${x3}" y2="${topY - 6}" stroke="#505959" stroke-width="1.2" />
+      `
+      : '';
+
+    elevationPreview.innerHTML = `
+      <defs>
+        <pattern id="meshPattern" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="18" stroke="#6f787a" stroke-width="1.15" />
+          <line x1="9" y1="0" x2="9" y2="18" stroke="#c7ced0" stroke-width="0.55" opacity="0.7" />
+        </pattern>
+        <marker id="dimArrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 5 L 10 0 L 10 10 z" fill="#667066" />
+        </marker>
+      </defs>
+      <rect x="0.5" y="0.5" width="919" height="259" rx="18" fill="url(#sheetFade)" opacity="0" />
+      <line x1="70" y1="${groundY}" x2="850" y2="${groundY}" stroke="#7f897f" stroke-width="1.4" />
+      <rect x="${x0 - 10}" y="${groundY - 8}" width="${(x3 - x0) + 20}" height="12" fill="#ddd3c0" opacity="0.9" />
+
+      <rect x="${x0 + 7}" y="${fabricTopY}" width="${x1 - x0 - 14}" height="${groundY - fabricTopY - 12}" fill="url(#meshPattern)" opacity="0.9" />
+      <rect x="${x2 + 7}" y="${fabricTopY}" width="${x3 - x2 - 14}" height="${groundY - fabricTopY - 12}" fill="url(#meshPattern)" opacity="0.9" />
+      <rect x="${gateLeft + 3}" y="${gateTopY + 4}" width="${gateRight - gateLeft - 6}" height="${gateBottomY - gateTopY - 8}" fill="url(#meshPattern)" opacity="0.9" />
+      ${privacyFill}
+      ${privacyFillRight}
+      ${privacyFillGate}
+
+      <line x1="${x0}" y1="${topY}" x2="${x1}" y2="${topY}" stroke="#4b5252" stroke-width="5" stroke-linecap="round" />
+      <line x1="${x2}" y1="${topY}" x2="${x3}" y2="${topY}" stroke="#4b5252" stroke-width="5" stroke-linecap="round" />
+      <line x1="${x0}" y1="${bottomWireY}" x2="${x1}" y2="${bottomWireY}" stroke="#4d5554" stroke-width="2.2" />
+      <line x1="${x2}" y1="${bottomWireY}" x2="${x3}" y2="${bottomWireY}" stroke="#4d5554" stroke-width="2.2" />
+
+      <line x1="${gateLeft}" y1="${gateTopY}" x2="${gateRight}" y2="${gateTopY}" stroke="#454d4d" stroke-width="5" stroke-linecap="round" />
+      <line x1="${gateLeft}" y1="${gateBottomY}" x2="${gateRight}" y2="${gateBottomY}" stroke="#454d4d" stroke-width="4" stroke-linecap="round" />
+      <line x1="${gateLeft}" y1="${gateTopY}" x2="${gateLeft}" y2="${gateBottomY}" stroke="#454d4d" stroke-width="4" stroke-linecap="round" />
+      <line x1="${gateRight}" y1="${gateTopY}" x2="${gateRight}" y2="${gateBottomY}" stroke="#454d4d" stroke-width="4" stroke-linecap="round" />
+      <line x1="${gateLeft + 7}" y1="${gateBottomY - 7}" x2="${gateRight - 7}" y2="${gateTopY + 7}" stroke="#54605b" stroke-width="3.2" stroke-linecap="round" />
+
+      <line x1="${x0}" y1="${topY - 2}" x2="${x0}" y2="${groundY + 2}" stroke="#566061" stroke-width="8" stroke-linecap="round" />
+      <line x1="${x1}" y1="${topY - 2}" x2="${x1}" y2="${groundY + 2}" stroke="#303737" stroke-width="10" stroke-linecap="round" />
+      <line x1="${x2}" y1="${topY - 2}" x2="${x2}" y2="${groundY + 2}" stroke="#303737" stroke-width="10" stroke-linecap="round" />
+      <line x1="${x3}" y1="${topY - 2}" x2="${x3}" y2="${groundY + 2}" stroke="#262d2d" stroke-width="11" stroke-linecap="round" />
+
+      <line x1="${gateLeft - 10}" y1="${gateMidY - 2}" x2="${gateLeft - 2}" y2="${gateMidY - 2}" stroke="#596160" stroke-width="2.6" />
+      <line x1="${gateLeft - 10}" y1="${gateMidY + 16}" x2="${gateLeft - 2}" y2="${gateMidY + 16}" stroke="#596160" stroke-width="2.6" />
+      <rect x="${gateRight - 6}" y="${gateMidY - 8}" width="10" height="16" rx="2" fill="#596160" />
+      <line x1="${gateRight - 20}" y1="${gateMidY}" x2="${gateRight - 8}" y2="${gateMidY}" stroke="#596160" stroke-width="2.6" />
+      <line x1="${gateRight - 24}" y1="${gateBottomY - 6}" x2="${gateRight - 24}" y2="${groundY + 6}" stroke="#596160" stroke-width="2.4" />
+
+      <rect x="${x0 - 6}" y="${topY - 1}" width="12" height="6" fill="#697172" rx="2" />
+      <rect x="${x1 - 7}" y="${topY - 1}" width="14" height="6" fill="#4d5556" rx="2" />
+      <rect x="${x2 - 7}" y="${topY - 1}" width="14" height="6" fill="#4d5556" rx="2" />
+      <rect x="${x3 - 6}" y="${topY - 1}" width="12" height="6" fill="#3f4747" rx="2" />
+      ${barbedLines}
+
+      <line x1="${x0}" y1="46" x2="${x3}" y2="46" stroke="#667066" stroke-width="1.2" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)" />
+      <line x1="${x0}" y1="54" x2="${x0}" y2="${topY - 6}" stroke="#8a9388" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="${x3}" y1="54" x2="${x3}" y2="${topY - 6}" stroke="#8a9388" stroke-width="1" stroke-dasharray="4 4" />
+      <text x="${(x0 + x3) / 2}" y="38" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="13" font-weight="800" fill="#536054">${formatFeetLabel(totalWidthFt)} overall</text>
+
+      <line x1="${x1}" y1="76" x2="${x2}" y2="76" stroke="#667066" stroke-width="1.2" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)" />
+      <line x1="${x1}" y1="84" x2="${x1}" y2="${gateTopY - 2}" stroke="#8a9388" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="${x2}" y1="84" x2="${x2}" y2="${gateTopY - 2}" stroke="#8a9388" stroke-width="1" stroke-dasharray="4 4" />
+      <text x="${(x1 + x2) / 2}" y="68" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="12" font-weight="800" fill="#536054">${formatFeetLabel(state.gateWidth)} gate</text>
+
+      <line x1="54" y1="${groundY}" x2="54" y2="${topY}" stroke="#667066" stroke-width="1.2" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)" />
+      <line x1="62" y1="${groundY}" x2="${x0 - 12}" y2="${groundY}" stroke="#8a9388" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="62" y1="${topY}" x2="${x0 - 12}" y2="${topY}" stroke="#8a9388" stroke-width="1" stroke-dasharray="4 4" />
+      <text x="42" y="${(groundY + topY) / 2}" text-anchor="middle" transform="rotate(-90 42 ${(groundY + topY) / 2})" font-family="Outfit, Arial, sans-serif" font-size="12" font-weight="800" fill="#536054">${formatFeetLabel(state.fenceHeight)} high</text>
+
+      <text x="${x0}" y="${groundY + 28}" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="11" font-weight="800" fill="#667165">end post</text>
+      <text x="${x1}" y="${groundY + 28}" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="11" font-weight="800" fill="#667165">gate post</text>
+      <text x="${x2}" y="${groundY + 28}" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="11" font-weight="800" fill="#667165">gate post</text>
+      <text x="${x3}" y="${groundY + 28}" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="11" font-weight="800" fill="#667165">terminal</text>
+    `;
   }
 
   function buildFence() {
@@ -427,34 +664,44 @@
     const x1 = x0 + panelWidth;
     const x2 = x1 + gateWidth;
     const x3 = x2 + panelWidth;
-    const topRailY = fenceHeight;
-    const fabricHeight = Math.max(0.5, fenceHeight - 0.08);
+    const topRailY = fenceHeight - 0.05;
+    const bottomWireY = 0.11;
+    const fabricBottomY = 0.095;
+    const fabricHeight = Math.max(0.48, topRailY - fabricBottomY - 0.03);
+    const panelPostVisible = topRailY + (state.barbedWire ? 0.34 : 0.1);
+    const gatePostVisible = topRailY + (state.barbedWire ? 0.34 : 0.08);
+    const gateFrameTop = topRailY - 0.028;
+    const gateFrameBottom = 0.14;
 
     const fenceGroup = new THREE.Group();
     modelRoot.add(fenceGroup);
 
-    addPost(fenceGroup, x0, fenceHeight + 0.22, true);
-    addPost(fenceGroup, x1, fenceHeight + 0.22, true);
-    addPost(fenceGroup, x2, fenceHeight + 0.22, true);
-    addPost(fenceGroup, x3, fenceHeight + 0.22, true);
+    addPost(fenceGroup, x0, panelPostVisible, 'terminal');
+    addPost(fenceGroup, x1, gatePostVisible, 'gate');
+    addPost(fenceGroup, x2, gatePostVisible, 'gate');
+    addPost(fenceGroup, x3, panelPostVisible, 'terminal');
 
     addRail(fenceGroup, x0, x1, topRailY, 0);
     addRail(fenceGroup, x2, x3, topRailY, 0);
-    addRail(fenceGroup, x0, x1, 0.12, 0, 0.012, accentMaterial);
-    addRail(fenceGroup, x2, x3, 0.12, 0, 0.012, accentMaterial);
+    addRail(fenceGroup, x0, x1, bottomWireY, 0, 0.01, accentMaterial);
+    addRail(fenceGroup, x2, x3, bottomWireY, 0, 0.01, accentMaterial);
+    addTerminalBand(fenceGroup, x0, topRailY, 0.074, 1, 0.065);
+    addTerminalBand(fenceGroup, x1, topRailY, 0.081, -1, 0.065);
+    addTerminalBand(fenceGroup, x2, topRailY, 0.081, 1, 0.065);
+    addTerminalBand(fenceGroup, x3, topRailY, 0.074, -1, 0.065);
+    addTerminalBand(fenceGroup, x0, bottomWireY, 0.074, 1, 0.05);
+    addTerminalBand(fenceGroup, x1, bottomWireY, 0.081, -1, 0.05);
+    addTerminalBand(fenceGroup, x2, bottomWireY, 0.081, 1, 0.05);
+    addTerminalBand(fenceGroup, x3, bottomWireY, 0.074, -1, 0.05);
 
     const leftPanel = new THREE.Group();
-    leftPanel.position.set(x0, 0, 0);
+    leftPanel.position.set(x0 + 0.06, fabricBottomY, 0);
     fenceGroup.add(leftPanel);
-    addVertical(leftPanel, 0.06, 0.08, topRailY - 0.06);
-    addVertical(leftPanel, panelWidth - 0.06, 0.08, topRailY - 0.06);
     addPanelMesh(leftPanel, panelWidth - 0.12, fabricHeight, state.privacySlats);
 
     const rightPanel = new THREE.Group();
-    rightPanel.position.set(x2, 0, 0);
+    rightPanel.position.set(x2 + 0.06, fabricBottomY, 0);
     fenceGroup.add(rightPanel);
-    addVertical(rightPanel, 0.06, 0.08, topRailY - 0.06);
-    addVertical(rightPanel, panelWidth - 0.06, 0.08, topRailY - 0.06);
     addPanelMesh(rightPanel, panelWidth - 0.12, fabricHeight, state.privacySlats);
 
     const gatePivot = new THREE.Group();
@@ -466,32 +713,34 @@
     gatePivot.add(gateLeaf);
 
     const gateFrameWidth = gateWidth - 0.09;
-    addRail(gateLeaf, 0.03, gateFrameWidth, topRailY - 0.04, 0, 0.028);
-    addRail(gateLeaf, 0.03, gateFrameWidth, 0.14, 0, 0.026);
-    addVertical(gateLeaf, 0.03, 0.14, topRailY - 0.04);
-    addVertical(gateLeaf, gateFrameWidth, 0.14, topRailY - 0.04);
-    addDiagonalBrace(gateLeaf, gateFrameWidth, topRailY - 0.04);
+    addRail(gateLeaf, 0.03, gateFrameWidth, gateFrameTop, 0, 0.028);
+    addRail(gateLeaf, 0.03, gateFrameWidth, gateFrameBottom, 0, 0.026);
+    addVertical(gateLeaf, 0.03, gateFrameBottom, gateFrameTop);
+    addVertical(gateLeaf, gateFrameWidth, gateFrameBottom, gateFrameTop);
+    addDiagonalBrace(gateLeaf, gateFrameWidth, gateFrameTop);
 
     const gateMeshGroup = new THREE.Group();
-    gateMeshGroup.position.set(0.06, 0, 0);
+    gateMeshGroup.position.set(0.06, gateFrameBottom + 0.01, 0);
     gateLeaf.add(gateMeshGroup);
-    addPanelMesh(gateMeshGroup, Math.max(0.2, gateFrameWidth - 0.08), fabricHeight - 0.04, state.privacySlats);
-    addGateHardware(gateLeaf, gateFrameWidth, topRailY - 0.04);
+    addPanelMesh(gateMeshGroup, Math.max(0.2, gateFrameWidth - 0.08), Math.max(0.28, gateFrameTop - gateFrameBottom - 0.03), state.privacySlats);
+    addGateHardware(gateLeaf, gateFrameWidth, gateFrameTop);
+    addGateReceiver(fenceGroup, x2 - 0.05, gateFrameTop * 0.52);
 
     if (state.barbedWire) {
-      addBarbedWire(fenceGroup, x0, x3, topRailY);
+      addBarbedWire(fenceGroup, [x0, x1, x2, x3], topRailY);
     }
 
-    const basePlate = new THREE.Mesh(new THREE.BoxGeometry(totalWidth + 0.9, 0.03, 1.4), new THREE.MeshStandardMaterial({ color: '#e8e2d7', roughness: 0.92 }));
-    basePlate.position.set(0, 0.015, 0);
+    const basePlate = new THREE.Mesh(new THREE.BoxGeometry(totalWidth + 0.95, 0.08, 1.18), concreteMaterial);
+    basePlate.position.set(0, -0.04, 0);
     basePlate.receiveShadow = true;
-    scene.add(basePlate);
     if (scene.userData.basePlate) scene.remove(scene.userData.basePlate);
+    scene.add(basePlate);
     scene.userData.basePlate = basePlate;
 
     updateReadout('metricHeight', ft(state.fenceHeight));
     updateReadout('metricGate', ft(state.gateWidth));
     updateReadout('metricOpen', `${Math.round(state.gateOpen)} deg`);
+    renderElevation();
   }
 
   function resizeRenderer() {
@@ -549,8 +798,8 @@
   });
 
   document.getElementById('resetView').addEventListener('click', () => {
-    camera.position.set(5.8, 3.5, 7.2);
-    controls.target.set(0, 1.65, 0);
+    camera.position.set(6.55, 2.52, 7.55);
+    controls.target.set(0, 1.18, 0);
     controls.update();
   });
 
